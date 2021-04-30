@@ -1,0 +1,77 @@
+@import "variables";
+@import "defaults";
+
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap");
+
+body {
+  min-height: 100vh;
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: 1fr 2fr;
+  font-family: "Open Sans", sans-serif;
+  font-size: $fontSize-default;
+
+  background: cornflowerblue;
+
+  header {
+    grid-row: 1/2;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    h1 {
+      font-size: $fontSize-medium;
+      font-weight: 500;
+    }
+  }
+  main {
+    width: 100%;
+    margin: 0 auto;
+    align-self: flex-start;
+    grid-row: 2/-2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: $marginDefault;
+  }
+}
+
+.audio-controls {
+  position: absolute;
+  top: $paddingDefault;
+  right: $paddingDefault;
+  button {
+    background: none;
+    img {
+      height: $fontSize-default;
+      width: $fontSize-default;
+    }
+  }
+}
+
+.timer-container {
+  span {
+    font-size: $fontSize-large;
+    color: $blackAlpha;
+    font-weight: 700;
+  }
+}
+
+.exercise-container {
+  text-align: center;
+  span {
+    font-size: $fontSize-large;
+  }
+}
+
+.control-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $marginDefault;
+  flex-wrap: wrap;
+  margin-top: $marginDefault * 4;
+}

@@ -1,0 +1,22 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+button {
+  border: none;
+  outline: none;
+  padding: $paddingLess * 2 $paddingDefault * 3;
+  background: $whiteAlpha;
+  font-size: $fontSize-small;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+img {
+  opacity: 0.6;
+  height: $fontSize-small;
+  width: $fontSize-small;
+}
