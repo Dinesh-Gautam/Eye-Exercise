@@ -11,8 +11,8 @@
 
 <body>
     <div class="audio-controls">
-        <button>
-            <img src="./assets/volume_up_black_24dp.svg" alt="mute">
+        <button title="Mute">
+            <img src="./assets/volume_up_black_24dp.svg" alt="Mute">
         </button>
     </div>
     <header>
@@ -21,29 +21,28 @@
     <main>
 
         <div class="timer-container">
-            <span>1:00</span>
+            <span id="timer">1:00</span>
         </div>
         <div class="exercise-container">
-            <span>
+            <span id="exercise">
                 1. Exercise Name
             </span>
         </div>
         <div class="control-buttons">
-            <button>
+            <button title="Play">
                 <img src="./assets/play-solid.svg" alt="play">
             </button>
-            <button>
+            <button title="Pause">
                 <img src="./assets/pause-solid.svg" alt="pause">
-
             </button>
-            <button>
+            <button title="Stop">
                 <img src="./assets/stop-solid.svg" alt="stop">
-
             </button>
-            <button>
+            <button title="Next Exercise">
                 <img src="./assets/arrow-right-solid.svg" alt="next">
             </button>
         </div>
+
     </main>
     <script src="./scripts/main.js"></script>
 </body>

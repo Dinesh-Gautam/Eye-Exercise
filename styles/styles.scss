@@ -10,8 +10,8 @@ body {
   grid-template-rows: 1fr 2fr;
   font-family: "Open Sans", sans-serif;
   font-size: $fontSize-default;
-
-  background: cornflowerblue;
+  background-color: cornflowerblue;
+  transition: background-color $transition-duration ease-in-out;
 
   header {
     grid-row: 1/2;
@@ -22,6 +22,7 @@ body {
     justify-content: center;
     text-align: center;
     h1 {
+      text-transform: uppercase;
       font-size: $fontSize-medium;
       font-weight: 500;
     }
