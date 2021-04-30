@@ -35,7 +35,7 @@ const DOMSelectors = {
 };
 
 const ImagesURL = {
-  path: "../assets/",
+  path: "assets/",
   SvgImage: {
     play: "play-solid.svg",
     pause: "pause-solid.svg",
@@ -77,6 +77,9 @@ class Timer {
   }
   start() {
     this.exerciseUpdater();
+
+    if (this.timerInterval !== null) return;
+
     this.timerInterval = setInterval(() => {
       const currentDuration = this.timeDuration;
       this.timeDuration--;
@@ -90,6 +93,7 @@ class Timer {
 
   pause() {
     clearInterval(this.timerInterval);
+    this.timerInterval = null;
   }
 
   next() {
