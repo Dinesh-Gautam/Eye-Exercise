@@ -1,0 +1,17 @@
+
+show no of day I am workingout.
+
+add text to speech and when it is not mute automaticaly change exercises and tell the user which exercise they are on and when the time gets over. When it is mute allow user to manually change exercise and play beep sound when time gets over.
+
+add animations(optiionals but it will be awesome if I add them).
+
+tell yours different facts when all the exercise gets over.
+
+add more options in setting like :
+    - changing background color
+    - changing exercise duration
+    - text to speech related settings
+    - add more exercises
+    - etc.
+
+make it responsive
