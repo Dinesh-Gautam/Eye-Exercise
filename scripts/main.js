@@ -60,7 +60,7 @@ const EyeExercises = [
 ];
 
 const TimerAudio = {
-  path: "../assets/audio/",
+  path: "assets/audio/",
   beep: "alarm_beep_3.mp3",
 };
 
