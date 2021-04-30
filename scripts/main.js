@@ -37,12 +37,12 @@ const DOMSelectors = {
 const ImagesURL = {
   path: "../assets/",
   SvgImage: {
-    play: this.path + "play-solid.svg",
-    pause: this.path + "pause-solid.svg",
-    stop: this.path + "stop-solid.svg",
-    volumeOff: this.path + "volume_off_black_24dp.svg",
-    volumeUp: this.path + "voluem_up_black_24dp.svg",
-    next: this.path + "arrow-right-solid.svg",
+    play: "play-solid.svg",
+    pause: "pause-solid.svg",
+    stop: "stop-solid.svg",
+    volumeOff: "volume_off_black_24dp.svg",
+    volumeUp: "voluem_up_black_24dp.svg",
+    next: "arrow-right-solid.svg",
   },
 };
 
