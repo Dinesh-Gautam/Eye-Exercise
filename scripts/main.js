@@ -31,6 +31,7 @@ const DOMSelectors = {
   body: document.querySelector("body"),
   timer: document.getElementById("timer"),
   exercise: document.getElementById("exercise"),
+  timerControlButtons: document.querySelectorAll(".play, .pause, .stop, .next"),
 };
 const ImagesURL = {
   path: "../assets/",
@@ -80,33 +81,47 @@ class Timer {
   }
 
   pause() {
-    this.currentExerciseNo++;
     clearInterval(this.timerInterval);
+  }
+
+  next() {
+    this.currentExerciseNo++;
+    this.stop();
+    this.exerciseUpdater();
   }
 
   stop() {
     this.pause();
     this.resetTimer();
+    this.update();
   }
   resetTimer() {
     this.timeDuration = this.duration;
   }
   update() {
     const { timer } = DOMSelectors;
-    timer.innerText = this.timeDuration;
+    timer.innerText = this.timeDuration === 60 ? "1:00" : this.timeDuration;
   }
 
   exerciseUpdater() {
     const { exercise } = DOMSelectors;
-    exercise.innerText = `${this.currentExerciseNo + 1}. ${
-      EyeExercises[this.currentExerciseNo]
-    }`;
+
+    if (this.exerciseOverChecker()) {
+      exercise.innerText = "All exercise complete";
+      return;
+    }
+
+    exercise.innerText = exerciseNameString(this);
+
+    function exerciseNameString(scope) {
+      return `${scope.currentExerciseNo + 1}. ${
+        EyeExercises[scope.currentExerciseNo]
+      }`;
+    }
   }
 
-  exerciseOver() {
-    this.currentExerciseNo === this.totalExercisesNo
-      ? console.log("This exercise is over continue next one")
-      : console.log("all exercises compeleted");
+  exerciseOverChecker() {
+    return this.currentExerciseNo >= this.totalExercisesNo;
   }
 }
 
@@ -117,6 +132,16 @@ function init() {
   timer.exerciseUpdater();
 }
 
-// timer.start();
+//Event Listener
+
+DOMSelectors.timerControlButtons.forEach((button) => {
+  button.addEventListener("click", (event) => {
+    const className = event.target.className;
+    className === "play" && timer.start();
+    className === "pause" && timer.pause();
+    className === "stop" && timer.stop();
+    className === "next" && timer.next();
+  });
+});
 
 init();
