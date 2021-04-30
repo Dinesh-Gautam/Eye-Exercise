@@ -138,9 +138,15 @@ class Timer {
 }
 
 let timer;
+const timerConfig = {
+  duration: 60,
+  timerSpeed: 1000,
+  NoOfExercises: EyeExercises.length,
+};
 
 function init() {
-  timer = new Timer(60, 100, EyeExercises.length);
+  const { duration, timerSpeed, NoOfExercises } = timerConfig;
+  timer = new Timer(duration, timerSpeed, NoOfExercises);
   setRandomBodyBackgroundColor();
   timer.exerciseUpdater();
 }
