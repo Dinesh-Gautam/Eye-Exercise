@@ -33,6 +33,7 @@ const DOMSelectors = {
   exercise: document.getElementById("exercise"),
   timerControlButtons: document.querySelectorAll(".play, .pause, .stop, .next"),
 };
+
 const ImagesURL = {
   path: "../assets/",
   SvgImage: {
@@ -58,6 +59,13 @@ const EyeExercises = [
   "Strengthen your eyes’ near and far focusing",
 ];
 
+const TimerAudio = {
+  path: "../assets/audio/",
+  beep: "alarm_beep_3.mp3",
+};
+
+const beepSound = new Audio(TimerAudio.path + TimerAudio.beep);
+
 class Timer {
   constructor(duration, intervalDuration, exerciseNo) {
     this.duration = duration;
@@ -75,7 +83,7 @@ class Timer {
       this.update();
       if (currentDuration <= 1) {
         this.stop();
-        this.exerciseOver();
+        beepSound.play();
       }
     }, this.intervalDuration);
   }
@@ -125,9 +133,10 @@ class Timer {
   }
 }
 
-const timer = new Timer(60, 1000, EyeExercises.length);
+let timer;
 
 function init() {
+  timer = new Timer(60, 100, EyeExercises.length);
   setRandomBodyBackgroundColor();
   timer.exerciseUpdater();
 }
