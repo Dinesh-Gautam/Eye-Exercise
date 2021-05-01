@@ -183,7 +183,7 @@ class Timer {
 let timer;
 const timerConfig = {
   duration: 60,
-  timerSpeed: 100,
+  timerSpeed: 1000,
   NoOfExercises: EyeExercises.length,
 };
 
