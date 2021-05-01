@@ -49,6 +49,8 @@ const DOMSelectors = {
   timerControlButtonsContainer: document.querySelector(".control-buttons"),
   timerContainer: document.querySelector(".timer-container"),
   exerciseContainer: document.querySelector(".exercise-container"),
+  audioControls: document.querySelector(".audio-controls"),
+  audioControlButtons: document.querySelectorAll(".timer-audio-mute"),
 };
 
 const ImagesURL = {
@@ -58,7 +60,7 @@ const ImagesURL = {
     pause: "pause-solid.svg",
     stop: "stop-solid.svg",
     volumeOff: "volume_off_black_24dp.svg",
-    volumeUp: "voluem_up_black_24dp.svg",
+    volumeUp: "volume_up_black_24dp.svg",
     next: "arrow-right-solid.svg",
   },
 };
@@ -79,9 +81,26 @@ const EyeExercises = [
 const TimerAudio = {
   path: "assets/audio/",
   beep: "alarm_beep_3.mp3",
+
+  muteAndUnmute() {
+    const { audioControlButtons } = DOMSelectors;
+    const muteButton = audioControlButtons[0];
+    const muteImage = audioControlButtons[0].querySelector(".mute-image");
+
+    const mute = ImagesURL.path + ImagesURL.SvgImage.volumeOff;
+    const unmute = ImagesURL.path + ImagesURL.SvgImage.volumeUp;
+
+    beepSound.muted = !beepSound.muted;
+    muteImage.src = beepSound.muted ? mute : unmute;
+    muteButton.title = beepSound.muted ? "Unmute" : "Mute";
+  },
 };
 
 const beepSound = new Audio(TimerAudio.path + TimerAudio.beep);
+
+function AudioControl(type) {
+  type === "mute" && TimerAudio.muteAndUnmute();
+}
 
 class Timer {
   constructor(duration, intervalDuration, exerciseNo) {
@@ -164,7 +183,7 @@ class Timer {
 let timer;
 const timerConfig = {
   duration: 60,
-  timerSpeed: 1000,
+  timerSpeed: 100,
   NoOfExercises: EyeExercises.length,
 };
 
@@ -184,6 +203,13 @@ DOMSelectors.timerControlButtons.forEach((button) => {
     className === "pause" && timer.pause();
     className === "stop" && timer.stop();
     className === "next" && timer.next();
+  });
+});
+
+DOMSelectors.audioControlButtons.forEach((button) => {
+  button.addEventListener("click", (event) => {
+    const className = event.target.className;
+    className === "timer-audio-mute" && AudioControl("mute");
   });
 });
 
