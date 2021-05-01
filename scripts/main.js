@@ -8,6 +8,20 @@ function setRandomBodyBackgroundColor() {
   DOMSelectors.body.style.backgroundColor = color;
 }
 
+function setDisplay(element, view, display) {
+  if (typeof element === "object" && !(element instanceof Element)) {
+    element.forEach((ele) => {
+      setDisplay(ele, view, display);
+    });
+  } else {
+    if (!view) {
+      element.style.display = display || "none";
+    } else {
+      element.style.display = display || "block";
+    }
+  }
+}
+
 const ColorRange = {
   min: 140,
   max: 220,
@@ -32,6 +46,9 @@ const DOMSelectors = {
   timer: document.getElementById("timer"),
   exercise: document.getElementById("exercise"),
   timerControlButtons: document.querySelectorAll(".play, .pause, .stop, .next"),
+  timerControlButtonsContainer: document.querySelector(".control-buttons"),
+  timerContainer: document.querySelector(".timer-container"),
+  exerciseContainer: document.querySelector(".exercise-container"),
 };
 
 const ImagesURL = {
@@ -120,6 +137,7 @@ class Timer {
 
     if (this.exerciseOverChecker()) {
       exercise.innerText = "All exercise complete";
+      this.exerciseOver();
       return;
     }
 
@@ -130,6 +148,12 @@ class Timer {
         EyeExercises[scope.currentExerciseNo]
       }`;
     }
+  }
+
+  exerciseOver({ allExerciseOver = false } = {}) {
+    const { timerControlButtonsContainer, timerContainer } = DOMSelectors;
+
+    setDisplay([timerControlButtonsContainer, timerContainer], allExerciseOver);
   }
 
   exerciseOverChecker() {
