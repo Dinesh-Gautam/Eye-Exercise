@@ -19,4 +19,7 @@ button {
     height: $fontSize-small;
     width: $fontSize-small;
   }
+  @include mobile {
+    padding: $paddingLess * 1.5 $paddingDefault * 2;
+  }
 }

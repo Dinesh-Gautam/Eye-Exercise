@@ -1,12 +1,12 @@
 $paddingLess: 12px;
 $paddingDefault: 24px;
 $marginLess: 12px;
-$marginDefault: 24px;
+$marginDefault: 2vh;
 $blackAlpha: rgba(0, 0, 0, 0.2);
-$whiteAlpha: rgba(255, 255, 255, 0.2);
+$whiteAlpha: rgba(255, 255, 255, 0.3);
 $fontSize-small: 16px;
 $fontSize-default: 24px;
 $fontSize-medium: 32px;
-$fontSize-large: 64px;
+$fontSize-large: clamp(38px, 5vw, 64px);
 
 $transition-duration: 500ms;

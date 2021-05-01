@@ -10,7 +10,7 @@ button {
   border: none;
   outline: none;
   padding: 24px 72px;
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.3);
   font-size: 16px;
   cursor: pointer;
   display: -webkit-box;
@@ -29,6 +29,12 @@ button img {
   opacity: 0.6;
   height: 16px;
   width: 16px;
+}
+
+@media screen and (max-width: 400px) {
+  button {
+    padding: 18px 48px;
+  }
 }
 
 body {
@@ -88,7 +94,7 @@ body main {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  gap: 24px;
+  gap: 2vh;
 }
 
 .audio-controls {
@@ -106,18 +112,42 @@ body main {
   width: 24px;
 }
 
+@media screen and (max-width: 400px) {
+  .audio-controls {
+    top: 6px;
+    right: 6px;
+  }
+}
+
 .timer-container span {
-  font-size: 64px;
+  font-size: clamp(38px, 5vw, 64px);
   color: rgba(0, 0, 0, 0.2);
   font-weight: 700;
 }
 
+@media screen and (max-width: 400px) {
+  .timer-container span {
+    font-size: 64px;
+  }
+}
+
 .exercise-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   text-align: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 156px;
+  overflow: scroll;
 }
 
 .exercise-container span {
-  font-size: 64px;
+  font-size: clamp(38px, 5vw, 64px);
 }
 
 .control-buttons {
@@ -130,9 +160,8 @@ body main {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  gap: 24px;
+  gap: 2vh;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  margin-top: 96px;
 }
 /*# sourceMappingURL=styles.css.map */

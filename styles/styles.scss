@@ -1,5 +1,8 @@
 @import "variables";
+@import "mediaQueries";
 @import "defaults";
+
+//fonts
 
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap");
 
@@ -51,6 +54,10 @@ body {
       width: $fontSize-default;
     }
   }
+  @include mobile {
+    top: $paddingDefault - 18px;
+    right: $paddingDefault - 18px;
+  }
 }
 
 .timer-container {
@@ -58,11 +65,19 @@ body {
     font-size: $fontSize-large;
     color: $blackAlpha;
     font-weight: 700;
+    @include mobile {
+      font-size: $fontSize-medium * 2;
+    }
   }
 }
 
 .exercise-container {
+  display: flex;
   text-align: center;
+  align-items: center;
+  justify-content: center;
+  height: $paddingDefault * 6.5;
+  overflow: scroll;
   span {
     font-size: $fontSize-large;
   }
@@ -74,5 +89,5 @@ body {
   justify-content: center;
   gap: $marginDefault;
   flex-wrap: wrap;
-  margin-top: $marginDefault * 4;
+  // margin-top: $marginDefault * 4;
 }
