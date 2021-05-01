@@ -136,18 +136,28 @@ body main {
   display: -ms-flexbox;
   display: flex;
   text-align: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
   height: 156px;
-  overflow: scroll;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 .exercise-container span {
   font-size: clamp(38px, 5vw, 64px);
+}
+
+.exercise-container::-webkit-scrollbar {
+  background: transparent;
+  width: 12px;
+}
+
+.exercise-container::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
 }
 
 .control-buttons {

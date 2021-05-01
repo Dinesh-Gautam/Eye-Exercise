@@ -74,12 +74,20 @@ body {
 .exercise-container {
   display: flex;
   text-align: center;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   height: $paddingDefault * 6.5;
-  overflow: scroll;
+  overflow-x: hidden;
+  overflow-y: scroll;
   span {
     font-size: $fontSize-large;
+  }
+  &::-webkit-scrollbar {
+    background: transparent;
+    width: 12px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: $whiteAlpha;
   }
 }
 
