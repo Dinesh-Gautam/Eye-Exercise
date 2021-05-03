@@ -115,6 +115,7 @@ class Timer {
     this.exerciseUpdater();
 
     if (this.timerInterval !== null) return;
+    this.exerciselogger({ timerStarted: true });
 
     this.timerInterval = setInterval(() => {
       const currentDuration = this.timeDuration;
@@ -129,6 +130,9 @@ class Timer {
 
   pause() {
     clearInterval(this.timerInterval);
+    this.exerciselogger({
+      timerStarted: false,
+    });
     this.timerInterval = null;
   }
 
@@ -166,12 +170,12 @@ class Timer {
   exerciseUpdater() {
     const { exercise } = DOMSelectors;
 
-    if (this.exerciseloggerChecker()) {
+    if (this.exerciseCompeleteChecker()) {
       exercise.innerText = "All exercise complete";
-      this.exerciselogger({ allexerciselogger: true });
+      this.exerciselogger({ allExerciseCompeleted: true });
       return;
     }
-    this.exerciselogger({ allexerciselogger: false });
+    this.exerciselogger({ allExerciseCompeleted: false });
 
     exercise.innerText = exerciseNameString(this);
 
@@ -182,23 +186,33 @@ class Timer {
     }
   }
 
-  exerciselogger({ allexerciselogger = false } = {}) {
+  exerciselogger({ allExerciseCompeleted = false, timerStarted = false } = {}) {
     const { timerControlButtons, timerContainer } = DOMSelectors;
 
     const [previous, start, pause, stop, next, restart] = timerControlButtons;
 
-    // when all exercises are over
-    setDisplay(restart, !allexerciselogger, "flex");
-
-    // when we restart the exercises
-    setDisplay(
-      [timerContainer, start, pause, stop, next],
-      allexerciselogger,
-      "flex"
-    );
+    if (allExerciseCompeleted) {
+      setDisplay(restart, !allExerciseCompeleted, "flex");
+      setDisplay(start, allExerciseCompeleted, "flex");
+      setDisplay(
+        [timerContainer, start, pause, stop, next],
+        allExerciseCompeleted,
+        "flex"
+      );
+    } else {
+      setDisplay(restart, !allExerciseCompeleted, "flex");
+      setDisplay(
+        [timerContainer, start, pause, stop, next],
+        allExerciseCompeleted,
+        "flex"
+      );
+      setDisplay([start], timerStarted, "flex");
+      setDisplay([pause, stop], !timerStarted, "flex");
+      setDisplay([next, previous], timerStarted, "flex");
+    }
   }
 
-  exerciseloggerChecker() {
+  exerciseCompeleteChecker() {
     return this.currentExerciseNo >= this.totalExercisesNo;
   }
 }
@@ -227,7 +241,7 @@ DOMSelectors.timerControlButtons.forEach((button) => {
     className === "pause" && timer.pause();
     className === "stop" && timer.stop();
     className === "next" && timer.next();
-    className === "restart" && timer.previous();
+    className === "restart" && timer.restart();
   });
 });
 
@@ -239,3 +253,22 @@ DOMSelectors.audioControlButtons.forEach((button) => {
 });
 
 init();
+
+/* 
+    // when all exercises are over
+    setDisplay(restart, !allExerciseCompeleted, "flex");
+
+    // when we restart the exercises
+    setDisplay(
+      [timerContainer, start, pause, stop, next],
+      allExerciseCompeleted,
+      "flex"
+    );
+
+    // when timer is running
+    setDisplay([start], timerStarted, "flex");
+    setDisplay([pause, stop], !timerStarted, "flex");
+
+    //when all exercise are over
+    setDisplay(start, allExerciseCompeleted, "flex");
+*/
