@@ -97,5 +97,10 @@ body {
   justify-content: center;
   gap: $marginDefault;
   flex-wrap: wrap;
+  position: fixed;
+  bottom: $paddingDefault;
+  left: 0;
+  width: 100%;
+  backdrop-filter: blur(26px);
   // margin-top: $marginDefault * 4;
 }

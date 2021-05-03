@@ -173,5 +173,11 @@ body main {
   gap: 2vh;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  position: fixed;
+  bottom: 24px;
+  left: 0;
+  width: 100%;
+  -webkit-backdrop-filter: blur(26px);
+          backdrop-filter: blur(26px);
 }
 /*# sourceMappingURL=styles.css.map */

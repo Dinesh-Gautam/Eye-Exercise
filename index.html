@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles/styles.css">
+    <script defer src="./scripts/main.js"></script>
+
     <title>Eye Exercise</title>
 </head>
 
@@ -29,8 +31,11 @@
             </span>
         </div>
         <div class="control-buttons">
-            <button class="play" title="Play">
-                <img src="./assets/play-solid.svg" alt="play">
+            <button class="previous" title="Previous Exercise">
+                <img style=" transform: scaleX(-1);" src="./assets/arrow-right-solid.svg" alt="previous">
+            </button>
+            <button class="start" title="Start">
+                <img src="./assets/play-solid.svg" alt="start">
             </button>
             <button class="pause" title="Pause">
                 <img src="./assets/pause-solid.svg" alt="pause">
@@ -41,10 +46,12 @@
             <button class="next" title="Next Exercise">
                 <img src="./assets/arrow-right-solid.svg" alt="next">
             </button>
+            <button class="restart" title="Restart from all over">
+                <img style=" transform: scaleX(-1);" src="./assets/redo-alt-solid.svg" alt="restart">
+            </button>
         </div>
 
     </main>
-    <script src="./scripts/main.js"></script>
 </body>
 
 </html>

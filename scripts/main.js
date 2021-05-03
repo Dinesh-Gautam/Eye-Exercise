@@ -14,8 +14,8 @@ function setDisplay(element, view, display) {
       setDisplay(ele, view, display);
     });
   } else {
-    if (!view) {
-      element.style.display = display || "none";
+    if (view) {
+      element.style.display = "none";
     } else {
       element.style.display = display || "block";
     }
@@ -45,7 +45,7 @@ const DOMSelectors = {
   body: document.querySelector("body"),
   timer: document.getElementById("timer"),
   exercise: document.getElementById("exercise"),
-  timerControlButtons: document.querySelectorAll(".play, .pause, .stop, .next"),
+  timerControlButtons: document.querySelectorAll(".control-buttons button"),
   timerControlButtonsContainer: document.querySelector(".control-buttons"),
   timerContainer: document.querySelector(".timer-container"),
   exerciseContainer: document.querySelector(".exercise-container"),
@@ -133,7 +133,13 @@ class Timer {
   }
 
   next() {
+    this.currentExerciseNo >= this.totalExercisesNo;
     this.currentExerciseNo++;
+    this.stop();
+    this.exerciseUpdater();
+  }
+  previous() {
+    this.currentExerciseNo !== 0 && this.currentExerciseNo--;
     this.stop();
     this.exerciseUpdater();
   }
@@ -146,6 +152,12 @@ class Timer {
   resetTimer() {
     this.timeDuration = this.duration;
   }
+  restart() {
+    console.log("I am working");
+    this.currentExerciseNo = 0;
+    this.stop();
+    this.exerciseUpdater();
+  }
   update() {
     const { timer } = DOMSelectors;
     timer.innerText = this.timeDuration === 60 ? "1:00" : this.timeDuration;
@@ -154,11 +166,12 @@ class Timer {
   exerciseUpdater() {
     const { exercise } = DOMSelectors;
 
-    if (this.exerciseOverChecker()) {
+    if (this.exerciseloggerChecker()) {
       exercise.innerText = "All exercise complete";
-      this.exerciseOver();
+      this.exerciselogger({ allexerciselogger: true });
       return;
     }
+    this.exerciselogger({ allexerciselogger: false });
 
     exercise.innerText = exerciseNameString(this);
 
@@ -169,13 +182,23 @@ class Timer {
     }
   }
 
-  exerciseOver({ allExerciseOver = false } = {}) {
-    const { timerControlButtonsContainer, timerContainer } = DOMSelectors;
+  exerciselogger({ allexerciselogger = false } = {}) {
+    const { timerControlButtons, timerContainer } = DOMSelectors;
 
-    setDisplay([timerControlButtonsContainer, timerContainer], allExerciseOver);
+    const [previous, start, pause, stop, next, restart] = timerControlButtons;
+
+    // when all exercises are over
+    setDisplay(restart, !allexerciselogger, "flex");
+
+    // when we restart the exercises
+    setDisplay(
+      [timerContainer, start, pause, stop, next],
+      allexerciselogger,
+      "flex"
+    );
   }
 
-  exerciseOverChecker() {
+  exerciseloggerChecker() {
     return this.currentExerciseNo >= this.totalExercisesNo;
   }
 }
@@ -199,10 +222,12 @@ function init() {
 DOMSelectors.timerControlButtons.forEach((button) => {
   button.addEventListener("click", (event) => {
     const className = event.target.className;
-    className === "play" && timer.start();
+    className === "previous" && timer.previous();
+    className === "start" && timer.start();
     className === "pause" && timer.pause();
     className === "stop" && timer.stop();
     className === "next" && timer.next();
+    className === "restart" && timer.previous();
   });
 });
 
