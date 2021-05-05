@@ -14,11 +14,9 @@ function setDisplay(element, view, display) {
       setDisplay(ele, view, display);
     });
   } else {
-    if (view) {
-      element.style.display = "none";
-    } else {
-      element.style.display = display || "block";
-    }
+    view
+      ? (element.style.display = "none")
+      : (element.style.display = display || "block");
   }
 }
 
@@ -253,22 +251,3 @@ DOMSelectors.audioControlButtons.forEach((button) => {
 });
 
 init();
-
-/* 
-    // when all exercises are over
-    setDisplay(restart, !allExerciseCompeleted, "flex");
-
-    // when we restart the exercises
-    setDisplay(
-      [timerContainer, start, pause, stop, next],
-      allExerciseCompeleted,
-      "flex"
-    );
-
-    // when timer is running
-    setDisplay([start], timerStarted, "flex");
-    setDisplay([pause, stop], !timerStarted, "flex");
-
-    //when all exercise are over
-    setDisplay(start, allExerciseCompeleted, "flex");
-*/
