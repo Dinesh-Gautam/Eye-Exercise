@@ -9,4 +9,8 @@ $fontSize-default: 24px;
 $fontSize-medium: 32px;
 $fontSize-large: clamp(38px, 5vw, 64px);
 
+$btn-border: 4px solid rgb(255, 255, 255);
+$btn-opacity-secondary: 0.6;
+$btn-scale-secondary: 0.8;
+
 $transition-duration: 500ms;

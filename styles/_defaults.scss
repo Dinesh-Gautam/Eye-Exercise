@@ -6,7 +6,11 @@
 button {
   border: none;
   outline: none;
-  padding: $paddingLess * 2 $paddingDefault * 3;
+  padding: $paddingDefault;
+  &.secondary {
+    transform: scale($btn-scale-secondary);
+    opacity: $btn-opacity-secondary;
+  }
   background: $whiteAlpha;
   font-size: $fontSize-small;
   cursor: pointer;

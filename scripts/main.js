@@ -233,13 +233,13 @@ function init() {
 
 DOMSelectors.timerControlButtons.forEach((button) => {
   button.addEventListener("click", (event) => {
-    const className = event.target.className;
-    className === "previous" && timer.previous();
-    className === "start" && timer.start();
-    className === "pause" && timer.pause();
-    className === "stop" && timer.stop();
-    className === "next" && timer.next();
-    className === "restart" && timer.restart();
+    const className = event.target.classList;
+    className.contains("previous") && timer.previous();
+    className.contains("start") && timer.start();
+    className.contains("pause") && timer.pause();
+    className.contains("stop") && timer.stop();
+    className.contains("next") && timer.next();
+    className.contains("restart") && timer.restart();
   });
 });
 
