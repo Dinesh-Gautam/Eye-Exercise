@@ -95,7 +95,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: $marginDefault;
+  gap: $marginDefault * 2;
   flex-wrap: wrap;
   position: fixed;
   bottom: $paddingDefault;
