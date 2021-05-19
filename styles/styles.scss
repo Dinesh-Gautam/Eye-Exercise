@@ -105,7 +105,7 @@ body {
   button {
     border: $btn-border;
     border-radius: 50%;
-    background: none;
+    background: $whiteAlpha;
   }
   // margin-top: $marginDefault * 4;
 }
