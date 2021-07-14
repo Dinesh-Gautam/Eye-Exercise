@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans&family=Robot&family=Open+Sans:wght@300;400;600;700;800&display=swap");
 * {
   margin: 0;
   padding: 0;
@@ -50,9 +50,9 @@ body {
   display: grid;
   -ms-grid-rows: 1fr 2fr;
       grid-template-rows: 1fr 2fr;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Roboto", "Noto Sans", "Open Sans", sans-serif;
   font-size: 24px;
-  background-color: cornflowerblue;
+  background-color: #f0f0f0;
   -webkit-transition: background-color 500ms ease-in-out;
   transition: background-color 500ms ease-in-out;
 }

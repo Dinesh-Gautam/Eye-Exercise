@@ -4,16 +4,16 @@
 
 //fonts
 
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans&family=Robot&family=Open+Sans:wght@300;400;600;700;800&display=swap");
 
 body {
   min-height: 100vh;
   overflow: hidden;
   display: grid;
   grid-template-rows: 1fr 2fr;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Roboto", "Noto Sans", "Open Sans", sans-serif;
   font-size: $fontSize-default;
-  background-color: cornflowerblue;
+  background-color: rgb(240, 240, 240);
   transition: background-color $transition-duration ease-in-out;
 
   header {
