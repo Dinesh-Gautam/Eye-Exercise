@@ -47,11 +47,31 @@ body {
   position: absolute;
   top: $paddingDefault;
   right: $paddingDefault;
+  display: flex;
+  align-items: center;
   button {
     background: none;
+    order: 1;
     img {
       height: $fontSize-default;
       width: $fontSize-default;
+    }
+  }
+  .more-controls {
+    flex: 1;
+    padding: $paddingDefault 0;
+    width: 0;
+    overflow: hidden;
+    transition: width 0.2s ease-in-out;
+    .audio-volume-container {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
+  }
+  &:hover {
+    .more-controls {
+      width: 72px;
     }
   }
   @include mobile {

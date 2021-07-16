@@ -132,15 +132,51 @@ body main {
   position: absolute;
   top: 24px;
   right: 24px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .audio-controls button {
   background: none;
+  -webkit-box-ordinal-group: 2;
+      -ms-flex-order: 1;
+          order: 1;
 }
 
 .audio-controls button img {
   height: 24px;
   width: 24px;
+}
+
+.audio-controls .more-controls {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  padding: 24px 0;
+  width: 0;
+  overflow: hidden;
+  -webkit-transition: width 0.2s ease-in-out;
+  transition: width 0.2s ease-in-out;
+}
+
+.audio-controls .more-controls .audio-volume-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.audio-controls:hover .more-controls {
+  width: 72px;
 }
 
 @media screen and (max-width: 400px) {
