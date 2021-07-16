@@ -49,6 +49,7 @@ const DOMSelectors = {
   exerciseContainer: document.querySelector(".exercise-container"),
   audioControls: document.querySelector(".audio-controls"),
   audioControlButtons: document.querySelectorAll(".timer-audio-mute"),
+  audioVolumeControlInput: document.querySelectorAll(".audio-volume-input"),
 };
 
 const ImagesURL = {
@@ -79,8 +80,8 @@ const EyeExercises = [
 const TimerAudio = {
   path: "assets/audio/",
   beep: "alarm_beep_3.mp3",
-
-  muteAndUnmute() {
+  beepVolume: 100,
+  muteAndUnmute(setMute) {
     const { audioControlButtons } = DOMSelectors;
     const muteButton = audioControlButtons[0];
     const muteImage = audioControlButtons[0].querySelector(".mute-image");
@@ -88,16 +89,31 @@ const TimerAudio = {
     const mute = ImagesURL.path + ImagesURL.SvgImage.volumeOff;
     const unmute = ImagesURL.path + ImagesURL.SvgImage.volumeUp;
 
-    beepSound.muted = !beepSound.muted;
-    muteImage.src = beepSound.muted ? mute : unmute;
-    muteButton.title = beepSound.muted ? "Unmute" : "Mute";
+    if (setMute !== undefined) {
+      changeMuteInDOM(setMute);
+    } else {
+      changeMuteInDOM(!beepSound.muted);
+    }
+
+    function changeMuteInDOM(state) {
+      beepSound.muted = state;
+      muteImage.src = state ? mute : unmute;
+      muteButton.title = state ? "Unmute" : "Mute";
+    }
+  },
+  changeVolume(value) {
+    this.beepVolume = value;
+    console.log(this.beepVolume);
+
+    value < 1 ? this.muteAndUnmute(true) : this.muteAndUnmute(false);
   },
 };
 
 const beepSound = new Audio(TimerAudio.path + TimerAudio.beep);
 
-function AudioControl(type) {
+function AudioControl(type, value) {
   type === "mute" && TimerAudio.muteAndUnmute();
+  type === "volume" && TimerAudio.changeVolume(value);
 }
 
 class Timer {
@@ -248,6 +264,16 @@ DOMSelectors.audioControlButtons.forEach((button) => {
     const className = event.target.className;
     className === "timer-audio-mute" && AudioControl("mute");
   });
+});
+
+DOMSelectors.audioVolumeControlInput.forEach((input) => {
+  // live changing value
+  input.addEventListener("input", (event) => {
+    const className = event.target.className;
+    const value = event.target.value;
+    className === "audio-volume-input" && AudioControl("volume", value);
+  });
+  // saving input value
 });
 
 init();
