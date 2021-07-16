@@ -81,6 +81,7 @@ const TimerAudio = {
   path: "assets/audio/",
   beep: "alarm_beep_3.mp3",
   beepVolume: 100,
+  defaultAudioVolumeKey: "eye_workout_volume_value",
   muteAndUnmute(setMute) {
     const { audioControlButtons } = DOMSelectors;
     const muteButton = audioControlButtons[0];
@@ -88,11 +89,11 @@ const TimerAudio = {
 
     const mute = ImagesURL.path + ImagesURL.SvgImage.volumeOff;
     const unmute = ImagesURL.path + ImagesURL.SvgImage.volumeUp;
-
     if (setMute !== undefined) {
       changeMuteInDOM(setMute);
     } else {
       changeMuteInDOM(!beepSound.muted);
+      this.setVolumeValue();
     }
 
     function changeMuteInDOM(state) {
@@ -100,12 +101,31 @@ const TimerAudio = {
       muteImage.src = state ? mute : unmute;
       muteButton.title = state ? "Unmute" : "Mute";
     }
+    this.beepVolume = beepSound.muted ? 0 : this.beepVolume;
+    this.updateVolumeInputValue(this.beepVolume);
+  },
+  updateVolumeInputValue(value) {
+    const { audioVolumeControlInput } = DOMSelectors;
+
+    audioVolumeControlInput.value = value;
   },
   changeVolume(value) {
-    this.beepVolume = value;
-    console.log(this.beepVolume);
-
-    value < 1 ? this.muteAndUnmute(true) : this.muteAndUnmute(false);
+    this.beepVolume = Number(value);
+    if (value < 1) this.muteAndUnmute(true);
+    if (value > 1) this.muteAndUnmute(false);
+  },
+  getVolumeValue() {
+    const localStorageValue = localStorage.getItem(this.defaultAudioVolumeKey);
+    localStorageValue === null
+      ? localStorage.setItem(this.defaultAudioVolumeKey, 100)
+      : (this.beepVolume = localStorageValue);
+  },
+  setVolumeValue() {
+    localStorage.setItem(this.defaultAudioVolumeKey, this.beepVolume);
+    console.log("saving volume value to localStorage" + " " + this.beepVolume);
+  },
+  init() {
+    this.getVolumeValue();
   },
 };
 
@@ -243,6 +263,7 @@ function init() {
   timer = new Timer(duration, timerSpeed, NoOfExercises);
   setRandomBodyBackgroundColor();
   timer.exerciseUpdater();
+  TimerAudio.init();
 }
 
 //Event Listener
@@ -272,6 +293,12 @@ DOMSelectors.audioVolumeControlInput.forEach((input) => {
     const className = event.target.className;
     const value = event.target.value;
     className === "audio-volume-input" && AudioControl("volume", value);
+  });
+
+  input.addEventListener("change", (event) => {
+    const className = event.target.className;
+    const value = event.target.value;
+    className === "audio-volume-input" && TimerAudio.setVolumeValue();
   });
   // saving input value
 });
