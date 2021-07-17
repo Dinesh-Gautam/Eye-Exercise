@@ -93,12 +93,15 @@ const TimerAudio = {
       changeMuteInDOM(setMute);
     } else {
       changeMuteInDOM(!beepSound.muted);
+      const storedVolumeValue = Number(
+        localStorage.getItem(this.defaultAudioVolumeKey)
+      );
       beepSound.muted
         ? (this.beepVolume = 0)
-        : this.beepVolume === 0
+        : storedVolumeValue < 1
         ? (this.beepVolume = 100)
-        : this.getVolumeValue();
-      console.log(this.beepVolume);
+        : (this.beepVolume = storedVolumeValue);
+
       this.setVolumeValue();
     }
 
@@ -117,8 +120,7 @@ const TimerAudio = {
   },
   changeVolume(value) {
     this.beepVolume = Number(value);
-    if (value < 1) this.muteAndUnmute(true);
-    if (value > 1) this.muteAndUnmute(false);
+    value < 1 ? this.muteAndUnmute(true) : this.muteAndUnmute(false);
   },
   getVolumeValue() {
     const localStorageValue = localStorage.getItem(this.defaultAudioVolumeKey);
@@ -129,11 +131,15 @@ const TimerAudio = {
     this.updateVolumeInputValue(this.beepVolume);
   },
   setVolumeValue() {
+    this.setVolume();
     localStorage.setItem(this.defaultAudioVolumeKey, this.beepVolume);
-    console.log("saving volume value to localStorage" + " " + this.beepVolume);
+  },
+  setVolume() {
+    beepSound.volume = Number((Number(this.beepVolume) / 1000).toFixed(3));
   },
   init() {
     this.getVolumeValue();
+    this.setVolume();
   },
 };
 
@@ -262,7 +268,7 @@ class Timer {
 let timer;
 const timerConfig = {
   duration: 60,
-  timerSpeed: 1000,
+  timerSpeed: 10,
   NoOfExercises: EyeExercises.length,
 };
 
