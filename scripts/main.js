@@ -93,6 +93,12 @@ const TimerAudio = {
       changeMuteInDOM(setMute);
     } else {
       changeMuteInDOM(!beepSound.muted);
+      beepSound.muted
+        ? (this.beepVolume = 0)
+        : this.beepVolume === 0
+        ? (this.beepVolume = 100)
+        : this.getVolumeValue();
+      console.log(this.beepVolume);
       this.setVolumeValue();
     }
 
@@ -101,13 +107,13 @@ const TimerAudio = {
       muteImage.src = state ? mute : unmute;
       muteButton.title = state ? "Unmute" : "Mute";
     }
-    this.beepVolume = beepSound.muted ? 0 : this.beepVolume;
+
     this.updateVolumeInputValue(this.beepVolume);
   },
   updateVolumeInputValue(value) {
     const { audioVolumeControlInput } = DOMSelectors;
 
-    audioVolumeControlInput.value = value;
+    audioVolumeControlInput[0].value = value;
   },
   changeVolume(value) {
     this.beepVolume = Number(value);
@@ -118,7 +124,9 @@ const TimerAudio = {
     const localStorageValue = localStorage.getItem(this.defaultAudioVolumeKey);
     localStorageValue === null
       ? localStorage.setItem(this.defaultAudioVolumeKey, 100)
-      : (this.beepVolume = localStorageValue);
+      : (this.beepVolume = Number(localStorageValue));
+    this.changeVolume(this.beepVolume);
+    this.updateVolumeInputValue(this.beepVolume);
   },
   setVolumeValue() {
     localStorage.setItem(this.defaultAudioVolumeKey, this.beepVolume);
