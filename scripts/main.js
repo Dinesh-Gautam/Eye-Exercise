@@ -50,6 +50,7 @@ const DOMSelectors = {
   audioControls: document.querySelector(".audio-controls"),
   audioControlButtons: document.querySelectorAll(".timer-audio-mute"),
   audioVolumeControlInput: document.querySelectorAll(".audio-volume-input"),
+  audioVolumeControlLabel: document.querySelector(".audio-volume-percentage"),
 };
 
 const ImagesURL = {
@@ -121,6 +122,7 @@ const TimerAudio = {
   changeVolume(value) {
     this.beepVolume = Number(value);
     value < 1 ? this.muteAndUnmute(true) : this.muteAndUnmute(false);
+    DOMSelectors.audioVolumeControlLabel.innerText = `${this.beepVolume}%`;
   },
   getVolumeValue() {
     const localStorageValue = localStorage.getItem(this.defaultAudioVolumeKey);
