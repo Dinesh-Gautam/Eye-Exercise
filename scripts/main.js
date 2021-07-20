@@ -270,7 +270,7 @@ class Timer {
 let timer;
 const timerConfig = {
   duration: 60,
-  timerSpeed: 10,
+  timerSpeed: 1000,
   NoOfExercises: EyeExercises.length,
 };
 
