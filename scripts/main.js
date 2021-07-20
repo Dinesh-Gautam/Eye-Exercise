@@ -78,6 +78,7 @@ const EyeExercises = [
   "Strengthen your eyes’ near and far focusing",
 ];
 
+/* 
 const TimerAudio = {
   path: "assets/audio/",
   beep: "alarm_beep_3.mp3",
@@ -145,10 +146,82 @@ const TimerAudio = {
   },
 };
 
+*/
+
+const TimerAudio = {
+  path: "assets/audio/",
+  beep: "alarm_beep_3.mp3",
+  value: {
+    muted: false,
+    volume: 100,
+  },
+  localStorageKeys: {
+    volume: "eye_workout_volume_value",
+    mute: "eye_workout_mute _value",
+  },
+  muteAndUnmute(mute) {
+    const { audioControlButtons } = DOMSelectors;
+    const muteButton = audioControlButtons[0];
+    const muteImage = audioControlButtons[0].querySelector(".mute-image");
+
+    const muteSvg = ImagesURL.path + ImagesURL.SvgImage.volumeOff;
+    const unmuteSvg = ImagesURL.path + ImagesURL.SvgImage.volumeUp;
+
+    beepSound.muted = mute;
+    muteImage.src = mute ? muteSvg : unmuteSvg;
+    muteButton.title = mute ? "Unmute" : "Mute";
+
+    if (mute) {
+      this.value.volume = 0;
+    } else {
+      const storedVolumeValue = this.getBeepVolumeFromLocalStorage(
+        this.localStorageKeys.volume
+      );
+      this.value.volume = storedVolumeValue < 1 ? 100 : storedVolumeValue;
+    }
+    this.updateVolumeInputValue(this.value.volume);
+    console.log(mute);
+  },
+
+  updateVolumeInputValue(value) {
+    const { audioVolumeControlInput } = DOMSelectors;
+
+    audioVolumeControlInput[0].value = value;
+  },
+  changeVolume(value) {
+    this.value.volume = Number(value);
+    this.value.volume < 1 && this.muteAndUnmute(true);
+    this.value.volume > 0 && beepSound.muted && this.muteAndUnmute(false);
+    DOMSelectors.audioVolumeControlLabel.innerText = `${this.value.volume}%`;
+  },
+
+  getBeepVolumeFromLocalStorage(key) {
+    return localStorage.getItem(key);
+  },
+
+  setVolumeValue() {
+    this.setVolume();
+    localStorage.setItem(this.localStorageKeys.volume, this.value.volume);
+    localStorage.setItem(this.localStorageKeys.mute, this.value.mute);
+  },
+  setVolume() {
+    beepSound.volume = Number((Number(this.value.volume) / 1000).toFixed(3));
+  },
+
+  init() {
+    this.value.volume = this.getBeepVolumeFromLocalStorage(
+      this.localStorageKeys.volume
+    );
+    this.value.mute = this.getBeepVolumeFromLocalStorage(
+      this.localStorageKeys.mute
+    );
+  },
+};
+
 const beepSound = new Audio(TimerAudio.path + TimerAudio.beep);
 
 function AudioControl(type, value) {
-  type === "mute" && TimerAudio.muteAndUnmute();
+  type === "mute" && TimerAudio.muteAndUnmute(!beepSound.muted);
   type === "volume" && TimerAudio.changeVolume(value);
 }
 
