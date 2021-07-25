@@ -47,3 +47,15 @@ input[type="range"] {
     border-radius: 6px;
   }
 }
+
+.custom-input-slider {
+  background-color: white;
+  height: 4px;
+  width: 0%;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  border-radius: 6px 0 0 6px;
+  pointer-events: none;
+}

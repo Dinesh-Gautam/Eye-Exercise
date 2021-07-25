@@ -111,10 +111,11 @@ const TimerAudio = {
       );
       this.value.volume = storedVolumeValue < 1 ? 100 : storedVolumeValue;
     }
+    this.updateAdditional();
+    this.setMuteValue(beepSound.muted);
 
     if (isInput) return;
 
-    this.setMuteValue(beepSound.muted);
     this.updateVolumeInputValue(this.value.volume);
   },
 
@@ -123,11 +124,17 @@ const TimerAudio = {
 
     audioVolumeControlInput[0].value = value;
   },
+  updateAdditional() {
+    document.querySelector(".custom-input-slider").style.width =
+      this.value.volume + "%";
+
+    DOMSelectors.audioVolumeControlLabel.innerText = `${this.value.volume}%`;
+  },
   changeVolume(value) {
     this.value.volume = Number(value);
     this.value.volume < 1 && this.muteAndUnmute(true, true);
     this.value.volume > 0 && beepSound.muted && this.muteAndUnmute(false, true);
-    DOMSelectors.audioVolumeControlLabel.innerText = `${this.value.volume}%`;
+    this.updateAdditional();
   },
 
   getBeepVolumeFromLocalStorage(key) {

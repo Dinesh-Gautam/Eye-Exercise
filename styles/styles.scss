@@ -60,7 +60,7 @@ body {
   .more-controls {
     flex: 1;
     padding: $paddingDefault 0;
-    width: 0;
+    // width: 0;
     overflow: hidden;
     transition: width 0.2s ease-in-out;
     .audio-volume-container {

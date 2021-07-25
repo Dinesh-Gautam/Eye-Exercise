@@ -68,6 +68,19 @@ input[type="range"]::-webkit-slider-runnable-track {
   border-radius: 6px;
 }
 
+.custom-input-slider {
+  background-color: white;
+  height: 4px;
+  width: 0%;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  border-radius: 6px 0 0 6px;
+  pointer-events: none;
+}
+
 body {
   min-height: 100vh;
   overflow: hidden;
@@ -157,7 +170,6 @@ body main {
       -ms-flex: 1;
           flex: 1;
   padding: 24px 0;
-  width: 0;
   overflow: hidden;
   -webkit-transition: width 0.2s ease-in-out;
   transition: width 0.2s ease-in-out;
