@@ -170,6 +170,7 @@ body main {
       -ms-flex: 1;
           flex: 1;
   padding: 24px 0;
+  width: 0;
   overflow: hidden;
   -webkit-transition: width 0.2s ease-in-out;
   transition: width 0.2s ease-in-out;
