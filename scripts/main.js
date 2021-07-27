@@ -104,19 +104,21 @@ const TimerAudio = {
 
     this.value.muted = beepSound.muted;
 
-    if (mute) {
-      this.value.volume = 0;
+    if (mute || isInput) {
+      if (!isInput) {
+        this.value.volume = 0;
+      }
     } else {
       const storedVolumeValue = this.getBeepVolumeFromLocalStorage(
         this.localStorageKeys.volume
       );
       this.value.volume = storedVolumeValue < 1 ? 100 : storedVolumeValue;
     }
-    this.updateAdditional();
+
     this.setMuteValue(beepSound.muted);
 
     if (isInput) return;
-
+    this.updateAdditional();
     this.updateVolumeInputValue(this.value.volume);
   },
 
