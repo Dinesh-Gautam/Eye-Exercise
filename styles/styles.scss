@@ -4,8 +4,122 @@
 
 //fonts
 
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans&family=Robot&family=Open+Sans:wght@300;400;600;700;800&display=swap");
+// @import url("https://fonts.googleapis.com/css2?family=Rubik&family=Poppins:wght@200,300;400;600;700;800&&family=Noto+Sans&family=Robot&family=Open+Sans:wght@300;400;600;700;800&display=swap");
 
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&family=Rubik:wght@300;400;500;600&display=swap");
+
+body {
+  background-color: $default-background;
+  font-family: "Poppins", sans-serif;
+  color: white;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#logo {
+  font-size: 18px;
+  padding: $paddingDefault;
+  .logo-first {
+    font-weight: bold;
+  }
+  .logo-second {
+    font-weight: 200;
+  }
+}
+
+.audio-controls {
+  display: flex;
+  align-items: center;
+  button {
+    background: none;
+    order: 1;
+    padding: $paddingDefault;
+    img {
+      height: $fontSize-default;
+      width: $fontSize-default;
+    }
+  }
+  .more-controls {
+    flex: 1;
+    padding: $paddingDefault 0;
+    width: 0;
+    overflow: hidden;
+    transition: width 0.2s ease-in-out;
+    .audio-volume-container {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      flex-direction: column;
+      position: relative;
+      label {
+        font-size: $fontSize-small - 4px;
+        font-weight: bold;
+        color: rgba($color: #fff, $alpha: 0.8);
+        position: absolute;
+        top: -8px;
+        left: 50%;
+        transform: translate(-50%, -100%);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.2s ease-in-out;
+      }
+
+      &:hover {
+        label {
+          opacity: 1;
+        }
+      }
+    }
+  }
+  &:hover {
+    .more-controls {
+      width: 72px;
+    }
+  }
+}
+
+.timer-container {
+  font-size: 48px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.exercise-container {
+  padding: $paddingDefault $paddingLess;
+  background-color: $card-background-color;
+  margin-left: $marginDefault;
+  border-radius: $default-border-radius;
+  font-size: $fontSize-medium;
+  box-shadow: $card-box-shadow;
+  display: flex;
+  align-items: baseline;
+  .exercise-index {
+    font-size: $fontSize-default;
+    opacity: 0.5;
+    padding: $paddingLess;
+  }
+}
+
+.control-buttons {
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  padding: $paddingDefault * 2 $paddingLess;
+  gap: $control-btn-gap;
+
+  button {
+    background: $btn-background-color;
+    border-radius: 50%;
+  }
+}
+/*
 body {
   min-height: 100vh;
   overflow: hidden;
@@ -13,8 +127,9 @@ body {
   grid-template-rows: 1fr 2fr;
   font-family: "Roboto", "Noto Sans", "Open Sans", sans-serif;
   font-size: $fontSize-default;
-  background-color: rgb(240, 240, 240);
+  background-color: $default-background;
   transition: background-color $transition-duration ease-in-out;
+  color: white;
 
   header {
     grid-row: 1/2;
@@ -149,3 +264,5 @@ body {
   }
   // margin-top: $marginDefault * 4;
 }
+
+*/

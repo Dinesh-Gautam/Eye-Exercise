@@ -46,6 +46,7 @@ const DOMSelectors = {
   timerControlButtons: document.querySelectorAll(".control-buttons button"),
   timerControlButtonsContainer: document.querySelector(".control-buttons"),
   timerContainer: document.querySelector(".timer-container"),
+  exerciseLabel: document.querySelector(".exercise-index"),
   exerciseContainer: document.querySelector(".exercise-container"),
   audioControls: document.querySelector(".audio-controls"),
   audioControlButtons: document.querySelectorAll(".timer-audio-mute"),
@@ -56,12 +57,12 @@ const DOMSelectors = {
 const ImagesURL = {
   path: "assets/",
   SvgImage: {
-    play: "play-solid.svg",
-    pause: "pause-solid.svg",
-    stop: "stop-solid.svg",
+    play: "play_arrow.svg",
+    pause: "pause.svg",
+    stop: "stop.svg",
     volumeOff: "volume_off_black_24dp.svg",
     volumeUp: "volume_up_black_24dp.svg",
-    next: "arrow-right-solid.svg",
+    next: "arrow_right_alt.svg",
   },
 };
 
@@ -234,7 +235,7 @@ class Timer {
   }
 
   exerciseUpdater() {
-    const { exercise } = DOMSelectors;
+    const { exerciseLabel, exercise } = DOMSelectors;
 
     if (this.exerciseCompeleteChecker()) {
       exercise.innerText = "All exercise complete";
@@ -243,13 +244,8 @@ class Timer {
     }
     this.exerciselogger({ allExerciseCompeleted: false });
 
-    exercise.innerText = exerciseNameString(this);
-
-    function exerciseNameString(scope) {
-      return `${scope.currentExerciseNo + 1}. ${
-        EyeExercises[scope.currentExerciseNo]
-      }`;
-    }
+    exerciseLabel.innerText = this.currentExerciseNo + 1;
+    exercise.innerText = EyeExercises[this.currentExerciseNo];
   }
 
   exerciselogger({ allExerciseCompeleted = false, timerStarted = false } = {}) {
@@ -293,7 +289,7 @@ const timerConfig = {
 function init() {
   const { duration, timerSpeed, NoOfExercises } = timerConfig;
   timer = new Timer(duration, timerSpeed, NoOfExercises);
-  setRandomBodyBackgroundColor();
+  // setRandomBodyBackgroundColor();
   timer.exerciseUpdater();
   TimerAudio.init();
 }

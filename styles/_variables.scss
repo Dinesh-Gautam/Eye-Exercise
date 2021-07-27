@@ -7,11 +7,20 @@ $whiteAlpha: rgba(255, 255, 255, 0.6);
 $background-default: rgb(255, 255, 255);
 $fontSize-small: 16px;
 $fontSize-default: 24px;
-$fontSize-medium: 32px;
-$fontSize-large: clamp(38px, 5vw, 64px);
+$fontSize-medium: 36px;
+$fontSize-large: 48px;
 
 $btn-border: 4px solid rgb(255, 255, 255);
 $btn-opacity-secondary: 0.6;
 $btn-scale-secondary: 0.8;
 
 $transition-duration: 500ms;
+
+// Re-design Variables
+$default-background: #111111;
+$card-background-color: rgba(255, 255, 255, 0.05);
+$default-border-radius: 8px;
+$card-box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.24);
+$btn-background-color: rgba(255, 255, 255, 0.15);
+
+$control-btn-gap: 20px;

@@ -3,10 +3,15 @@
   padding: 0;
   box-sizing: border-box;
 }
+html,
+body {
+  height: 100%;
+}
+
 button {
   border: none;
   outline: none;
-  padding: $paddingDefault;
+  padding: $paddingDefault/1.5;
   &.secondary {
     transform: scale($btn-scale-secondary);
     opacity: $btn-opacity-secondary;
@@ -19,9 +24,10 @@ button {
   align-items: center;
   img {
     pointer-events: none;
-    opacity: 0.6;
-    height: $fontSize-small;
-    width: $fontSize-small;
+    user-select: none;
+    opacity: 1;
+    height: $fontSize-medium;
+    width: $fontSize-medium;
   }
   @include mobile {
     padding: $paddingDefault $paddingDefault;
