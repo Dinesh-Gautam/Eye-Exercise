@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&family=Rubik:wght@300;400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed&family=Poppins:wght@100;200;300;400;500;600;700;800&family=Rubik:wght@300;400;500;600&display=swap");
 * {
   margin: 0;
   padding: 0;
@@ -206,13 +206,14 @@ header {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  height: 20vh;
 }
 
 .exercise-container {
   padding: 24px 12px;
   background-color: rgba(255, 255, 255, 0.05);
   margin-left: 2vh;
-  border-radius: 8px;
+  border-radius: 8px 0 0 8px;
   font-size: 36px;
   -webkit-box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.24);
           box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.24);
@@ -228,6 +229,12 @@ header {
   font-size: 24px;
   opacity: 0.5;
   padding: 12px;
+}
+
+.exercise-container #exercise {
+  margin-left: 12px;
+  font-family: "Roboto Condensed", sans-serif;
+  text-transform: uppercase;
 }
 
 .control-buttons {

@@ -6,7 +6,7 @@
 
 // @import url("https://fonts.googleapis.com/css2?family=Rubik&family=Poppins:wght@200,300;400;600;700;800&&family=Noto+Sans&family=Robot&family=Open+Sans:wght@300;400;600;700;800&display=swap");
 
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&family=Rubik:wght@300;400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed&family=Poppins:wght@100;200;300;400;500;600;700;800&family=Rubik:wght@300;400;500;600&display=swap");
 
 body {
   background-color: $default-background;
@@ -88,12 +88,13 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 20vh;
 }
 .exercise-container {
   padding: $paddingDefault $paddingLess;
   background-color: $card-background-color;
   margin-left: $marginDefault;
-  border-radius: $default-border-radius;
+  border-radius: $default-border-radius 0 0 $default-border-radius;
   font-size: $fontSize-medium;
   box-shadow: $card-box-shadow;
   display: flex;
@@ -102,6 +103,11 @@ header {
     font-size: $fontSize-default;
     opacity: 0.5;
     padding: $paddingLess;
+  }
+  #exercise {
+    margin-left: $marginLess;
+    font-family: "Roboto Condensed", sans-serif;
+    text-transform: uppercase;
   }
 }
 
