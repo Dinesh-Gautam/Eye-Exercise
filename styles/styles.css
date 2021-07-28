@@ -194,6 +194,16 @@ header {
   width: 72px;
 }
 
+main {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: 20vh 1fr;
+      grid-template-rows: 20vh 1fr;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
 .timer-container {
   font-size: 48px;
   width: 100%;
@@ -206,35 +216,46 @@ header {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  height: 20vh;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 1;
+  grid-row: 1/2;
 }
 
 .exercise-container {
-  padding: 24px 12px;
-  background-color: rgba(255, 255, 255, 0.05);
+  grid-row: 2/-1;
   margin-left: 2vh;
-  border-radius: 8px 0 0 8px;
   font-size: 36px;
-  -webkit-box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.24);
-          box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.24);
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: baseline;
-      -ms-flex-align: baseline;
-          align-items: baseline;
+  position: relative;
 }
 
 .exercise-container .exercise-index {
   font-size: 24px;
-  opacity: 0.5;
-  padding: 12px;
+  color: rgba(255, 255, 255, 0.5);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: absolute;
+  height: 32px;
+  width: 100vw;
+  top: 0;
+  left: 32px;
+  -webkit-transform: translate(-100%, -50%);
+          transform: translate(-100%, -50%);
+  z-index: 10;
+  padding: 24px;
 }
 
 .exercise-container #exercise {
   margin-left: 12px;
   font-family: "Roboto Condensed", sans-serif;
   text-transform: uppercase;
+  display: block;
 }
 
 .control-buttons {
@@ -254,6 +275,16 @@ header {
 .control-buttons button {
   background: rgba(255, 255, 255, 0.15);
   border-radius: 50%;
+}
+
+.default-card {
+  padding: 36px 12px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  -webkit-box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.24);
+          box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.24);
+  -webkit-backdrop-filter: blur(24px);
+          backdrop-filter: blur(24px);
 }
 
 /*
