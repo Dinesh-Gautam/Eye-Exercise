@@ -8,11 +8,14 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed&family=Poppins:wght@100;200;300;400;500;600;700;800&family=Rubik:wght@300;400;500;600&display=swap");
 
+html {
+  overflow: hidden;
+}
 body {
   background-color: $default-background;
   font-family: "Poppins", sans-serif;
   color: white;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 header {
@@ -111,7 +114,6 @@ main {
     align-items: center;
     position: absolute;
     padding: $paddingDefault $paddingDefault / 1.5;
-
     height: 32px;
     width: 100vw;
     top: 0;
@@ -121,7 +123,8 @@ main {
   }
   #exercise {
     margin-left: $marginDefault;
-    padding-right: $marginDefault;
+    // padding: $paddingLess 0;
+    margin-right: $marginDefault;
     font-family: "Roboto Condensed", sans-serif;
     text-transform: uppercase;
     display: block;
@@ -173,7 +176,7 @@ main {
 }
 
 .default-card {
-  padding: $paddingDefault * 1.5 $paddingDefault;
+  padding: $paddingDefault $paddingDefault;
   background-color: $card-background-color;
   border-radius: $default-border-radius;
   box-shadow: $card-box-shadow;
