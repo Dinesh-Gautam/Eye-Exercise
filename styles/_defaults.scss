@@ -48,7 +48,7 @@ input[type="range"] {
     margin-top: -4px;
   }
   &::-webkit-slider-runnable-track {
-    background: rgba(255, 255, 255, 0.4);
+    background: $btn-background-color;
     height: 4px;
     border-radius: 6px;
   }

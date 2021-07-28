@@ -12,6 +12,7 @@ body {
   background-color: $default-background;
   font-family: "Poppins", sans-serif;
   color: white;
+  overflow: hidden;
 }
 
 header {
@@ -101,6 +102,7 @@ main {
   margin-left: $marginDefault;
   font-size: $fontSize-medium;
   position: relative;
+  width: 100vw;
   .exercise-index {
     font-size: $fontSize-default;
     color: $alpha-color;
@@ -108,19 +110,30 @@ main {
     justify-content: flex-end;
     align-items: center;
     position: absolute;
+    padding: $paddingDefault $paddingDefault / 1.5;
+
     height: 32px;
     width: 100vw;
     top: 0;
     left: 32px;
     transform: translate(-100%, -50%);
     z-index: 10;
-    padding: $paddingDefault;
   }
   #exercise {
-    margin-left: $marginLess;
+    margin-left: $marginDefault;
     font-family: "Roboto Condensed", sans-serif;
     text-transform: uppercase;
     display: block;
+  }
+  .exercise-tutorial {
+    padding-right: $marginDefault + $paddingDefault;
+    display: flex;
+    margin-top: 2px;
+    font-size: $fontSize-small;
+    color: $less-alpha-color;
+    p {
+      margin-right: $marginDefault;
+    }
   }
 }
 
@@ -140,7 +153,7 @@ main {
 }
 
 .default-card {
-  padding: $paddingDefault * 1.5 $paddingLess;
+  padding: $paddingDefault * 1.5 $paddingDefault;
   background-color: $card-background-color;
   border-radius: $default-border-radius;
   box-shadow: $card-box-shadow;

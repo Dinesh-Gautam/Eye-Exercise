@@ -72,7 +72,7 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 input[type="range"]::-webkit-slider-runnable-track {
-  background: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.15);
   height: 4px;
   border-radius: 6px;
 }
@@ -94,6 +94,7 @@ body {
   background-color: #111111;
   font-family: "Poppins", sans-serif;
   color: white;
+  overflow: hidden;
 }
 
 header {
@@ -223,9 +224,10 @@ main {
 
 .exercise-container {
   grid-row: 2/-1;
-  margin-left: 2vh;
+  margin-left: 24px;
   font-size: 36px;
   position: relative;
+  width: 100vw;
 }
 
 .exercise-container .exercise-index {
@@ -241,6 +243,7 @@ main {
       -ms-flex-align: center;
           align-items: center;
   position: absolute;
+  padding: 24px 16px;
   height: 32px;
   width: 100vw;
   top: 0;
@@ -248,14 +251,27 @@ main {
   -webkit-transform: translate(-100%, -50%);
           transform: translate(-100%, -50%);
   z-index: 10;
-  padding: 24px;
 }
 
 .exercise-container #exercise {
-  margin-left: 12px;
+  margin-left: 24px;
   font-family: "Roboto Condensed", sans-serif;
   text-transform: uppercase;
   display: block;
+}
+
+.exercise-container .exercise-tutorial {
+  padding-right: 48px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 2px;
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.exercise-container .exercise-tutorial p {
+  margin-right: 24px;
 }
 
 .control-buttons {
@@ -278,7 +294,7 @@ main {
 }
 
 .default-card {
-  padding: 36px 12px;
+  padding: 36px 24px;
   background-color: rgba(255, 255, 255, 0.05);
   border-radius: 8px;
   -webkit-box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.24);
