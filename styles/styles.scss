@@ -127,13 +127,32 @@ main {
     display: block;
   }
   .exercise-tutorial {
+    padding: $paddingDefault;
     padding-right: $marginDefault + $paddingDefault;
     display: flex;
     margin-top: 2px;
-    font-size: $fontSize-small;
+    font-size: $fontSize-small + 2px;
     color: $less-alpha-color;
+    align-items: center;
     p {
       margin-right: $marginDefault;
+      height: 100%;
+      width: 50%;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+    .dropDown-icon {
+      flex: 1;
+      align-self: flex-start;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+    }
+    img {
+      opacity: 0.5;
+      height: 32px;
+      margin-top: -3px;
     }
   }
 }
