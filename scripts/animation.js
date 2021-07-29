@@ -94,7 +94,7 @@ function toggleModal() {
         x: 100,
         ease: Power2.easeOut,
       },
-      "<"
+      "-=0.1"
     );
 
   return tl;
