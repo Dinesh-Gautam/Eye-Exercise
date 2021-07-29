@@ -106,6 +106,9 @@ main {
   font-size: $fontSize-medium;
   position: relative;
   width: 100vw;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
   .exercise-index {
     font-size: $fontSize-default;
     color: $alpha-color;
@@ -122,18 +125,17 @@ main {
     z-index: 10;
   }
   #exercise {
-    // margin-left: $marginDefault;
     padding: $paddingLess 0;
     margin-right: $marginDefault;
     font-family: "Roboto Condensed", sans-serif;
     text-transform: uppercase;
     display: block;
+    text-align: left;
   }
   .exercise-tutorial {
     padding: $paddingDefault;
     padding-right: $marginDefault + $paddingDefault;
     display: flex;
-    margin-top: 2px;
     font-size: $fontSize-small + 2px;
     color: $less-alpha-color;
     align-items: center;
@@ -176,11 +178,48 @@ main {
 }
 
 .default-card {
-  padding: $paddingDefault $paddingDefault;
+  padding: $paddingDefault;
   background-color: $card-background-color;
   border-radius: $default-border-radius;
   box-shadow: $card-box-shadow;
   backdrop-filter: blur($card-blur);
+}
+
+.modal {
+  display: none;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  height: 100vh;
+  width: 100vw;
+  background: rgba($color: $default-background, $alpha: 0.9);
+  // display: flex;
+  align-items: center;
+  .modal-content {
+    padding: $paddingDefault * 1.5;
+    padding-right: $paddingDefault * 1.5 + $marginDefault;
+    margin-left: $marginDefault;
+    width: 100vw;
+  }
+}
+.modal-header {
+  position: relative;
+  button {
+    position: absolute;
+    top: 0;
+    right: $marginDefault;
+    z-index: 100;
+    padding: $paddingDefault / 1.5;
+    width: $paddingDefault * 4;
+    justify-content: flex-start;
+    transform: translate($paddingDefault, -50%);
+    color: $alpha-color;
+    img {
+      height: $fontSize-default;
+    }
+  }
 }
 /*
 body {

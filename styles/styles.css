@@ -232,6 +232,14 @@ main {
   font-size: 36px;
   position: relative;
   width: 100vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 2px;
 }
 
 .exercise-container .exercise-index {
@@ -263,6 +271,7 @@ main {
   font-family: "Roboto Condensed", sans-serif;
   text-transform: uppercase;
   display: block;
+  text-align: left;
 }
 
 .exercise-container .exercise-tutorial {
@@ -271,7 +280,6 @@ main {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  margin-top: 2px;
   font-size: 18px;
   color: rgba(255, 255, 255, 0.8);
   -webkit-box-align: center;
@@ -331,13 +339,57 @@ main {
 }
 
 .default-card {
-  padding: 24px 24px;
+  padding: 24px;
   background-color: rgba(255, 255, 255, 0.05);
   border-radius: 8px;
   -webkit-box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.24);
           box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.24);
   -webkit-backdrop-filter: blur(24px);
           backdrop-filter: blur(24px);
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  height: 100vh;
+  width: 100vw;
+  background: rgba(17, 17, 17, 0.9);
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.modal .modal-content {
+  padding: 36px;
+  padding-right: 60px;
+  margin-left: 24px;
+  width: 100vw;
+}
+
+.modal-header {
+  position: relative;
+}
+
+.modal-header button {
+  position: absolute;
+  top: 0;
+  right: 24px;
+  z-index: 100;
+  padding: 16px;
+  width: 96px;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-transform: translate(24px, -50%);
+          transform: translate(24px, -50%);
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.modal-header button img {
+  height: 24px;
 }
 
 /*
