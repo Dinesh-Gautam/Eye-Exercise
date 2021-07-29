@@ -1,7 +1,7 @@
 function initialAnimation() {
   const tl = new gsap.timeline();
   //setting default values for gsap
-  gsap.defaults({ duration: 0.7 });
+  gsap.defaults({ duration: 0.5 });
 
   tl.smoothChildTimings = true;
   tl.from(".exercise-container", {
@@ -48,7 +48,13 @@ function initialAnimation() {
         ease: Power1.easeInOut,
       },
       "<"
-    );
+    )
+    .from("header div", {
+      stagger: 0.2,
+      opacity: 0,
+      y: -20,
+      ease: Power2.easeOut,
+    });
 }
 
 function toggleModal() {
