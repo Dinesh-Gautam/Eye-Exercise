@@ -123,6 +123,8 @@ main {
     left: 32px;
     transform: translate(-100%, -50%);
     z-index: 10;
+    transform-origin: bottom right;
+    overflow: hidden;
   }
   #exercise {
     padding: $paddingLess 0;
@@ -139,6 +141,8 @@ main {
     font-size: $fontSize-small + 2px;
     color: $less-alpha-color;
     align-items: center;
+    overflow: hidden;
+
     p {
       margin-right: $marginDefault;
       height: 100%;

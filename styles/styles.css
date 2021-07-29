@@ -263,6 +263,9 @@ main {
   -webkit-transform: translate(-100%, -50%);
           transform: translate(-100%, -50%);
   z-index: 10;
+  -webkit-transform-origin: bottom right;
+          transform-origin: bottom right;
+  overflow: hidden;
 }
 
 .exercise-container #exercise {
@@ -285,6 +288,7 @@ main {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  overflow: hidden;
 }
 
 .exercise-container .exercise-tutorial p {
