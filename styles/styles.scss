@@ -142,7 +142,7 @@ main {
     color: $less-alpha-color;
     align-items: center;
     overflow: hidden;
-
+    cursor: pointer;
     p {
       margin-right: $marginDefault;
       height: 100%;
@@ -157,6 +157,7 @@ main {
       display: flex;
       justify-content: flex-end;
       align-items: center;
+      user-select: none;
     }
     img {
       opacity: 0.5;

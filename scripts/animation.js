@@ -51,4 +51,46 @@ function initialAnimation() {
     );
 }
 
+function toggleModal() {
+  const tl = new gsap.timeline();
+
+  tl.from(".modal", {
+    opacity: 0,
+    ease: Power2.easeOut,
+  })
+    .from(".popup-container", {
+      x: "100%",
+      ease: Power2.easeOut,
+    })
+
+    .from(
+      ".modal-content p",
+      {
+        x: "-20%",
+        opacity: 0,
+        ease: Power2.easeOut,
+      },
+      "-=0.2"
+    )
+    .from(
+      ".modal-close-btn",
+      {
+        x: 100,
+        opacity: 0,
+        ease: Power2.easeOut,
+      },
+      "-=0.2"
+    )
+    .from(
+      ".modal-close-btn img",
+      {
+        rotate: "180deg",
+        x: 100,
+        ease: Power2.easeOut,
+      },
+      "<"
+    );
+
+  return tl;
+}
 initialAnimation();

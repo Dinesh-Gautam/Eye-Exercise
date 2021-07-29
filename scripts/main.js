@@ -52,6 +52,8 @@ const DOMSelectors = {
   audioControlButtons: document.querySelectorAll(".timer-audio-mute"),
   audioVolumeControlInput: document.querySelectorAll(".audio-volume-input"),
   audioVolumeControlLabel: document.querySelector(".audio-volume-percentage"),
+  exerciseTutorial: document.querySelector(".exercise-tutorial"),
+  modal: document.querySelector(".modal"),
 };
 
 const ImagesURL = {
@@ -330,7 +332,24 @@ DOMSelectors.audioVolumeControlInput.forEach((input) => {
     const value = event.target.value;
     className === "audio-volume-input" && TimerAudio.setVolumeValue();
   });
-  // saving input value
 });
+let currentModalAnimationTimeline = null;
+DOMSelectors.exerciseTutorial.addEventListener("click", (event) => {
+  DOMSelectors.modal.style.display = "flex";
+  if (currentModalAnimationTimeline === null) {
+    currentModalAnimationTimeline = toggleModal();
+  } else {
+    currentModalAnimationTimeline.play();
+  }
+});
+
+DOMSelectors.modal
+  .querySelector(".modal-close-btn")
+  .addEventListener("click", (event) => {
+    currentModalAnimationTimeline.reverse().then(() => {
+      console.log("removing");
+      DOMSelectors.modal.style.display = "none";
+    });
+  });
 
 init();

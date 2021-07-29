@@ -15,6 +15,10 @@ button {
   border: none;
   outline: none;
   padding: 16px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
   background: rgba(255, 255, 255, 0.6);
   font-size: 16px;
   cursor: pointer;
@@ -44,6 +48,15 @@ button img {
   opacity: 1;
   height: 36px;
   width: 36px;
+}
+
+button img,
+button svg,
+button i {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 @media screen and (max-width: 400px) {
@@ -289,6 +302,7 @@ main {
       -ms-flex-align: center;
           align-items: center;
   overflow: hidden;
+  cursor: pointer;
 }
 
 .exercise-container .exercise-tutorial p {
@@ -315,6 +329,10 @@ main {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .exercise-container .exercise-tutorial img {

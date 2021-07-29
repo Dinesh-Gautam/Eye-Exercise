@@ -12,6 +12,8 @@ button {
   border: none;
   outline: none;
   padding: $paddingDefault/1.5;
+  user-select: none;
+
   &.secondary {
     transform: scale($btn-scale-secondary);
     opacity: $btn-opacity-secondary;
@@ -28,6 +30,11 @@ button {
     opacity: 1;
     height: $fontSize-medium;
     width: $fontSize-medium;
+  }
+  img,
+  svg,
+  i {
+    user-select: none;
   }
   @include mobile {
     padding: $paddingDefault $paddingDefault;
