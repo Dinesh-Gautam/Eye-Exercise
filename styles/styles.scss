@@ -122,8 +122,8 @@ main {
     z-index: 10;
   }
   #exercise {
-    margin-left: $marginDefault;
-    // padding: $paddingLess 0;
+    // margin-left: $marginDefault;
+    padding: $paddingLess 0;
     margin-right: $marginDefault;
     font-family: "Roboto Condensed", sans-serif;
     text-transform: uppercase;

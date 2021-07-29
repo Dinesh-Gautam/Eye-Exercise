@@ -258,7 +258,7 @@ main {
 }
 
 .exercise-container #exercise {
-  margin-left: 24px;
+  padding: 12px 0;
   margin-right: 24px;
   font-family: "Roboto Condensed", sans-serif;
   text-transform: uppercase;
