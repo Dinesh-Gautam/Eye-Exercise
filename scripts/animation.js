@@ -157,19 +157,32 @@ function prevExerciseAnimation(cb) {
     "#exercise",
     { opacity: 1, ease: Power2.easeInOut, x: "0%" },
     { opacity: 0, ease: Power2.easeInOut, x: "-20%", onComplete: cb }
-  ).fromTo(
-    "#exercise",
-    {
-      opacity: 0,
-      ease: Power2.easeInOut,
-      x: "20%",
-    },
-    {
-      x: "0%",
-      ease: Power2.easeInOut,
-      opacity: 1,
-    }
-  );
+  )
+    .to(".exercise-warper", {
+      height: () => {
+        let value =
+          document.querySelector("#exercise").scrollHeight +
+          parseInt(
+            getComputedStyle(document.querySelector(".exercise-warper"))
+              .paddingTop
+          ) *
+            2;
+        return value;
+      },
+    })
+    .fromTo(
+      "#exercise",
+      {
+        opacity: 0,
+        ease: Power2.easeInOut,
+        x: "20%",
+      },
+      {
+        x: "0%",
+        ease: Power2.easeInOut,
+        opacity: 1,
+      }
+    );
 
   return tl;
 }

@@ -201,8 +201,6 @@ class Timer {
     this.currentExerciseNo = 0;
   }
   start() {
-    this.exerciseUpdater();
-
     if (this.timerInterval !== null) return;
     this.exerciselogger({ timerStarted: true });
 
