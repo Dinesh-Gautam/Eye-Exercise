@@ -17,7 +17,6 @@ function initialAnimation() {
     })
     .from(".exercise-index", {
       scale: 0.7,
-
       opacity: 0,
       ease: Back.easeOut,
     })
@@ -110,6 +109,77 @@ function timerAnimation() {
   });
 
   return tl;
+}
+
+document.querySelector(".exercise-warper").style.height =
+  document.querySelector(".exercise-warper").offsetHeight + "px";
+
+function nexExerciseAnimation(cb) {
+  const tl = new gsap.timeline();
+
+  tl.fromTo(
+    "#exercise",
+    {
+      x: 0,
+      ease: Power2.easeInOut,
+      opacity: 1,
+    },
+    {
+      opacity: 0,
+      ease: Power2.easeInOut,
+      x: "20%",
+      onComplete: cb,
+    }
+  )
+    .to(".exercise-warper", {
+      height: () => {
+        let value =
+          document.querySelector("#exercise").scrollHeight +
+          parseInt(
+            getComputedStyle(document.querySelector(".exercise-warper"))
+              .paddingTop
+          ) *
+            2;
+        return value;
+      },
+    })
+    .fromTo(
+      "#exercise",
+      { opacity: 0, ease: Power2.easeInOut, x: "-20%" },
+      { opacity: 1, ease: Power2.easeInOut, x: 0 }
+    );
+
+  return tl;
+}
+function prevExerciseAnimation(cb) {
+  const tl = new gsap.timeline();
+  tl.fromTo(
+    "#exercise",
+    { opacity: 1, ease: Power2.easeInOut, x: "0%" },
+    { opacity: 0, ease: Power2.easeInOut, x: "-20%", onComplete: cb }
+  ).fromTo(
+    "#exercise",
+    {
+      opacity: 0,
+      ease: Power2.easeInOut,
+      x: "20%",
+    },
+    {
+      x: "0%",
+      ease: Power2.easeInOut,
+      opacity: 1,
+    }
+  );
+
+  return tl;
+}
+
+function exerciseChangeAnim(type, cb) {
+  if (type === "next") {
+    nexExerciseAnimation(cb);
+  } else {
+    prevExerciseAnimation(cb);
+  }
 }
 
 timerAnimation();

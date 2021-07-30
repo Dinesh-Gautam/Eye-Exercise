@@ -126,6 +126,9 @@ main {
     transform-origin: bottom right;
     overflow: hidden;
   }
+  .exercise-warper {
+    display: flex;
+  }
   #exercise {
     padding: $paddingLess 0;
     margin-right: $marginDefault;
@@ -133,6 +136,11 @@ main {
     text-transform: uppercase;
     display: block;
     text-align: left;
+    overflow: hidden;
+    height: fit-content;
+  }
+  .check-image {
+    display: none;
   }
   .exercise-tutorial {
     padding: $paddingDefault;

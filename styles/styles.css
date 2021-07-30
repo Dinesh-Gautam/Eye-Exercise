@@ -281,6 +281,12 @@ main {
   overflow: hidden;
 }
 
+.exercise-container .exercise-warper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
 .exercise-container #exercise {
   padding: 12px 0;
   margin-right: 24px;
@@ -288,6 +294,14 @@ main {
   text-transform: uppercase;
   display: block;
   text-align: left;
+  overflow: hidden;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
+.exercise-container .check-image {
+  display: none;
 }
 
 .exercise-container .exercise-tutorial {

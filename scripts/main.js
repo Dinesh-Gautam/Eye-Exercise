@@ -229,12 +229,12 @@ class Timer {
     this.currentExerciseNo >= this.totalExercisesNo;
     this.currentExerciseNo++;
     this.stop();
-    this.exerciseUpdater();
+    this.exerciseUpdater("next");
   }
   previous() {
     this.currentExerciseNo !== 0 && this.currentExerciseNo--;
     this.stop();
-    this.exerciseUpdater();
+    this.exerciseUpdater("prev");
   }
 
   stop() {
@@ -256,7 +256,7 @@ class Timer {
     timer.innerText = this.timeDuration === 60 ? "1:00" : this.timeDuration;
   }
 
-  exerciseUpdater() {
+  exerciseUpdater(type) {
     const { exerciseLabel, exercise } = DOMSelectors;
 
     if (this.exerciseCompeleteChecker()) {
@@ -266,8 +266,15 @@ class Timer {
     }
     this.exerciselogger({ allExerciseCompeleted: false });
 
-    exerciseLabel.innerText = this.currentExerciseNo + 1;
-    exercise.innerText = EyeExercises[this.currentExerciseNo];
+    try {
+      exerciseChangeAnim(type, () => {
+        exerciseLabel.innerText = this.currentExerciseNo + 1;
+        exercise.innerText = EyeExercises[this.currentExerciseNo];
+      });
+    } catch {
+      exerciseLabel.innerText = this.currentExerciseNo + 1;
+      exercise.innerText = EyeExercises[this.currentExerciseNo];
+    }
   }
 
   exerciselogger({ allExerciseCompeleted = false, timerStarted = false } = {}) {
