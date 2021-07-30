@@ -20,6 +20,23 @@ function setDisplay(element, view, display) {
   }
 }
 
+const animationTl = {};
+function creatAnimation(animName, animFun, ele, { reverse = false } = {}) {
+  if (reverse) {
+    animationTl[animName].reverse().then(() => {
+      ele.style.display = "none";
+    });
+    return;
+  }
+
+  ele.style.display = "flex";
+  if (!animationTl[animName]) {
+    animationTl[animName] = animFun();
+  } else {
+    animationTl[animName].play();
+  }
+}
+
 const ColorRange = {
   min: 140,
   max: 220,
@@ -179,6 +196,7 @@ class Timer {
     this.timeDuration = duration;
     this.intervalDuration = intervalDuration;
     this.timerInterval = null;
+
     this.totalExercisesNo = exerciseNo;
     this.currentExerciseNo = 0;
   }
@@ -333,23 +351,22 @@ DOMSelectors.audioVolumeControlInput.forEach((input) => {
     className === "audio-volume-input" && TimerAudio.setVolumeValue();
   });
 });
-let currentModalAnimationTimeline = null;
+
 DOMSelectors.exerciseTutorial.addEventListener("click", (event) => {
-  DOMSelectors.modal.style.display = "flex";
-  if (currentModalAnimationTimeline === null) {
-    currentModalAnimationTimeline = toggleModal();
-  } else {
-    currentModalAnimationTimeline.play();
-  }
+  // DOMSelectors.modal.style.display = "flex";
+  // if (currentModalAnimationTimeline === null) {
+  //   currentModalAnimationTimeline = toggleModal();
+  // } else {
+  //   currentModalAnimationTimeline.play();
+  // }
+
+  creatAnimation("modal", toggleModal, DOMSelectors.modal);
 });
 
 DOMSelectors.modal
   .querySelector(".modal-close-btn")
   .addEventListener("click", (event) => {
-    currentModalAnimationTimeline.reverse().then(() => {
-      console.log("removing");
-      DOMSelectors.modal.style.display = "none";
-    });
+    creatAnimation("modal", toggleModal, DOMSelectors.modal, { reverse: true });
   });
 
 init();

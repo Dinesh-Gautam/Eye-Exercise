@@ -1,7 +1,7 @@
 function initialAnimation() {
   const tl = new gsap.timeline();
   //setting default values for gsap
-  gsap.defaults({ duration: 0.5 });
+  gsap.defaults({ duration: 0.4 });
 
   tl.smoothChildTimings = true;
   tl.from(".exercise-container", {
@@ -49,7 +49,7 @@ function initialAnimation() {
       },
       "<"
     )
-    .from("header div", {
+    .from("header > div", {
       stagger: 0.2,
       opacity: 0,
       y: -20,
@@ -68,7 +68,6 @@ function toggleModal() {
       x: "100%",
       ease: Power2.easeOut,
     })
-
     .from(
       ".modal-content p",
       {
@@ -99,4 +98,19 @@ function toggleModal() {
 
   return tl;
 }
+
+function timerAnimation() {
+  const tl = new gsap.timeline();
+
+  tl.from(".timer-container", {
+    opacity: 0,
+    y: 50,
+    scale: 0.8,
+    ease: Power2.easeInOut,
+  });
+
+  return tl;
+}
+
+timerAnimation();
 initialAnimation();
