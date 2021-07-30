@@ -1,3 +1,47 @@
+function exerciseIndexAnimation() {
+  const tl = new gsap.timeline();
+  tl.to(".exercise-index", {
+    x: "-110%",
+    opacity: 0,
+    ease: Power2.easeOut,
+  });
+  return tl;
+}
+
+function minTutorialAnimation() {
+  const tl = new gsap.timeline();
+  tl.from(
+    ".exercise-tutorial",
+    {
+      ease: Power2.easeInOut,
+      height: 0,
+      padding: 0,
+    },
+    "<"
+  )
+    .from(
+      ".exercise-tutorial p",
+      {
+        opacity: 0,
+        y: "20%",
+        ease: Power2.easeInOut,
+      },
+      "-=0.2"
+    )
+    .from(
+      ".dropDown-icon img",
+      {
+        opacity: 0,
+        y: "20%",
+        rotate: "-160deg",
+        ease: Power1.easeInOut,
+      },
+      "<"
+    );
+
+  return tl;
+}
+
 function initialAnimation() {
   const tl = new gsap.timeline();
   //setting default values for gsap
@@ -16,9 +60,9 @@ function initialAnimation() {
       x: "-10%",
     })
     .from(".exercise-index", {
-      scale: 0.7,
+      x: "-110%",
       opacity: 0,
-      ease: Back.easeOut,
+      ease: Power2.easeOut,
     })
     .from(
       ".exercise-tutorial",

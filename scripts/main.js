@@ -244,7 +244,6 @@ class Timer {
     this.timeDuration = this.duration;
   }
   restart() {
-    console.log("I am working");
     this.currentExerciseNo = 0;
     this.stop();
     this.exerciseUpdater();
@@ -256,9 +255,15 @@ class Timer {
 
   exerciseUpdater(type) {
     const { exerciseLabel, exercise } = DOMSelectors;
-
+    console.log(exerciseLabel.style.display);
+    if (exerciseLabel.style.display === "none") {
+      exerciseIndexAnimation().reverse();
+    }
     if (this.exerciseCompeleteChecker()) {
       exercise.innerText = "All exercise complete";
+      exerciseIndexAnimation().then(() => {
+        exerciseLabel.style.display = "none";
+      });
       this.exerciselogger({ allExerciseCompeleted: true });
       return;
     }
