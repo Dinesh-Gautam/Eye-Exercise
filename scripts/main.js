@@ -263,13 +263,13 @@ class Timer {
       return;
     }
     this.exerciselogger({ allExerciseCompeleted: false });
-
+    exerciseLabel.innerText = this.currentExerciseNo + 1;
     try {
       exerciseChangeAnim(type, () => {
-        exerciseLabel.innerText = this.currentExerciseNo + 1;
         exercise.innerText = EyeExercises[this.currentExerciseNo];
       });
-    } catch {
+    } catch (err) {
+      console.log(err.message);
       exerciseLabel.innerText = this.currentExerciseNo + 1;
       exercise.innerText = EyeExercises[this.currentExerciseNo];
     }

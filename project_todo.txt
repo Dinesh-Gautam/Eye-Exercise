@@ -22,3 +22,12 @@ make it responsive
 
 (optionals)
 add stats option in which user can check for how many days they are working out.
+
+
+// pending work
+
+tutorial
+
+bottom control buttons
+
+make it desktop responsive
