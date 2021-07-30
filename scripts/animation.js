@@ -220,7 +220,7 @@ function forwardAnimation(tl) {
   });
 }
 
-function backwardAnimation(tl, delay) {
+function backwardAnimation(tl, delay, xValue, durationValue) {
   tl.to(".exercise-warper", {
     height: () => {
       let value =
@@ -232,35 +232,41 @@ function backwardAnimation(tl, delay) {
           2;
       return value;
     },
-  }).fromTo(
-    "#exercise",
-    {
-      opacity: 0,
-      x: "-20%",
-      ease: Power2.easeInOut,
-      delay: delay || 0,
-    },
-    {
-      opacity: 1,
-      x: "0%",
-      ease: Power2.easeInOut,
-    }
-  );
+  })
+    .to(
+      "#exercise",
+      {
+        opacity: 0,
+        ease: Power2.easeInOut,
+      },
+      "<"
+    )
+    .fromTo(
+      "#exercise",
+      {
+        opacity: 0,
+        x: xValue || "-20%",
+        duration: durationValue || gsap.defaults().duration,
+        ease: Power2.easeInOut,
+        delay: delay || 0,
+      },
+      {
+        opacity: 1,
+        x: "0%",
+        ease: Power2.easeInOut,
+      },
+      "<"
+    );
 }
 let exTl = new gsap.timeline({ immediateRender: true });
 exTl.smoothChildTimings = true;
 function exerciseChangeAnim(type, cb) {
   if (type === "next") {
     if (exTl.isActive()) {
-      // exTl.kill();
-      console.log("animation is active");
-      // exTl.clear();
-      // backwardAnimation(exTl);
-
       exTl.then(() => {
+        console.log();
+        backwardAnimation(exTl, 0, "-10%", 0.1);
         cb();
-        if (exTl.duration() > 5) forwardAnimation(exTl);
-        backwardAnimation(exTl, -3);
       });
     } else {
       forwardAnimation(exTl);
