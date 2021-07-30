@@ -76,7 +76,7 @@ function toggleModal() {
         opacity: 0,
         ease: Power2.easeOut,
       },
-      "-=0.2"
+      "-=0.1"
     )
     .from(
       ".modal-close-btn",
@@ -85,13 +85,13 @@ function toggleModal() {
         opacity: 0,
         ease: Power2.easeOut,
       },
-      "-=0.2"
+      "-=0.1"
     )
     .from(
       ".modal-close-btn img",
       {
         rotate: "180deg",
-        x: 100,
+        x: 50,
         ease: Power2.easeOut,
       },
       "-=0.1"
