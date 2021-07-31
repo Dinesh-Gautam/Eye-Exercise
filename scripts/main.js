@@ -7,7 +7,6 @@ function setRandomBodyBackgroundColor() {
   const color = BackgroundColors.color[randomIndex];
   DOMSelectors.body.style.backgroundColor = color;
 }
-
 function setDisplay(element, view, display) {
   if (typeof element === "object" && !(element instanceof Element)) {
     element.forEach((ele) => {
@@ -342,11 +341,7 @@ class Timer {
     if (allExerciseCompeleted) {
       setDisplay(restart, !allExerciseCompeleted, "flex");
       setDisplay(start, allExerciseCompeleted, "flex");
-      setDisplay(
-        [timerContainer, start, pause, stop, next],
-        allExerciseCompeleted,
-        "flex"
-      );
+      setDisplay([start, pause, stop, next], allExerciseCompeleted, "flex");
     } else {
       setDisplay(restart, !allExerciseCompeleted, "flex");
       setDisplay([start, pause, stop, next], allExerciseCompeleted, "flex");

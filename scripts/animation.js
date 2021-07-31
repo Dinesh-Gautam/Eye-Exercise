@@ -430,4 +430,16 @@ function changeHeightAnimation() {
   return tl;
 }
 
+function buttonViewerAnimation(ele, type) {
+  const tl = new gsap.timeline();
+  if (type === "primary") {
+    tl.to(ele, {
+      opacity: 0,
+      scale: 0.5,
+      ease: Power2.easeOut,
+    });
+  }
+  return tl;
+}
+
 initialAnimation();
