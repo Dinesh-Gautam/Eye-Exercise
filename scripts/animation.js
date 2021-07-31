@@ -1,6 +1,6 @@
 function exerciseIndexAnimation() {
   const tl = new gsap.timeline();
-  tl.to(".exercise-index", {
+  tl.from(".exercise-index", {
     x: "-110%",
     opacity: 0,
     ease: Power2.easeOut,
@@ -41,7 +41,9 @@ function minTutorialAnimation() {
 
   return tl;
 }
-
+setTimeout(() => {
+  minTutorialAnimation().reverse(0);
+}, 3000);
 function initialAnimation() {
   const tl = new gsap.timeline();
   //setting default values for gsap

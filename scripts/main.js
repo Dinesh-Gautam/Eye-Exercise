@@ -23,12 +23,21 @@ function setDisplay(element, view, display) {
 const animationTl = {};
 function creatAnimation(animName, animFun, ele, { reverse = false } = {}) {
   if (reverse) {
-    animationTl[animName].reverse().then(() => {
-      ele.style.display = "none";
-    });
+    // animationTl[animName]
+    if (animationTl[animName]) {
+      animationTl[animName].reverse().then(() => {
+        ele.style.display = "none";
+      });
+    } else {
+      animationTl[animName] = animFun();
+      animationTl[animName].reverse(0).then(() => {
+        ele.style.display = "none";
+      });
+    }
     return;
   }
 
+  console.log("playing func");
   ele.style.display = "flex";
   if (!animationTl[animName]) {
     animationTl[animName] = animFun();
@@ -36,7 +45,22 @@ function creatAnimation(animName, animFun, ele, { reverse = false } = {}) {
     animationTl[animName].play();
   }
 }
+// function creatAnimationRev(animName, animFun, ele, { reverse = false } = {}) {
+//   if (reverse) {
+//     ele.style.display = "flex";
+//     animationTl[animName].reverse();
+//     return;
+//   }
 
+//   if (!animationTl[animName]) {
+//     animationTl[animName] = animFun();
+//   } else {
+//     animationTl[animName].play();
+//   }
+//   animationTl[animName].then(() => {
+//     ele.style.display = "none";
+//   });
+// }
 const ColorRange = {
   min: 140,
   max: 220,
@@ -255,14 +279,14 @@ class Timer {
 
   exerciseUpdater(type) {
     const { exerciseLabel, exercise } = DOMSelectors;
-    console.log(exerciseLabel.style.display);
     if (exerciseLabel.style.display === "none") {
-      exerciseIndexAnimation().reverse();
+      console.log(exerciseLabel.style.display);
+      creatAnimation("indexViewer", exerciseIndexAnimation, exerciseLabel, {});
     }
     if (this.exerciseCompeleteChecker()) {
       exercise.innerText = "All exercise complete";
-      exerciseIndexAnimation().then(() => {
-        exerciseLabel.style.display = "none";
+      creatAnimation("indexViewer", exerciseIndexAnimation, exerciseLabel, {
+        reverse: true,
       });
       this.exerciselogger({ allExerciseCompeleted: true });
       return;
