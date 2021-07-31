@@ -430,15 +430,19 @@ function changeHeightAnimation() {
   return tl;
 }
 
-function buttonViewerAnimation(ele, type) {
-  const tl = new gsap.timeline();
-  if (type === "primary") {
-    tl.to(ele, {
-      opacity: 0,
-      scale: 0.5,
-      ease: Power2.easeOut,
-    });
-  }
+function changeExerciseTutorialAnimation(cb) {
+  const tl = new gsap.timeline({ immediateRender: true });
+
+  tl.to(".exercise-tutorial p", {
+    opacity: 0,
+    ease: Power2.easeInOut,
+    delay: -0.1,
+    onComplete: cb,
+  }).to(".exercise-tutorial p", {
+    opacity: 1,
+    ease: Power2.easeInOut,
+  });
+
   return tl;
 }
 

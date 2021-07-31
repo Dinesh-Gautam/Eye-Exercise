@@ -99,6 +99,7 @@ const DOMSelectors = {
   audioVolumeControlLabel: document.querySelector(".audio-volume-percentage"),
   exerciseTutorial: document.querySelector(".exercise-tutorial"),
   modal: document.querySelector(".modal"),
+  modalContent: document.querySelector(".modal .modal-content p"),
 };
 
 const ImagesURL = {
@@ -114,16 +115,17 @@ const ImagesURL = {
 };
 
 const EyeExercises = [
-  "Blink for a minute",
-  "Rotate your head while staring ahead",
-  "Look to your right and left",
-  "Close your eyes and relax",
-  "Move your gaze in different directions",
-  "Close and open your eyes",
-  "Push against your temples with your fingers",
-  "Draw geometric figures with your gaze",
-  "Move your eyeballs up and down",
-  "Strengthen your eyes’ near and far focusing",
+  { title: "Blink for a minute", tutorial: "1" },
+  { title: "Rotate your head while staring ahead", tutorial: "2" },
+  { title: "Look to your right and left", tutorial: "3" },
+
+  { title: "Close your eyes and relax", tutorial: "4" },
+  { title: "Move your gaze in different directions", tutorial: "5" },
+  { title: "Close and open your eyes", tutorial: "6" },
+  { title: "Push against your temples with your fingers", tutorial: "7" },
+  { title: "Draw geometric figures with your gaze", tutorial: "8" },
+  { title: "Move your eyeballs up and down", tutorial: "9" },
+  { title: "Strengthen your eyes’ near and far focusing", tutorial: "10" },
 ];
 
 const TimerAudio = {
@@ -295,7 +297,8 @@ class Timer {
   }
 
   exerciseUpdater(type) {
-    const { exerciseLabel, exercise, exerciseTutorial } = DOMSelectors;
+    const { exerciseLabel, exercise, exerciseTutorial, modalContent } =
+      DOMSelectors;
     if (exerciseLabel.style.display === "none") {
       console.log(exerciseLabel.style.display);
       creatAnimation("indexViewer", exerciseIndexAnimation, exerciseLabel);
@@ -303,7 +306,6 @@ class Timer {
       creatAnimation("allExerciseEndAnimation", allExerciseEndAnimation, null, {
         reverse: true,
       }).then(() => {
-        console.log("changingHeight");
         creatAnimation("changeHeightTl", changeHeightAnimation);
       });
     }
@@ -322,14 +324,21 @@ class Timer {
     }
     this.exerciselogger({ allExerciseCompeleted: false });
     exerciseLabel.innerText = this.currentExerciseNo + 1;
+    modalContent.innerText = EyeExercises[this.currentExerciseNo].tutorial;
     try {
       exerciseChangeAnim(type, () => {
-        exercise.innerText = EyeExercises[this.currentExerciseNo];
+        exercise.innerText = EyeExercises[this.currentExerciseNo].title;
+      });
+      changeExerciseTutorialAnimation(() => {
+        exerciseTutorial.querySelector("p").innerText =
+          EyeExercises[this.currentExerciseNo].tutorial;
       });
     } catch (err) {
       console.log(err.message);
       exerciseLabel.innerText = this.currentExerciseNo + 1;
-      exercise.innerText = EyeExercises[this.currentExerciseNo];
+      exercise.innerText = EyeExercises[this.currentExerciseNo].title;
+      exerciseTutorial.querySelector("p").innerText =
+        EyeExercises[this.currentExerciseNo].tutorial;
     }
   }
 
