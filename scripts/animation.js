@@ -171,7 +171,7 @@ function toggleModal() {
 }
 
 function timerAnimation() {
-  const tl = new gsap.timeline();
+  const tl = new gsap.timeline({ immediateRender: true });
 
   tl.from(".timer-container", {
     opacity: 0,
