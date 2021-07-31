@@ -331,10 +331,12 @@ class Timer {
       exerciseChangeAnim(type, () => {
         exercise.innerText = EyeExercises[this.currentExerciseNo].title;
       });
-      changeExerciseTutorialAnimation(() => {
-        exerciseTutorial.querySelector("p").innerText =
-          EyeExercises[this.currentExerciseNo].tutorial;
-      });
+      if (EyeExercises[this.currentExerciseNo]) {
+        changeExerciseTutorialAnimation(() => {
+          exerciseTutorial.querySelector("p").innerText =
+            EyeExercises[this.currentExerciseNo].tutorial;
+        });
+      }
     } catch (err) {
       console.log(err.message);
       exerciseLabel.innerText = this.currentExerciseNo + 1;
@@ -348,14 +350,6 @@ class Timer {
     const { timerControlButtons, timerContainer } = DOMSelectors;
 
     const [previous, start, pause, stop, next, restart] = timerControlButtons;
-
-    console.log("Running setDisplay");
-    // gsap.from(".control-buttons > button", {
-    //   stagger: 0.2,
-    //   opacity: 0,
-    //   y: "100%",
-    //   ease: Power2.easeOut,
-    // });
 
     if (allExerciseCompeleted) {
       setDisplay(restart, !allExerciseCompeleted, "flex");
@@ -395,6 +389,18 @@ function init() {
 DOMSelectors.timerControlButtons.forEach((button) => {
   button.addEventListener("click", (event) => {
     const className = event.target.classList;
+
+    if (className.contains("primary")) {
+      gsap.fromTo(
+        ".control-buttons > button.primary",
+        {
+          opacity: 0,
+          scale: 0,
+          ease: Power2.easeOut,
+        },
+        { opacity: 1, scale: 1, ease: Power2.easeOut }
+      );
+    }
     className.contains("previous") && timer.previous();
     className.contains("start") && timer.start();
     className.contains("pause") && timer.pause();
