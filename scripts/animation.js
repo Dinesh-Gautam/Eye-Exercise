@@ -41,9 +41,7 @@ function minTutorialAnimation() {
 
   return tl;
 }
-setTimeout(() => {
-  minTutorialAnimation().reverse(0);
-}, 3000);
+
 function initialAnimation() {
   const tl = new gsap.timeline();
   //setting default values for gsap
@@ -266,6 +264,36 @@ function forwardAnimation(tl) {
   });
 }
 
+function forwardAnimationRev(tl, delay, xValue, durationValue) {
+  tl.to(".exercise-warper", {
+    height: () => {
+      let value =
+        document.querySelector("#exercise").scrollHeight +
+        parseInt(
+          getComputedStyle(document.querySelector(".exercise-warper"))
+            .paddingTop
+        ) *
+          2;
+      return value;
+    },
+  }).fromTo(
+    "#exercise",
+    {
+      opacity: 0,
+      x: xValue || "20%",
+      duration: durationValue || gsap.defaults().duration,
+      ease: Power2.easeInOut,
+      delay: delay || 0,
+    },
+    {
+      opacity: 1,
+      x: "0%",
+      ease: Power2.easeInOut,
+    },
+    "<"
+  );
+}
+
 function backwardAnimation(tl, delay, xValue, durationValue) {
   tl.to(".exercise-warper", {
     height: () => {
@@ -278,6 +306,7 @@ function backwardAnimation(tl, delay, xValue, durationValue) {
           2;
       return value;
     },
+    duration: durationValue || gsap.defaults().duration,
   })
     .to(
       "#exercise",
@@ -304,10 +333,19 @@ function backwardAnimation(tl, delay, xValue, durationValue) {
       "<"
     );
 }
+
+function backwardAnimationRev(tl, delay, xValue, durationValue) {
+  tl.to("#exercise", {
+    opacity: 0,
+    x: "-20%",
+    ease: Power2.easeInOut,
+  });
+}
 let exTl = new gsap.timeline({ immediateRender: true });
 exTl.smoothChildTimings = true;
 function exerciseChangeAnim(type, cb) {
   if (type === "next") {
+    console.log("next Exercise");
     if (exTl.isActive()) {
       exTl.then(() => {
         console.log();
@@ -319,6 +357,19 @@ function exerciseChangeAnim(type, cb) {
       exTl.then(() => {
         cb();
         backwardAnimation(exTl);
+      });
+    }
+  } else {
+    if (exTl.isActive()) {
+      exTl.then(() => {
+        forwardAnimationRev(exTl, 0, "10%");
+        cb();
+      });
+    } else {
+      backwardAnimationRev(exTl);
+      exTl.then(() => {
+        cb();
+        forwardAnimationRev(exTl);
       });
     }
   }

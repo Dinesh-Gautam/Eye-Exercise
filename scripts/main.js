@@ -248,8 +248,8 @@ class Timer {
   }
 
   next() {
-    this.currentExerciseNo >= this.totalExercisesNo;
-    this.currentExerciseNo++;
+    this.currentExerciseNo < this.totalExercisesNo && this.currentExerciseNo++;
+    console.log(this.currentExerciseNo);
     this.stop();
     this.exerciseUpdater("next");
   }
@@ -278,14 +278,18 @@ class Timer {
   }
 
   exerciseUpdater(type) {
-    const { exerciseLabel, exercise } = DOMSelectors;
+    const { exerciseLabel, exercise, exerciseTutorial } = DOMSelectors;
     if (exerciseLabel.style.display === "none") {
       console.log(exerciseLabel.style.display);
-      creatAnimation("indexViewer", exerciseIndexAnimation, exerciseLabel, {});
+      creatAnimation("indexViewer", exerciseIndexAnimation, exerciseLabel);
+      creatAnimation("tutorialViewer", minTutorialAnimation, exerciseTutorial);
     }
     if (this.exerciseCompeleteChecker()) {
       exercise.innerText = "All exercise complete";
       creatAnimation("indexViewer", exerciseIndexAnimation, exerciseLabel, {
+        reverse: true,
+      });
+      creatAnimation("tutorialViewer", minTutorialAnimation, exerciseTutorial, {
         reverse: true,
       });
       this.exerciselogger({ allExerciseCompeleted: true });
