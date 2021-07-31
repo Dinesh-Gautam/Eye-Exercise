@@ -32,12 +32,13 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
+  backdrop-filter: blur($card-blur);
   img {
     pointer-events: none;
     user-select: none;
     opacity: 1;
-    height: $fontSize-medium;
-    width: $fontSize-medium;
+    height: $fontSize-default;
+    width: $fontSize-default;
   }
   img,
   svg,
