@@ -353,6 +353,10 @@ main {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .exercise-container .exercise-tutorial .dropDown-icon {
