@@ -230,7 +230,13 @@ class Timer {
     this.currentExerciseNo = 0;
   }
   start() {
+    DOMSelectors.timerContainer.style.opacity = 1;
     if (this.timerInterval !== null) return;
+    creatAnimation(
+      "timerViewerAnimation",
+      timerAnimation,
+      DOMSelectors.timerContainer
+    );
     this.exerciselogger({ timerStarted: true });
 
     this.timerInterval = setInterval(() => {
@@ -246,6 +252,7 @@ class Timer {
 
   pause() {
     clearInterval(this.timerInterval);
+    DOMSelectors.timerContainer.style.opacity = 0.5;
     this.exerciselogger({
       timerStarted: false,
     });
@@ -265,6 +272,12 @@ class Timer {
   }
 
   stop() {
+    creatAnimation(
+      "timerViewerAnimation",
+      timerAnimation,
+      DOMSelectors.timerContainer,
+      { reverse: true }
+    );
     this.pause();
     this.resetTimer();
     this.update();
@@ -336,11 +349,7 @@ class Timer {
       );
     } else {
       setDisplay(restart, !allExerciseCompeleted, "flex");
-      setDisplay(
-        [timerContainer, start, pause, stop, next],
-        allExerciseCompeleted,
-        "flex"
-      );
+      setDisplay([start, pause, stop, next], allExerciseCompeleted, "flex");
       setDisplay([start], timerStarted, "flex");
       setDisplay([pause, stop], !timerStarted, "flex");
       setDisplay([next, previous], timerStarted, "flex");

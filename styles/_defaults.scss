@@ -13,10 +13,13 @@ button {
   outline: none;
   padding: $paddingDefault/1.5;
   user-select: none;
-
   &.secondary {
+    position: absolute;
     transform: scale($btn-scale-secondary);
     opacity: $btn-opacity-secondary;
+    border-radius: 8px !important;
+    // width: $paddingDefault * 4;
+    width: 100%;
   }
   background: $whiteAlpha;
   font-size: $fontSize-small;

@@ -148,7 +148,6 @@ function timerAnimation() {
   tl.from(".timer-container", {
     opacity: 0,
     y: 50,
-    scale: 0.8,
     ease: Power2.easeInOut,
   });
 
@@ -431,5 +430,4 @@ function changeHeightAnimation() {
   return tl;
 }
 
-timerAnimation();
 initialAnimation();

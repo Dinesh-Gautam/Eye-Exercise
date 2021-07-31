@@ -183,7 +183,7 @@ main {
   display: flex;
   width: 100%;
   justify-content: center;
-  padding: $paddingDefault * 2 $paddingLess;
+  padding: $paddingDefault 0;
   gap: $control-btn-gap;
 
   button {

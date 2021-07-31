@@ -50,7 +50,7 @@
     </header>
     <main>
 
-        <div class="timer-container">
+        <div style="display: none;" class="timer-container">
             <span id="timer">1:00</span>
         </div>
         <div class="exercise-container">
@@ -75,7 +75,7 @@
         </div>
 
         <div class="control-buttons">
-            <button class="previous secondary" title="Previous Exercise">
+            <button class="previous secondary" style="left: -70%; justify-content: flex-end;" title="Previous Exercise">
                 <img style=" transform: scaleX(-1);" src="./assets/arrow_right_alt.svg" alt="previous">
             </button>
             <button class="start primary" title="Start">
@@ -87,10 +87,10 @@
             <button class="stop primary" title="Stop">
                 <img src="./assets/stop.svg" alt="stop">
             </button>
-            <button class="next secondary" title="Next Exercise">
+            <button class="next secondary" style="right: -70%; justify-content: flex-start;" title="Next Exercise">
                 <img src="./assets/arrow_right_alt.svg" alt="next">
             </button>
-            <button class="restart secondary" title="Restart from all over">
+            <button class="restart" title="Restart from all over">
                 <img style=" transform: scaleX(-1);" src="./assets/redo-alt-solid.svg" alt="restart">
             </button>
         </div>

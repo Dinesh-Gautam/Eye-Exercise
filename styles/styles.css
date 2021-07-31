@@ -34,9 +34,12 @@ button {
 }
 
 button.secondary {
+  position: absolute;
   -webkit-transform: scale(0.8);
           transform: scale(0.8);
   opacity: 0.6;
+  border-radius: 8px !important;
+  width: 100%;
 }
 
 button img {
@@ -366,7 +369,7 @@ main {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  padding: 48px 12px;
+  padding: 24px 0;
   gap: 20px;
 }
 
