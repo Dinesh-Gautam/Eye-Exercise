@@ -13,9 +13,11 @@ function setDisplay(element, view, display) {
       setDisplay(ele, view, display);
     });
   } else {
-    view
-      ? (element.style.display = "none")
-      : (element.style.display = display || "block");
+    if (view) {
+      element.style.display = "none";
+    } else {
+      element.style.display = display || "block";
+    }
   }
 }
 
@@ -346,6 +348,14 @@ class Timer {
     const { timerControlButtons, timerContainer } = DOMSelectors;
 
     const [previous, start, pause, stop, next, restart] = timerControlButtons;
+
+    console.log("Running setDisplay");
+    // gsap.from(".control-buttons > button", {
+    //   stagger: 0.2,
+    //   opacity: 0,
+    //   y: "100%",
+    //   ease: Power2.easeOut,
+    // });
 
     if (allExerciseCompeleted) {
       setDisplay(restart, !allExerciseCompeleted, "flex");

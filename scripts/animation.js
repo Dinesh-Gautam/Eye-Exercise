@@ -97,7 +97,35 @@ function initialAnimation() {
       opacity: 0,
       y: -20,
       ease: Power2.easeOut,
-    });
+    })
+    .from(
+      ".control-buttons > button.next",
+      {
+        opacity: 0,
+        x: "20%",
+        ease: Power2.easeOut,
+      },
+      "<"
+    )
+    .from(
+      ".control-buttons > button.previous",
+      {
+        opacity: 0,
+        x: "-20%",
+        ease: Power2.easeOut,
+      },
+      "<"
+    )
+    .from(
+      ".control-buttons > button.primary",
+      {
+        stagger: 0.2,
+        opacity: 0,
+        scale: 0,
+        ease: Power2.easeOut,
+      },
+      "<"
+    );
 }
 
 function toggleModal() {
