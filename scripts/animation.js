@@ -265,18 +265,7 @@ function forwardAnimation(tl) {
 }
 
 function forwardAnimationRev(tl, delay, xValue, durationValue) {
-  tl.to(".exercise-warper", {
-    height: () => {
-      let value =
-        document.querySelector("#exercise").scrollHeight +
-        parseInt(
-          getComputedStyle(document.querySelector(".exercise-warper"))
-            .paddingTop
-        ) *
-          2;
-      return value;
-    },
-  }).fromTo(
+  tl.fromTo(
     "#exercise",
     {
       opacity: 0,
@@ -289,6 +278,20 @@ function forwardAnimationRev(tl, delay, xValue, durationValue) {
       opacity: 1,
       x: "0%",
       ease: Power2.easeInOut,
+    }
+  ).to(
+    ".exercise-warper",
+    {
+      height: () => {
+        let value =
+          document.querySelector("#exercise").scrollHeight +
+          parseInt(
+            getComputedStyle(document.querySelector(".exercise-warper"))
+              .paddingTop
+          ) *
+            2;
+        return value;
+      },
     },
     "<"
   );
@@ -362,8 +365,8 @@ function exerciseChangeAnim(type, cb) {
   } else {
     if (exTl.isActive()) {
       exTl.then(() => {
-        forwardAnimationRev(exTl, 0, "10%");
         cb();
+        forwardAnimationRev(exTl, 0, "10%");
       });
     } else {
       backwardAnimationRev(exTl);
@@ -373,6 +376,59 @@ function exerciseChangeAnim(type, cb) {
       });
     }
   }
+}
+
+function allExerciseEndAnimation() {
+  const tl = new gsap.timeline();
+
+  tl.fromTo(
+    ".check-image",
+    {
+      display: "none",
+      opacity: 0,
+      x: "100%",
+      ease: Power2.easeOut,
+    },
+    { display: "flex", opacity: 1, x: "0%", ease: Power2.easeOut }
+  ).to(
+    ".exercise-warper",
+    {
+      alignItems: "center",
+      height: () => {
+        let value =
+          document.querySelector("#exercise").scrollHeight +
+          parseInt(
+            getComputedStyle(document.querySelector(".exercise-warper"))
+              .paddingTop
+          ) *
+            2;
+        return value * 2;
+      },
+    },
+    "<"
+  );
+  // ).to(".exercise-warper", {
+  //   padding : ""
+  // });
+  return tl;
+}
+
+function changeHeightAnimation() {
+  const tl = new gsap.timeline();
+
+  tl.to(".exercise-warper", {
+    height: () => {
+      let value =
+        document.querySelector("#exercise").scrollHeight +
+        parseInt(
+          getComputedStyle(document.querySelector(".exercise-warper"))
+            .paddingTop
+        ) *
+          2;
+      return value;
+    },
+  });
+  return tl;
 }
 
 timerAnimation();

@@ -23,27 +23,32 @@ function setDisplay(element, view, display) {
 const animationTl = {};
 function creatAnimation(animName, animFun, ele, { reverse = false } = {}) {
   if (reverse) {
-    // animationTl[animName]
     if (animationTl[animName]) {
       animationTl[animName].reverse().then(() => {
-        ele.style.display = "none";
+        if (ele) {
+          ele.style.display = "none";
+        }
       });
     } else {
       animationTl[animName] = animFun();
       animationTl[animName].reverse(0).then(() => {
-        ele.style.display = "none";
+        if (ele) {
+          ele.style.display = "none";
+        }
       });
     }
-    return;
+    return animationTl[animName];
   }
 
-  console.log("playing func");
-  ele.style.display = "flex";
+  if (ele) {
+    ele.style.display = "flex";
+  }
   if (!animationTl[animName]) {
     animationTl[animName] = animFun();
   } else {
     animationTl[animName].play();
   }
+  return animationTl[animName];
 }
 // function creatAnimationRev(animName, animFun, ele, { reverse = false } = {}) {
 //   if (reverse) {
@@ -283,6 +288,12 @@ class Timer {
       console.log(exerciseLabel.style.display);
       creatAnimation("indexViewer", exerciseIndexAnimation, exerciseLabel);
       creatAnimation("tutorialViewer", minTutorialAnimation, exerciseTutorial);
+      creatAnimation("allExerciseEndAnimation", allExerciseEndAnimation, null, {
+        reverse: true,
+      }).then(() => {
+        console.log("changingHeight");
+        creatAnimation("changeHeightTl", changeHeightAnimation);
+      });
     }
     if (this.exerciseCompeleteChecker()) {
       exercise.innerText = "All exercise complete";
@@ -292,6 +303,8 @@ class Timer {
       creatAnimation("tutorialViewer", minTutorialAnimation, exerciseTutorial, {
         reverse: true,
       });
+
+      creatAnimation("allExerciseEndAnimation", allExerciseEndAnimation);
       this.exerciselogger({ allExerciseCompeleted: true });
       return;
     }

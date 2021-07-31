@@ -302,6 +302,7 @@ main {
 
 .exercise-container .check-image {
   display: none;
+  margin-right: 96px;
 }
 
 .exercise-container .exercise-tutorial {

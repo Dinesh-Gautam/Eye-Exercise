@@ -128,6 +128,7 @@ main {
   }
   .exercise-warper {
     display: flex;
+    // align-items: center;
   }
   #exercise {
     padding: $paddingLess 0;
@@ -141,6 +142,7 @@ main {
   }
   .check-image {
     display: none;
+    margin-right: $paddingDefault * 4;
   }
   .exercise-tutorial {
     padding: $paddingDefault;
