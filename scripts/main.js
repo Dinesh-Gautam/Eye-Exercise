@@ -263,7 +263,8 @@ class Timer {
   }
 
   next() {
-    this.currentExerciseNo < this.totalExercisesNo && this.currentExerciseNo++;
+    this.currentExerciseNo <= this.totalExercisesNo - 1 &&
+      this.currentExerciseNo++;
     console.log(this.currentExerciseNo);
     this.stop();
     this.exerciseUpdater("next");
@@ -301,16 +302,7 @@ class Timer {
   exerciseUpdater(type) {
     const { exerciseLabel, exercise, exerciseTutorial, modalContent } =
       DOMSelectors;
-    if (exerciseLabel.style.display === "none") {
-      console.log(exerciseLabel.style.display);
-      creatAnimation("indexViewer", exerciseIndexAnimation, exerciseLabel);
-      creatAnimation("tutorialViewer", minTutorialAnimation, exerciseTutorial);
-      creatAnimation("allExerciseEndAnimation", allExerciseEndAnimation, null, {
-        reverse: true,
-      }).then(() => {
-        creatAnimation("changeHeightTl", changeHeightAnimation);
-      });
-    }
+
     if (this.exerciseCompeleteChecker()) {
       exercise.innerText = "All exercise complete";
       creatAnimation("indexViewer", exerciseIndexAnimation, exerciseLabel, {
@@ -325,14 +317,35 @@ class Timer {
       return;
     }
     this.exerciselogger({ allExerciseCompeleted: false });
+
+    if (!(this.currentExerciseNo < this.totalExercisesNo)) {
+      return;
+    }
+
+    if (exerciseLabel.style.display === "none") {
+      console.log(exerciseLabel.style.display);
+      creatAnimation("indexViewer", exerciseIndexAnimation, exerciseLabel);
+      creatAnimation("tutorialViewer", minTutorialAnimation, exerciseTutorial);
+      creatAnimation("allExerciseEndAnimation", allExerciseEndAnimation, null, {
+        reverse: true,
+      }).then(() => {});
+      creatAnimation("changeHeightTl", changeHeightAnimation);
+    }
     exerciseLabel.innerText = this.currentExerciseNo + 1;
     modalContent.innerText = EyeExercises[this.currentExerciseNo].tutorial;
     try {
       exerciseChangeAnim(type, () => {
+        if (!(this.currentExerciseNo < this.totalExercisesNo)) {
+          return;
+        }
+        console.log("Exercise No: " + this.currentExerciseNo);
         exercise.innerText = EyeExercises[this.currentExerciseNo].title;
       });
       if (EyeExercises[this.currentExerciseNo]) {
         changeExerciseTutorialAnimation(() => {
+          if (!(this.currentExerciseNo < this.totalExercisesNo)) {
+            return;
+          }
           exerciseTutorial.querySelector("p").innerText =
             EyeExercises[this.currentExerciseNo].tutorial;
         });

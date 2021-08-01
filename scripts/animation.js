@@ -378,13 +378,13 @@ function exerciseChangeAnim(type, cb) {
     console.log("next Exercise");
     if (exTl.isActive()) {
       exTl.then(() => {
-        console.log();
         backwardAnimation(exTl, 0, "-10%", 0.1);
         cb();
       });
     } else {
       forwardAnimation(exTl);
       exTl.then(() => {
+        console.log("then");
         cb();
         backwardAnimation(exTl);
       });
