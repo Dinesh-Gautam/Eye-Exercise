@@ -45,8 +45,40 @@ button.secondary {
   background: #262626;
 }
 
+@media screen and (min-width: 400px) {
+  button.secondary {
+    max-width: 120px;
+  }
+}
+
 button.primary {
   background: rgba(255, 255, 255, 0.15);
+}
+
+button .next {
+  right: -70%;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+@media screen and (min-width: 400px) {
+  button .next {
+    right: 0%;
+  }
+}
+
+button .previous {
+  left: -70%;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+@media screen and (min-width: 400px) {
+  button .previous {
+    left: 0%;
+  }
 }
 
 button img {
@@ -67,12 +99,6 @@ button i {
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
-}
-
-@media screen and (max-width: 400px) {
-  button {
-    padding: 24px 24px;
-  }
 }
 
 @-webkit-keyframes opacity {
@@ -245,9 +271,14 @@ main {
   display: grid;
   -ms-grid-rows: 20vh 1fr;
       grid-template-rows: 20vh 1fr;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+}
+
+@media screen and (min-width: 400px) {
+  main {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
 }
 
 .timer-container {
@@ -281,6 +312,13 @@ main {
       -ms-flex-direction: column;
           flex-direction: column;
   gap: 2px;
+  max-width: 500px;
+}
+
+@media screen and (min-width: 400px) {
+  .exercise-container {
+    margin-left: 0;
+  }
 }
 
 .exercise-container .exercise-index {
@@ -309,10 +347,36 @@ main {
   overflow: hidden;
 }
 
+@media screen and (min-width: 400px) {
+  .exercise-container .exercise-index {
+    height: 48px;
+    width: 48px;
+    left: 0px;
+    padding: 0;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+  }
+}
+
 .exercise-container .exercise-warper {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+}
+
+@media screen and (min-width: 400px) {
+  .exercise-container .exercise-warper {
+    padding: 24px;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
 }
 
 .exercise-container #exercise {
@@ -326,6 +390,13 @@ main {
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
+}
+
+@media screen and (min-width: 400px) {
+  .exercise-container #exercise {
+    padding: 24px 0;
+    text-align: center;
+  }
 }
 
 .exercise-container .check-image {
@@ -400,6 +471,15 @@ main {
           justify-content: center;
   padding: 24px 0;
   gap: 20px;
+  max-width: 400px;
+}
+
+@media screen and (min-width: 400px) {
+  .control-buttons {
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+  }
 }
 
 .control-buttons button {

@@ -89,7 +89,10 @@ header {
 main {
   display: grid;
   grid-template-rows: 20vh 1fr;
-  align-items: center;
+  // align-items: center;
+  @include desktop {
+    justify-content: center;
+  }
 }
 
 .timer-container {
@@ -109,6 +112,10 @@ main {
   display: flex;
   flex-direction: column;
   gap: 2px;
+  max-width: 500px;
+  @include desktop {
+    margin-left: 0;
+  }
   .exercise-index {
     font-size: $fontSize-default;
     color: $alpha-color;
@@ -125,10 +132,24 @@ main {
     z-index: 10;
     transform-origin: bottom right;
     overflow: hidden;
+    @include desktop {
+      // background: red;
+      height: 48px;
+      width: 48px;
+      left: 0px;
+      padding: 0;
+      justify-content: center;
+      align-items: center;
+      transform: translate(-50%, -50%);
+    }
   }
   .exercise-warper {
     display: flex;
     // align-items: center;
+    @include desktop {
+      padding: $paddingDefault;
+      justify-content: center;
+    }
   }
   #exercise {
     padding: $paddingLess 0;
@@ -139,6 +160,10 @@ main {
     text-align: left;
     overflow: hidden;
     height: fit-content;
+    @include desktop {
+      padding: $paddingDefault 0;
+      text-align: center;
+    }
   }
   .check-image {
     display: none;
@@ -186,6 +211,11 @@ main {
   justify-content: center;
   padding: $paddingDefault 0;
   gap: $control-btn-gap;
+  max-width: 400px;
+  @include desktop {
+    left: 50%;
+    transform: translateX(-50%);
+  }
   button {
     background: $btn-background-color;
     border-radius: 50%;

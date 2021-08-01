@@ -21,10 +21,27 @@ button {
     // width: $paddingDefault * 4;
     width: 100%;
     background: #262626;
+    @include desktop {
+      max-width: 120px;
+    }
   }
   &.primary {
     // animation: opacity 0.7s ease-in-out;
     background: rgba(255, 255, 255, 0.15);
+  }
+  .next {
+    right: -70%;
+    justify-content: flex-start;
+    @include desktop {
+      right: 0%;
+    }
+  }
+  .previous {
+    left: -70%;
+    justify-content: flex-end;
+    @include desktop {
+      left: 0%;
+    }
   }
   background: $whiteAlpha;
   font-size: $fontSize-small;
@@ -44,9 +61,6 @@ button {
   svg,
   i {
     user-select: none;
-  }
-  @include mobile {
-    padding: $paddingDefault $paddingDefault;
   }
 }
 @keyframes opacity {
