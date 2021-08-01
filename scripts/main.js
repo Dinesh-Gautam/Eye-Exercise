@@ -6,6 +6,7 @@ function setRandomBodyBackgroundColor() {
   const randomIndex = RangeOfRandomNumbers(0, 360);
   const color = `hsla(${randomIndex}, 10%, 10%, 1)`;
   DOMSelectors.body.style.backgroundColor = color;
+  DOMSelectors.modal.style.backgroundColor = color;
 }
 function setDisplay(element, view, display) {
   if (typeof element === "object" && !(element instanceof Element)) {
