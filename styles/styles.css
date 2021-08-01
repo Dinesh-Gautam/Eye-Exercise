@@ -166,6 +166,13 @@ body {
   font-family: "Poppins", sans-serif;
   color: white;
   overflow-x: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 header {
@@ -269,8 +276,11 @@ header {
 main {
   display: -ms-grid;
   display: grid;
-  -ms-grid-rows: 20vh 1fr;
-      grid-template-rows: 20vh 1fr;
+  -ms-grid-rows: 15vh 1fr;
+      grid-template-rows: 15vh 1fr;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
 }
 
 @media screen and (min-width: 400px) {
@@ -460,7 +470,7 @@ main {
 }
 
 .control-buttons {
-  position: fixed;
+  position: relative;
   bottom: 0;
   display: -webkit-box;
   display: -ms-flexbox;

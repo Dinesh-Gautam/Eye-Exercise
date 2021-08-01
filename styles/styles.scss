@@ -16,6 +16,8 @@ body {
   font-family: "Poppins", sans-serif;
   color: white;
   overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 header {
@@ -88,8 +90,9 @@ header {
 
 main {
   display: grid;
-  grid-template-rows: 20vh 1fr;
+  grid-template-rows: 15vh 1fr;
   // align-items: center;
+  flex: 1;
   @include desktop {
     justify-content: center;
   }
@@ -204,7 +207,7 @@ main {
 }
 
 .control-buttons {
-  position: fixed;
+  position: relative;
   bottom: 0;
   display: flex;
   width: 100%;
