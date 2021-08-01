@@ -215,6 +215,7 @@ main {
   @include desktop {
     left: 50%;
     transform: translateX(-50%);
+    padding: $paddingDefault * 2 0;
   }
   button {
     background: $btn-background-color;
@@ -232,7 +233,6 @@ main {
 
 .modal {
   display: none;
-
   position: fixed;
   top: 0;
   left: 0;
@@ -242,11 +242,17 @@ main {
   background: rgba($color: $default-background, $alpha: 0.9);
   // display: flex;
   align-items: center;
+  @include desktop {
+    justify-content: flex-end;
+  }
   .modal-content {
     padding: $paddingDefault * 1.5;
     padding-right: $paddingDefault * 1.5 + $marginDefault;
     margin-left: $marginDefault;
     width: 100vw;
+    @include desktop {
+      width: 800px;
+    }
   }
 }
 .modal-header {
@@ -263,6 +269,10 @@ main {
     color: $alpha-color;
     img {
       height: $fontSize-default;
+    }
+    @include desktop {
+      width: 48px;
+      height: 48px;
     }
   }
 }

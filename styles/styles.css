@@ -20,7 +20,7 @@ button {
       -ms-user-select: none;
           user-select: none;
   background: rgba(255, 255, 255, 0.6);
-  font-size: 16px;
+  font-size: 36px;
   cursor: pointer;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -55,7 +55,7 @@ button.primary {
   background: rgba(255, 255, 255, 0.15);
 }
 
-button .next {
+button.next {
   right: -70%;
   -webkit-box-pack: start;
       -ms-flex-pack: start;
@@ -63,12 +63,12 @@ button .next {
 }
 
 @media screen and (min-width: 400px) {
-  button .next {
+  button.next {
     right: 0%;
   }
 }
 
-button .previous {
+button.previous {
   left: -70%;
   -webkit-box-pack: end;
       -ms-flex-pack: end;
@@ -76,7 +76,7 @@ button .previous {
 }
 
 @media screen and (min-width: 400px) {
-  button .previous {
+  button.previous {
     left: 0%;
   }
 }
@@ -479,6 +479,7 @@ main {
     left: 50%;
     -webkit-transform: translateX(-50%);
             transform: translateX(-50%);
+    padding: 48px 0;
   }
 }
 
@@ -511,11 +512,25 @@ main {
           align-items: center;
 }
 
+@media screen and (min-width: 400px) {
+  .modal {
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
+  }
+}
+
 .modal .modal-content {
   padding: 36px;
   padding-right: 60px;
   margin-left: 24px;
   width: 100vw;
+}
+
+@media screen and (min-width: 400px) {
+  .modal .modal-content {
+    width: 800px;
+  }
 }
 
 .modal-header {
@@ -539,6 +554,13 @@ main {
 
 .modal-header button img {
   height: 24px;
+}
+
+@media screen and (min-width: 400px) {
+  .modal-header button {
+    width: 48px;
+    height: 48px;
+  }
 }
 
 /*
