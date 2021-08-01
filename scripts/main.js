@@ -3,8 +3,8 @@ function RangeOfRandomNumbers(min, max) {
 }
 
 function setRandomBodyBackgroundColor() {
-  const randomIndex = RangeOfRandomNumbers(0, BackgroundColors.color.length);
-  const color = BackgroundColors.color[randomIndex];
+  const randomIndex = RangeOfRandomNumbers(0, 360);
+  const color = `hsla(${randomIndex}, 10%, 10%, 1)`;
   DOMSelectors.body.style.backgroundColor = color;
 }
 function setDisplay(element, view, display) {
@@ -392,7 +392,7 @@ const timerConfig = {
 function init() {
   const { duration, timerSpeed, NoOfExercises } = timerConfig;
   timer = new Timer(duration, timerSpeed, NoOfExercises);
-  // setRandomBodyBackgroundColor();
+  setRandomBodyBackgroundColor();
   timer.exerciseUpdater();
   TimerAudio.init();
 }
