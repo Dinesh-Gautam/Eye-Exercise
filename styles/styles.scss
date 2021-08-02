@@ -89,10 +89,15 @@ header {
 }
 
 main {
-  display: grid;
-  grid-template-rows: 15vh 1fr;
+  // display: grid;
+  // grid-template-rows: 15vh 1fr;
   // align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   flex: 1;
+  justify-content: center;
+
   @include desktop {
     justify-content: center;
   }
@@ -104,10 +109,11 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  grid-row: 1/2;
+  height: 15vh;
+  // grid-row: 1/2;
 }
 .exercise-container {
-  grid-row: 2/-1;
+  // grid-row: 2/-1;
   margin-left: $marginDefault;
   font-size: $fontSize-medium;
   position: relative;

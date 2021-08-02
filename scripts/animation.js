@@ -176,6 +176,7 @@ function timerAnimation() {
   tl.from(".timer-container", {
     opacity: 0,
     y: 50,
+    height: 0,
     ease: Power2.easeInOut,
   });
 
