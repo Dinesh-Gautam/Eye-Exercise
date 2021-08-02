@@ -376,7 +376,6 @@ let exTl = new gsap.timeline({ immediateRender: true });
 exTl.smoothChildTimings = true;
 function exerciseChangeAnim(type, cb) {
   if (type === "next") {
-    console.log("next Exercise");
     if (exTl.isActive()) {
       exTl.then(() => {
         backwardAnimation(exTl, 0, "-10%", 0.1);
@@ -385,7 +384,6 @@ function exerciseChangeAnim(type, cb) {
     } else {
       forwardAnimation(exTl);
       exTl.then(() => {
-        console.log("then");
         cb();
         backwardAnimation(exTl);
       });

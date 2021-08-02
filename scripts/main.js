@@ -299,7 +299,7 @@ class Timer {
   next() {
     this.currentExerciseNo <= this.totalExercisesNo - 1 &&
       this.currentExerciseNo++;
-    console.log(this.currentExerciseNo);
+
     this.stop();
     this.exerciseUpdater("next");
   }
@@ -367,7 +367,6 @@ class Timer {
     }
 
     if (exerciseLabel.style.display === "none") {
-      console.log(exerciseLabel.style.display);
       creatAnimation("indexViewer", exerciseIndexAnimation, exerciseLabel);
       creatAnimation("tutorialViewer", minTutorialAnimation, exerciseTutorial);
       creatAnimation("allExerciseEndAnimation", allExerciseEndAnimation, null, {
@@ -393,7 +392,6 @@ class Timer {
         if (!(this.currentExerciseNo < this.totalExercisesNo)) {
           return;
         }
-        console.log("Exercise No: " + this.currentExerciseNo);
         exercise.innerText = EyeExercises[this.currentExerciseNo].title;
       });
       if (EyeExercises[this.currentExerciseNo]) {
@@ -406,7 +404,6 @@ class Timer {
         });
       }
     } catch (err) {
-      console.log(err.message);
       exerciseLabel.innerText = this.currentExerciseNo + 1;
       exercise.innerText = EyeExercises[this.currentExerciseNo].title;
       exerciseTutorial.querySelector("p").innerText =
