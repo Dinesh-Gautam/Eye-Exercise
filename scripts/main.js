@@ -118,7 +118,7 @@ const ImagesURL = {
 };
 
 const EyeExercises = [
-  { title: "Blink for a minute", tutorial: "1" },
+  { title: "Blink your eyes", tutorial: "1" },
   { title: "Rotate your head while staring ahead", tutorial: "2" },
   { title: "Look to your right and left", tutorial: "3" },
 
