@@ -419,33 +419,32 @@ function allExerciseEndAnimation() {
     },
     { display: "flex", opacity: 1, x: "0%", ease: Power2.easeOut }
   )
-
-    .to(
-      ".exercise-warper",
-      {
-        alignItems: "center",
-        height: () => {
-          let value =
-            document.querySelector("#exercise").scrollHeight +
-            parseInt(
-              getComputedStyle(document.querySelector(".exercise-warper"))
-                .paddingTop
-            ) *
-              2;
-          return value * 2;
-        },
+  .to(
+    ".exercise-warper",
+    {
+      alignItems: "center",
+      height: () => {
+        let value =
+          document.querySelector("#exercise").scrollHeight +
+          parseInt(
+            getComputedStyle(document.querySelector(".exercise-warper"))
+              .paddingTop
+          ) *
+            2;
+        return value * 2;
       },
-      "<"
-    )
-    .to(
-      "main",
-      {
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-      },
-      "<"
-    );
+    },
+    "<"
+  );
+  // .to(
+  //   "main",
+  //   {
+  //     display: "flex",
+  //     alignItems: "center",
+  //     justifyContent: "center",
+  //   },
+  //   "<"
+  // );
 
   // ).to(".exercise-warper", {
   //   padding : ""
