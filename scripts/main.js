@@ -314,6 +314,16 @@ class Timer {
       });
 
       creatAnimation("allExerciseEndAnimation", allExerciseEndAnimation);
+      gsap.fromTo(
+        ".control-buttons > button.primary",
+        {
+          opacity: 0,
+          scale: 0,
+          ease: Power2.easeOut,
+        },
+        { opacity: 1, scale: 1, ease: Power2.easeOut },
+        "<"
+      );
       this.exerciselogger({ allExerciseCompeleted: true });
       return;
     }
@@ -329,8 +339,19 @@ class Timer {
       creatAnimation("tutorialViewer", minTutorialAnimation, exerciseTutorial);
       creatAnimation("allExerciseEndAnimation", allExerciseEndAnimation, null, {
         reverse: true,
-      }).then(() => {});
+      });
       creatAnimation("changeHeightTl", changeHeightAnimation);
+
+      gsap.fromTo(
+        ".control-buttons > button.primary",
+        {
+          opacity: 0,
+          scale: 0,
+          ease: Power2.easeOut,
+        },
+        { opacity: 1, scale: 1, ease: Power2.easeOut },
+        "<"
+      );
     }
     exerciseLabel.innerText = this.currentExerciseNo + 1;
     modalContent.innerText = EyeExercises[this.currentExerciseNo].tutorial;
@@ -399,7 +420,6 @@ function init() {
 }
 
 //Event Listener
-
 DOMSelectors.timerControlButtons.forEach((button) => {
   button.addEventListener("click", (event) => {
     const className = event.target.classList;

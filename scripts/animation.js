@@ -446,6 +446,7 @@ function allExerciseEndAnimation() {
       },
       "<"
     );
+
   // ).to(".exercise-warper", {
   //   padding : ""
   // });
