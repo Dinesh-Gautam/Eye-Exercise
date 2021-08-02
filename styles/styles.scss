@@ -44,7 +44,7 @@ header {
     background: none;
     order: 1;
     padding: $paddingDefault;
-    img {
+    svg {
       height: $fontSize-default;
       width: $fontSize-default;
     }
@@ -204,7 +204,7 @@ main {
       align-items: center;
       user-select: none;
     }
-    img {
+    svg {
       opacity: 0.5;
       height: 32px;
       margin-top: -3px;
@@ -261,6 +261,7 @@ main {
     width: 100vw;
     @include desktop {
       width: 800px;
+      margin-right: -$paddingDefault;
     }
   }
 }
@@ -276,12 +277,12 @@ main {
     justify-content: flex-start;
     transform: translate($paddingDefault, -50%);
     color: $alpha-color;
-    img {
+    svg {
       height: $fontSize-default;
     }
     @include desktop {
-      width: 48px;
       height: 48px;
+      right: -$paddingDefault;
     }
   }
 }
@@ -333,7 +334,7 @@ body {
   button {
     background: none;
     order: 1;
-    img {
+    svg {
       height: $fontSize-default;
       width: $fontSize-default;
     }

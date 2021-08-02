@@ -81,7 +81,7 @@ button.previous {
   }
 }
 
-button img {
+button svg {
   pointer-events: none;
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -92,7 +92,7 @@ button img {
   width: 24px;
 }
 
-button img,
+button svg,
 button svg,
 button i {
   -webkit-user-select: none;
@@ -217,7 +217,7 @@ header {
   padding: 24px;
 }
 
-.audio-controls button img {
+.audio-controls button svg {
   height: 24px;
   width: 24px;
 }
@@ -469,7 +469,7 @@ main {
           user-select: none;
 }
 
-.exercise-container .exercise-tutorial img {
+.exercise-container .exercise-tutorial svg {
   opacity: 0.5;
   height: 32px;
   margin-top: -3px;
@@ -546,6 +546,7 @@ main {
 @media screen and (min-width: 400px) {
   .modal .modal-content {
     width: 800px;
+    margin-right: -24px;
   }
 }
 
@@ -568,14 +569,14 @@ main {
   color: rgba(255, 255, 255, 0.5);
 }
 
-.modal-header button img {
+.modal-header button svg {
   height: 24px;
 }
 
 @media screen and (min-width: 400px) {
   .modal-header button {
-    width: 48px;
     height: 48px;
+    right: -24px;
   }
 }
 
@@ -627,7 +628,7 @@ body {
   button {
     background: none;
     order: 1;
-    img {
+    svg {
       height: $fontSize-default;
       width: $fontSize-default;
     }

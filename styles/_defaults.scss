@@ -51,14 +51,14 @@ button {
   align-items: center;
   backdrop-filter: blur($card-blur);
 
-  img {
+  svg {
     pointer-events: none;
     user-select: none;
     opacity: 1;
     height: $fontSize-default;
     width: $fontSize-default;
   }
-  img,
+  svg,
   svg,
   i {
     user-select: none;

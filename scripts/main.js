@@ -105,18 +105,6 @@ const DOMSelectors = {
   modalContent: document.querySelector(".modal .modal-content p"),
 };
 
-const ImagesURL = {
-  path: "assets/",
-  SvgImage: {
-    play: "play_arrow.svg",
-    pause: "pause.svg",
-    stop: "stop.svg",
-    volumeOff: "volume_off_black_24dp.svg",
-    volumeUp: "volume_up_black_24dp.svg",
-    next: "arrow_right_alt.svg",
-  },
-};
-
 const EyeExercises = [
   {
     title: "Blink your eyes",
@@ -187,11 +175,15 @@ const TimerAudio = {
     const muteButton = audioControlButtons[0];
     const muteImage = audioControlButtons[0].querySelector(".mute-image");
 
-    const muteSvg = ImagesURL.path + ImagesURL.SvgImage.volumeOff;
-    const unmuteSvg = ImagesURL.path + ImagesURL.SvgImage.volumeUp;
+    const muteSvg = document.querySelector(".mute-image");
+    const unmuteSvg = document.querySelector(".unmute-image");
 
     beepSound.muted = mute;
-    muteImage.src = mute ? muteSvg : unmuteSvg;
+    unmuteSvg.style.display = "revert";
+    muteSvg.style.display = "revert";
+    mute
+      ? (muteSvg.style.display = "none")
+      : (unmuteSvg.style.display = "none");
     muteButton.title = mute ? "Unmute" : "Mute";
 
     this.value.muted = beepSound.muted;

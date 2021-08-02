@@ -33,7 +33,18 @@
 
         <div class="audio-controls">
             <button class="timer-audio-mute" title="Mute">
-                <img class="mute-image" src="./assets/volume_up_black_24dp.svg" alt="Mute">
+                <svg class="mute-image" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24"
+                    width="24px" fill="#fff">
+                    <path d="M0 0h24v24H0V0z" fill="none" />
+                    <path
+                        d="M3 9v6h4l5 5V4L7 9H3zm7-.17v6.34L7.83 13H5v-2h2.83L10 8.83zM16.5 12c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77 0-4.28-2.99-7.86-7-8.77z" />
+                </svg>
+                <svg class="unmute-image" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24"
+                    width="24px" fill="#fff">
+                    <path d="M0 0h24v24H0V0z" fill="none" />
+                    <path
+                        d="M4.34 2.93L2.93 4.34 7.29 8.7 7 9H3v6h4l5 5v-6.59l4.18 4.18c-.65.49-1.38.88-2.18 1.11v2.06c1.34-.3 2.57-.92 3.61-1.75l2.05 2.05 1.41-1.41L4.34 2.93zM10 15.17L7.83 13H5v-2h2.83l.88-.88L10 11.41v3.76zM19 12c0 .82-.15 1.61-.41 2.34l1.53 1.53c.56-1.17.88-2.48.88-3.87 0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zm-7-8l-1.88 1.88L12 7.76zm4.5 8c0-1.77-1.02-3.29-2.5-4.03v1.79l2.48 2.48c.01-.08.02-.16.02-.24z" />
+                </svg>
             </button>
             <div class="more-controls">
                 <!-- <button class="more-controls-viewer">
@@ -60,7 +71,12 @@
                 <span id="exercise">
                     Exercise Name
                 </span>
-                <img class="check-image" src="./assets/check.svg" alt="check">
+                <svg class="check-image" width="33" height="25" viewBox="0 0 33 25" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path d="M10.4872 19.7241L2.66401 11.95L0 14.5787L10.4872 25L33 2.62864L30.3547 0L10.4872 19.7241Z"
+                        fill="#00FF85" fill-opacity="0.5" />
+                </svg>
+
             </div>
             <div class="exercise-tutorial default-card">
                 <p>
@@ -69,7 +85,11 @@
                     viverra, molestie arcu ut, porta lectus. Nulla mattis libero ac ipsum gravida tristique.
                 </p>
                 <div class="dropDown-icon">
-                    <img style="transform: rotate(-90deg);" src="./assets/arrow-left.svg" alt="Drop">
+                    <svg style="transform: rotate(-90deg);" xmlns="http://www.w3.org/2000/svg" height="24px"
+                        viewBox="0 0 24 24" width="24px" fill="#fff">
+                        <path d="M0 0h24v24H0V0z" fill="none" />
+                        <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12l4.58-4.59z" />
+                    </svg>
                 </div>
             </div>
         </div>
@@ -78,30 +98,67 @@
     </main>
 
     <div class="control-buttons">
-        <button class="previous secondary"  title="Previous Exercise">
-            <img style=" transform: scaleX(-1);" src="./assets/arrow_right_alt.svg" alt="previous">
+        <button class="previous secondary" title="Previous Exercise">
+
+            <svg style=" transform: scaleX(-1);" width="22" height="22" viewBox="0 0 22 22" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <g>
+                    <path d="M14.6759 11.9167H3.66675V10.0833H14.6759V7.33334L18.3334 11L14.6759 14.6667V11.9167Z"
+                        fill="white" />
+                </g>
+            </svg>
+
         </button>
         <button class="start primary" title="Start">
-            <img src="./assets/play_arrow.svg" alt="start">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M8 5V19L19 12L8 5Z" fill="white" />
+            </svg>
+
         </button>
         <button class="pause primary" title="Pause">
-            <img src="./assets/pause.svg" alt="pause">
+
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6 19H10V5H6V19ZM14 5V19H18V5H14Z" fill="white" />
+            </svg>
+
         </button>
         <button class="stop primary" title="Stop">
-            <img src="./assets/stop.svg" alt="stop">
+
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6 6H18V18H6V6Z" fill="white" />
+            </svg>
+
         </button>
         <button class="next secondary" title="Next Exercise">
-            <img src="./assets/arrow_right_alt.svg" alt="next">
+
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g>
+                    <path d="M14.6759 11.9167H3.66675V10.0833H14.6759V7.33334L18.3334 11L14.6759 14.6667V11.9167Z"
+                        fill="white" />
+                </g>
+            </svg>
         </button>
         <button class="restart primary" title="Restart from all over">
-            <img style="transform:scale(0.8);" src="./assets/redo-alt-solid.svg" alt="restart">
+
+            <svg style="transform:scale(0.8);" height="24" viewBox="0 0 16 20" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M8 4V0L3 5L8 10V6C11.31 6 14 8.69 14 12C14 15.31 11.31 18 8 18C4.69 18 2 15.31 2 12H0C0 16.42 3.58 20 8 20C12.42 20 16 16.42 16 12C16 7.58 12.42 4 8 4Z"
+                    fill="white" />
+            </svg>
+
         </button>
     </div>
     <div class="modal">
         <div class="popup-container">
             <div class="modal-header">
                 <button class="modal-close-btn default-card">
-                    <img src="./assets/close.svg" alt="close">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12L19 6.41Z"
+                            fill="white" fill-opacity="0.8" />
+                    </svg>
+
                 </button>
             </div>
             <div class="modal-content default-card">

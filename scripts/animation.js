@@ -29,7 +29,7 @@ function minTutorialAnimation() {
       "-=0.2"
     )
     .from(
-      ".dropDown-icon img",
+      ".dropDown-icon svg",
       {
         opacity: 0,
         y: "20%",
@@ -83,7 +83,7 @@ function initialAnimation() {
       "-=0.2"
     )
     .from(
-      ".dropDown-icon img",
+      ".dropDown-icon svg",
       {
         opacity: 0,
         y: "20%",
@@ -158,7 +158,7 @@ function toggleModal() {
       "-=0.1"
     )
     .from(
-      ".modal-close-btn img",
+      ".modal-close-btn svg",
       {
         rotate: "180deg",
         x: 50,
@@ -418,8 +418,7 @@ function allExerciseEndAnimation() {
       ease: Power2.easeOut,
     },
     { display: "flex", opacity: 1, x: "0%", ease: Power2.easeOut }
-  )
-  .to(
+  ).to(
     ".exercise-warper",
     {
       alignItems: "center",
