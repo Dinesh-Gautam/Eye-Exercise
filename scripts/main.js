@@ -5,8 +5,9 @@ function RangeOfRandomNumbers(min, max) {
 function setRandomBodyBackgroundColor() {
   const randomIndex = RangeOfRandomNumbers(0, 360);
   const color = `hsla(${randomIndex}, 10%, 10%, 1)`;
+  const AlphaColor = `hsla(${randomIndex}, 10%, 10%, 0.9)`;
   DOMSelectors.body.style.backgroundColor = color;
-  DOMSelectors.modal.style.backgroundColor = color;
+  DOMSelectors.modal.style.backgroundColor = AlphaColor;
 }
 function setDisplay(element, view, display) {
   if (typeof element === "object" && !(element instanceof Element)) {
