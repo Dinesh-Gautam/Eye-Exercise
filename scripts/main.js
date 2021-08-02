@@ -118,17 +118,57 @@ const ImagesURL = {
 };
 
 const EyeExercises = [
-  { title: "Blink your eyes", tutorial: "1" },
-  { title: "Rotate your head while staring ahead", tutorial: "2" },
-  { title: "Look to your right and left", tutorial: "3" },
+  {
+    title: "Blink your eyes",
+    tutorial:
+      "Blink your eyes for a minute. Do not blink too hard. It will clean your eyes by spreading your tears over its outer surface.",
+  },
+  {
+    title: "Rotate your head while staring ahead",
+    tutorial:
+      "Move your head right to left while staring ahead. Then move your head up and down. Make sure you don't get distracted and only focus on the point you are looking at.",
+  },
+  {
+    title: "Look to your right and left",
+    tutorial:
+      "Move your eyes right to left slowly. After half the time is over, close your eyes and repeat the process again. You can also move your eyes right to left while moving your eyes up and down (zig-zag pattern).",
+  },
 
-  { title: "Close your eyes and relax", tutorial: "4" },
-  { title: "Move your gaze in different directions", tutorial: "5" },
-  { title: "Close and open your eyes", tutorial: "6" },
-  { title: "Push against your temples with your fingers", tutorial: "7" },
-  { title: "Draw geometric figures with your gaze", tutorial: "8" },
-  { title: "Move your eyeballs up and down", tutorial: "9" },
-  { title: "Strengthen your eyes’ near and far focusing", tutorial: "10" },
+  {
+    title: "Close your eyes and relax",
+    tutorial:
+      "Close your eyes and just relax. You can think about anything you want, you don't have to meditate, you are just relaxing while your eyes are closed.",
+  },
+  {
+    title: "Move your gaze in different directions",
+    tutorial:
+      "Move your eyes in a circular motion, draw a horizontal eight with your eyes. When half the time is over, close your eyes and repeat the process.",
+  },
+  {
+    title: "Close and open your eyes",
+    tutorial:
+      "Close and open your eyes. This exercise is similar to the first exercise but in this exercise, you have to close your eyes tightly and wait for 3 seconds.",
+  },
+  {
+    title: "Push against your temples with your fingers",
+    tutorial:
+      "Slightly push against your temples with your fingers for 2 seconds and repeat the process until the time is over.",
+  },
+  {
+    title: "Draw geometric figures with your gaze",
+    tutorial:
+      "Draw geometric figures with your eyes. The figures can be a rectangle, a square, a triangle, and more complex shapes such as a parallelogram and trapezium.",
+  },
+  {
+    title: "Move your eyeballs up and down",
+    tutorial:
+      "Close your eyes and move your eyes up and down. You can also move your eyes up and down while moving your eyes right to left(like zig-zag) after halftime is over.",
+  },
+  {
+    title: "Strengthen your eyes’ near and far focusing",
+    tutorial:
+      "Place your thumb close to your eyes and focus on it then look at something which is a little bit far away. you can also move your thumb close and far from the eyes. (make sure to only look at the thumb while moving your thumb).",
+  },
 ];
 
 const TimerAudio = {
