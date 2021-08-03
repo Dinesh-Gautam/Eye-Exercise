@@ -304,6 +304,7 @@ function exerciseChangeAnim(type, cb) {
       });
     }
   }
+  return exTl;
 }
 
 function allExerciseEndAnimation() {

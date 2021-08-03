@@ -53,3 +53,7 @@ function creatAnimation(animName, animFun, ele, { reverse = false } = {}) {
   }
   return animationTl[animName];
 }
+
+function isAnimationActive() {
+  return Object.keys(animationTl).some((e) => animationTl[e].isActive());
+}

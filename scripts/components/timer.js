@@ -51,7 +51,7 @@ class Timer {
     this.timerValue = this.totalDuration;
   }
 }
-
+let timeL;
 class Exercise {
   constructor(exerciseArr) {
     this.exercises = exerciseArr;
@@ -60,7 +60,7 @@ class Exercise {
   }
 
   next() {
-    if (this.currentExerciseNo >= this.totalExerciseNo) return;
+    if (this.currentExerciseNo > this.totalExerciseNo) return;
     this.currentExerciseNo++;
     // this.stop();
     this.exerciseUpdater("next");
@@ -71,36 +71,37 @@ class Exercise {
     // this.stop();
     this.exerciseUpdater("prev");
   }
+
   exerciseUpdater(type) {
     const { exerciseLabel, exercise, exerciseTutorial, modalContent } =
       DOMSelectors;
     if (this.exerciseCompleteChecker()) {
       exercise.innerText = "All exercise complete";
-      gsap.from(exercise, {
-        opacity: 0,
-        ease: Power2.easeInOut,
-        duration: 0.7,
-      });
-      gsap.fromTo(
-        ".control-buttons > button.primary",
-        {
-          opacity: 0,
-          scale: 0,
-          ease: Power2.easeOut,
-        },
-        { opacity: 1, scale: 1, ease: Power2.easeOut }
-      );
-      creatAnimation("indexViewer", exerciseIndexAnimation, exerciseLabel, {
-        reverse: true,
-      });
-      creatAnimation("tutorialViewer", minTutorialAnimation, exerciseTutorial, {
-        reverse: true,
-      });
-      creatAnimation("allExerciseEndAnimation", allExerciseEndAnimation);
+      // gsap.from(exercise, {
+      //   opacity: 0,
+      //   ease: Power2.easeInOut,
+      //   duration: 0.7,
+      // });
+      // gsap.fromTo(
+      //   ".control-buttons > button.primary",
+      //   {
+      //     opacity: 0,
+      //     scale: 0,
+      //     ease: Power2.easeOut,
+      //   },
+      //   { opacity: 1, scale: 1, ease: Power2.easeOut }
+      // );
+      // creatAnimation("indexViewer", exerciseIndexAnimation, exerciseLabel, {
+      //   reverse: true,
+      // });
+      // creatAnimation("tutorialViewer", minTutorialAnimation, exerciseTutorial, {
+      //   reverse: true,
+      // });
+      // creatAnimation("allExerciseEndAnimation", allExerciseEndAnimation);
       return;
     }
 
-    if (!(this.currentExerciseNo < this.totalExerciseNo)) {
+    if (!(this.currentExerciseNo <= this.totalExerciseNo)) {
       return;
     }
 
@@ -108,39 +109,50 @@ class Exercise {
       exerciseLabel.style.display === "none" ||
       exerciseTutorial.style.display === "none"
     ) {
-      creatAnimation("indexViewer", exerciseIndexAnimation, exerciseLabel);
-      creatAnimation("tutorialViewer", minTutorialAnimation, exerciseTutorial);
-      creatAnimation("allExerciseEndAnimation", allExerciseEndAnimation, null, {
-        reverse: true,
-      });
-      creatAnimation("changeHeightTl", changeHeightAnimation);
-      gsap.fromTo(
-        ".control-buttons > button.primary",
-        {
-          opacity: 0,
-          scale: 0,
-          ease: Power2.easeOut,
-        },
-        { opacity: 1, scale: 1, ease: Power2.easeOut }
-      );
+      // creatAnimation("indexViewer", exerciseIndexAnimation, exerciseLabel);
+      // creatAnimation("tutorialViewer", minTutorialAnimation, exerciseTutorial);
+      // creatAnimation("allExerciseEndAnimation", allExerciseEndAnimation, null, {
+      //   reverse: true,
+      // });
+      // creatAnimation("changeHeightTl", changeHeightAnimation);
+      // gsap.fromTo(
+      //   ".control-buttons > button.primary",
+      //   {
+      //     opacity: 0,
+      //     scale: 0,
+      //     ease: Power2.easeOut,
+      //   },
+      //   { opacity: 1, scale: 1, ease: Power2.easeOut }
+      // );
     }
     exerciseLabel.innerText = this.currentExerciseNo + 1;
     modalContent.innerText = EyeExercises[this.currentExerciseNo].tutorial;
     try {
-      exerciseChangeAnim(type, () => {
-        if (!(this.currentExerciseNo < this.totalExerciseNo - 1)) {
+      if (timeL) {
+        console.log(timeL);
+        if (timeL.isActive()) {
           return;
         }
-        exercise.innerText = EyeExercises[this.currentExerciseNo].title;
-      });
-      if (EyeExercises[this.currentExerciseNo]) {
-        changeExerciseTutorialAnimation(() => {
-          if (!(this.currentExerciseNo < this.totalExerciseNo - 1)) {
-            return;
-          }
-          exerciseTutorial.querySelector("p").innerText =
-            EyeExercises[this.currentExerciseNo].tutorial;
+        exerciseChangeAnim(type, () => {
+          console.log(this.currentExerciseNo);
+          if (this.currentExerciseNo > this.totalExerciseNo) return;
+          exercise.innerText = EyeExercises[this.currentExerciseNo].title;
         });
+      } else {
+        timeL = exerciseChangeAnim(type, () => {
+          if (this.currentExerciseNo > this.totalExerciseNo) return;
+          exercise.innerText = EyeExercises[this.currentExerciseNo].title;
+        });
+      }
+
+      if (EyeExercises[this.currentExerciseNo]) {
+        // changeExerciseTutorialAnimation(() => {
+        // if (!(this.currentExerciseNo < this.totalExerciseNo - 1)) {
+        // return;
+        // }
+        exerciseTutorial.querySelector("p").innerText =
+          EyeExercises[this.currentExerciseNo].tutorial;
+        // });
       }
     } catch (err) {
       console.error(err);
@@ -151,7 +163,7 @@ class Exercise {
   }
 
   exerciseCompleteChecker() {
-    return this.currentExerciseNo >= this.totalExerciseNo;
+    return this.currentExerciseNo > this.totalExerciseNo;
   }
 }
 
