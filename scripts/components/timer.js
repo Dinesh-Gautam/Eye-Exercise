@@ -3,6 +3,7 @@ class Timer {
     this.totalDuration = totalDuration;
     this.timerValue = totalDuration;
     this.intervalDuration = intervalDuration;
+    this.timerInterval = null;
   }
   start() {
     if (this.timerInterval !== null) return;
@@ -33,7 +34,7 @@ class Timer {
   }
   updateTimer() {
     const { timer } = DOMSelectors;
-    timer.innerText = this.timeDuration === 60 ? "1:00" : this.timeDuration;
+    timer.innerText = this.timerValue === 60 ? "1:00" : this.timerValue;
   }
   stop() {
     creatAnimation(
@@ -47,11 +48,11 @@ class Timer {
     this.updateTimer();
   }
   resetTimerValue() {
-    this.timeDuration = this.duration;
+    this.timerValue = this.totalDuration;
   }
 }
 
-class Exercise extends Timer {
+class Exercise {
   constructor(exerciseArr) {
     this.exercises = exerciseArr;
     this.totalExerciseNo = exerciseArr.length - 1;
@@ -59,21 +60,21 @@ class Exercise extends Timer {
   }
 
   next() {
-    if (this.currentExerciseNo >= this.totalExercisesNo) return;
+    if (this.currentExerciseNo >= this.totalExerciseNo) return;
     this.currentExerciseNo++;
-    this.stop();
+    // this.stop();
     this.exerciseUpdater("next");
   }
   previous() {
     if (this.currentExerciseNo < 1) return;
     this.currentExerciseNo--;
-    this.stop();
+    // this.stop();
     this.exerciseUpdater("prev");
   }
-  exerciseUpdater() {
+  exerciseUpdater(type) {
     const { exerciseLabel, exercise, exerciseTutorial, modalContent } =
       DOMSelectors;
-    if (this.exerciseCompeleteChecker()) {
+    if (this.exerciseCompleteChecker()) {
       exercise.innerText = "All exercise complete";
       gsap.from(exercise, {
         opacity: 0,
@@ -99,7 +100,7 @@ class Exercise extends Timer {
       return;
     }
 
-    if (!(this.currentExerciseNo < this.totalExercisesNo)) {
+    if (!(this.currentExerciseNo < this.totalExerciseNo)) {
       return;
     }
 
@@ -127,14 +128,14 @@ class Exercise extends Timer {
     modalContent.innerText = EyeExercises[this.currentExerciseNo].tutorial;
     try {
       exerciseChangeAnim(type, () => {
-        if (!(this.currentExerciseNo < this.totalExercisesNo - 1)) {
+        if (!(this.currentExerciseNo < this.totalExerciseNo - 1)) {
           return;
         }
         exercise.innerText = EyeExercises[this.currentExerciseNo].title;
       });
       if (EyeExercises[this.currentExerciseNo]) {
         changeExerciseTutorialAnimation(() => {
-          if (!(this.currentExerciseNo < this.totalExercisesNo - 1)) {
+          if (!(this.currentExerciseNo < this.totalExerciseNo - 1)) {
             return;
           }
           exerciseTutorial.querySelector("p").innerText =
@@ -147,6 +148,10 @@ class Exercise extends Timer {
       exerciseTutorial.querySelector("p").innerText =
         EyeExercises[this.currentExerciseNo].tutorial;
     }
+  }
+
+  exerciseCompleteChecker() {
+    return this.currentExerciseNo >= this.totalExerciseNo;
   }
 }
 

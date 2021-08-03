@@ -90,6 +90,7 @@ const EyeExercises = [
 ];
 
 let timer;
+let exercise;
 const timerConfig = {
   duration: 60,
   timerSpeed: 1000,
@@ -98,9 +99,10 @@ const timerConfig = {
 
 function init() {
   const { duration, timerSpeed, NoOfExercises } = timerConfig;
-  timer = new Timer(duration, timerSpeed, NoOfExercises);
+  timer = new Timer(duration, timerSpeed);
+  exercise = new Exercise(EyeExercises);
   setRandomBodyBackgroundColor();
-  timer.exerciseUpdater();
+  exercise.exerciseUpdater();
   TimerAudio.init();
 }
 
