@@ -4,8 +4,6 @@
 
 //fonts
 
-// @import url("https://fonts.googleapis.com/css2?family=Rubik&family=Poppins:wght@200,300;400;600;700;800&&family=Noto+Sans&family=Robot&family=Open+Sans:wght@300;400;600;700;800&display=swap");
-
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed&family=Poppins:wght@100;200;300;400;500;600;700;800&family=Rubik:wght@300;400;500;600&display=swap");
 
 html {
@@ -89,9 +87,6 @@ header {
 }
 
 main {
-  // display: grid;
-  // grid-template-rows: 15vh 1fr;
-  // align-items: center;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -110,10 +105,8 @@ main {
   justify-content: center;
   align-items: center;
   height: 15vh;
-  // grid-row: 1/2;
 }
 .exercise-container {
-  // grid-row: 2/-1;
   margin-left: $marginDefault;
   font-size: $fontSize-medium;
   position: relative;
@@ -142,7 +135,6 @@ main {
     transform-origin: bottom right;
     overflow: hidden;
     @include desktop {
-      // background: red;
       height: 48px;
       width: 48px;
       left: 0px;
@@ -154,7 +146,6 @@ main {
   }
   .exercise-warper {
     display: flex;
-    // align-items: center;
     @include desktop {
       padding: $paddingDefault;
       justify-content: center;
@@ -249,7 +240,6 @@ main {
   height: 100vh;
   width: 100vw;
   background: rgba($color: $default-background, $alpha: 0.9);
-  // display: flex;
   align-items: center;
   @include desktop {
     justify-content: flex-end;
@@ -286,150 +276,3 @@ main {
     }
   }
 }
-/*
-body {
-  min-height: 100vh;
-  overflow: hidden;
-  display: grid;
-  grid-template-rows: 1fr 2fr;
-  font-family: "Roboto", "Noto Sans", "Open Sans", sans-serif;
-  font-size: $fontSize-default;
-  background-color: $default-background;
-  transition: background-color $transition-duration ease-in-out;
-  color: white;
-
-  header {
-    grid-row: 1/2;
-    height: 100%;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    h1 {
-      text-transform: uppercase;
-      font-size: $fontSize-medium;
-      font-weight: 500;
-    }
-  }
-  main {
-    width: 100%;
-    margin: 0 auto;
-    align-self: flex-start;
-    grid-row: 2/-2;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    gap: $marginDefault;
-  }
-}
-
-.audio-controls {
-  position: absolute;
-  top: $paddingDefault;
-  right: $paddingDefault;
-  display: flex;
-  align-items: center;
-  button {
-    background: none;
-    order: 1;
-    svg {
-      height: $fontSize-default;
-      width: $fontSize-default;
-    }
-  }
-  .more-controls {
-    flex: 1;
-    padding: $paddingDefault 0;
-    width: 0;
-    overflow: hidden;
-    transition: width 0.2s ease-in-out;
-    .audio-volume-container {
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      flex-direction: column;
-      position: relative;
-      label {
-        font-size: $fontSize-small - 4px;
-        font-weight: bold;
-        color: rgba($color: #000000, $alpha: 0.8);
-        position: absolute;
-        top: -8px;
-        left: 50%;
-        transform: translate(-50%, -100%);
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity 0.2s ease-in-out;
-      }
-
-      &:hover {
-        label {
-          opacity: 1;
-        }
-      }
-    }
-  }
-  &:hover {
-    .more-controls {
-      width: 72px;
-    }
-  }
-  @include mobile {
-    top: $paddingDefault - 18px;
-    right: $paddingDefault - 18px;
-  }
-}
-
-.timer-container {
-  span {
-    font-size: $fontSize-large;
-    color: $blackAlpha;
-    font-weight: 700;
-    @include mobile {
-      font-size: $fontSize-medium * 2;
-    }
-  }
-}
-
-.exercise-container {
-  display: flex;
-  text-align: center;
-  align-items: flex-start;
-  justify-content: center;
-  height: $paddingDefault * 6.5;
-  overflow-x: hidden;
-  overflow-y: scroll;
-  span {
-    font-size: $fontSize-large;
-  }
-  &::-webkit-scrollbar {
-    background: transparent;
-    width: 12px;
-  }
-  &::-webkit-scrollbar-thumb {
-    background: $whiteAlpha;
-  }
-}
-
-.control-buttons {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: $marginDefault * 2;
-  flex-wrap: wrap;
-  position: fixed;
-  bottom: $paddingDefault;
-  left: 0;
-  width: 100%;
-  backdrop-filter: blur(26px);
-  button {
-    border: $btn-border;
-    border-radius: 50%;
-    background: $whiteAlpha;
-  }
-  // margin-top: $marginDefault * 4;
-}
-
-*/

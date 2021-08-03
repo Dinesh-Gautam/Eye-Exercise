@@ -46,13 +46,6 @@ DOMSelectors.audioVolumeControlInput.forEach((input) => {
 });
 
 DOMSelectors.exerciseTutorial.addEventListener("click", (event) => {
-  // DOMSelectors.modal.style.display = "flex";
-  // if (currentModalAnimationTimeline === null) {
-  //   currentModalAnimationTimeline = toggleModal();
-  // } else {
-  //   currentModalAnimationTimeline.play();
-  // }
-
   creatAnimation("modal", toggleModal, DOMSelectors.modal);
 });
 

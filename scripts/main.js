@@ -1,19 +1,3 @@
-// function creatAnimationRev(animName, animFun, ele, { reverse = false } = {}) {
-//   if (reverse) {
-//     ele.style.display = "flex";
-//     animationTl[animName].reverse();
-//     return;
-//   }
-
-//   if (!animationTl[animName]) {
-//     animationTl[animName] = animFun();
-//   } else {
-//     animationTl[animName].play();
-//   }
-//   animationTl[animName].then(() => {
-//     ele.style.display = "none";
-//   });
-// }
 const ColorRange = {
   min: 140,
   max: 220,
