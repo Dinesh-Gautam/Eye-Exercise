@@ -1,10 +1,164 @@
 class Timer {
+  constructor(totalDuration, intervalDuration) {
+    this.totalDuration = totalDuration;
+    this.timerValue = totalDuration;
+    this.intervalDuration = intervalDuration;
+  }
+  start() {
+    if (this.timerInterval !== null) return;
+    DOMSelectors.timerContainer.style.opacity = 1;
+    creatAnimation(
+      "timerViewerAnimation",
+      timerAnimation,
+      DOMSelectors.timerContainer
+    );
+    this.timerInterval = setInterval(() => {
+      const currentDuration = this.timerValue;
+      this.timerValue--;
+      this.updateTimer();
+      if (currentDuration <= 1) {
+        this.stop();
+        beepSound.play();
+      }
+    }, this.intervalDuration);
+  }
+
+  clearTimerInterval() {
+    clearInterval(this.timerInterval);
+    this.timerInterval = null;
+  }
+  pause() {
+    this.clearTimerInterval();
+    DOMSelectors.timerContainer.style.opacity = 0.5;
+  }
+  updateTimer() {
+    const { timer } = DOMSelectors;
+    timer.innerText = this.timeDuration === 60 ? "1:00" : this.timeDuration;
+  }
+  stop() {
+    creatAnimation(
+      "timerViewerAnimation",
+      timerAnimation,
+      DOMSelectors.timerContainer,
+      { reverse: true }
+    );
+    this.clearTimerInterval();
+    this.resetTimerValue();
+    this.updateTimer();
+  }
+  resetTimerValue() {
+    this.timeDuration = this.duration;
+  }
+}
+
+class Exercise extends Timer {
+  constructor(exerciseArr) {
+    this.exercises = exerciseArr;
+    this.totalExerciseNo = exerciseArr.length - 1;
+    this.currentExerciseNo = 0;
+  }
+
+  next() {
+    if (this.currentExerciseNo >= this.totalExercisesNo) return;
+    this.currentExerciseNo++;
+    this.stop();
+    this.exerciseUpdater("next");
+  }
+  previous() {
+    if (this.currentExerciseNo < 1) return;
+    this.currentExerciseNo--;
+    this.stop();
+    this.exerciseUpdater("prev");
+  }
+  exerciseUpdater() {
+    const { exerciseLabel, exercise, exerciseTutorial, modalContent } =
+      DOMSelectors;
+    if (this.exerciseCompeleteChecker()) {
+      exercise.innerText = "All exercise complete";
+      gsap.from(exercise, {
+        opacity: 0,
+        ease: Power2.easeInOut,
+        duration: 0.7,
+      });
+      gsap.fromTo(
+        ".control-buttons > button.primary",
+        {
+          opacity: 0,
+          scale: 0,
+          ease: Power2.easeOut,
+        },
+        { opacity: 1, scale: 1, ease: Power2.easeOut }
+      );
+      creatAnimation("indexViewer", exerciseIndexAnimation, exerciseLabel, {
+        reverse: true,
+      });
+      creatAnimation("tutorialViewer", minTutorialAnimation, exerciseTutorial, {
+        reverse: true,
+      });
+      creatAnimation("allExerciseEndAnimation", allExerciseEndAnimation);
+      return;
+    }
+
+    if (!(this.currentExerciseNo < this.totalExercisesNo)) {
+      return;
+    }
+
+    if (
+      exerciseLabel.style.display === "none" ||
+      exerciseTutorial.style.display === "none"
+    ) {
+      creatAnimation("indexViewer", exerciseIndexAnimation, exerciseLabel);
+      creatAnimation("tutorialViewer", minTutorialAnimation, exerciseTutorial);
+      creatAnimation("allExerciseEndAnimation", allExerciseEndAnimation, null, {
+        reverse: true,
+      });
+      creatAnimation("changeHeightTl", changeHeightAnimation);
+      gsap.fromTo(
+        ".control-buttons > button.primary",
+        {
+          opacity: 0,
+          scale: 0,
+          ease: Power2.easeOut,
+        },
+        { opacity: 1, scale: 1, ease: Power2.easeOut }
+      );
+    }
+    exerciseLabel.innerText = this.currentExerciseNo + 1;
+    modalContent.innerText = EyeExercises[this.currentExerciseNo].tutorial;
+    try {
+      exerciseChangeAnim(type, () => {
+        if (!(this.currentExerciseNo < this.totalExercisesNo - 1)) {
+          return;
+        }
+        exercise.innerText = EyeExercises[this.currentExerciseNo].title;
+      });
+      if (EyeExercises[this.currentExerciseNo]) {
+        changeExerciseTutorialAnimation(() => {
+          if (!(this.currentExerciseNo < this.totalExercisesNo - 1)) {
+            return;
+          }
+          exerciseTutorial.querySelector("p").innerText =
+            EyeExercises[this.currentExerciseNo].tutorial;
+        });
+      }
+    } catch (err) {
+      console.error(err);
+      exercise.innerText = EyeExercises[this.currentExerciseNo].title;
+      exerciseTutorial.querySelector("p").innerText =
+        EyeExercises[this.currentExerciseNo].tutorial;
+    }
+  }
+}
+
+// Old Code
+
+/*
+class Timer {
   constructor(duration, intervalDuration, exerciseNo) {
     this.duration = duration;
     this.timeDuration = duration;
     this.intervalDuration = intervalDuration;
     this.timerInterval = null;
-    this.exerciseRunning = true;
     this.totalExercisesNo = exerciseNo;
     this.currentExerciseNo = 0;
   }
@@ -21,7 +175,7 @@ class Timer {
     this.timerInterval = setInterval(() => {
       const currentDuration = this.timeDuration;
       this.timeDuration--;
-      this.update();
+      this.updateTimer();
       if (currentDuration <= 1) {
         this.stop();
         beepSound.play();
@@ -150,7 +304,6 @@ class Timer {
       exerciseTutorial.querySelector("p").innerText =
         EyeExercises[this.currentExerciseNo].tutorial;
     }
-    this.exerciseRunning = !this.exerciseCompeleteChecker();
   }
 
   exerciselogger({ allExerciseCompeleted = false, timerStarted = false } = {}) {
@@ -175,3 +328,4 @@ class Timer {
     return this.currentExerciseNo >= this.totalExercisesNo;
   }
 }
+*/
