@@ -35,10 +35,21 @@ class Timer {
         beepSound.play();
       }
     }, this.intervalDuration);
-
     this.setControlBtnDisplay("timerStart");
   }
+  stop() {
+    creatAnimation(
+      "timerViewerAnimation",
+      timerAnimation,
+      DOMSelectors.timerContainer,
+      { reverse: true }
+    );
 
+    this.clearTimerInterval();
+    this.resetTimerValue();
+    this.updateTimer();
+    this.setControlBtnDisplay("timerStopped");
+  }
   clearTimerInterval() {
     clearInterval(this.timerInterval);
     this.timerInterval = null;
@@ -48,6 +59,7 @@ class Timer {
     gsap.to(DOMSelectors.timerContainer, {
       opacity: 0.5,
     });
+    this.setControlBtnDisplay("timerStopped");
   }
   updateTimer() {
     const { timer } = DOMSelectors;
@@ -58,26 +70,17 @@ class Timer {
     this.stop();
     this.exerciseUpdater();
   }
-  stop() {
-    creatAnimation(
-      "timerViewerAnimation",
-      timerAnimation,
-      DOMSelectors.timerContainer,
-      { reverse: true }
-    );
-    this.clearTimerInterval();
-    this.resetTimerValue();
-    this.updateTimer();
-  }
+
   resetTimerValue() {
     this.timerValue = this.totalDuration;
   }
 
   next() {
     if (this.currentExerciseNo > this.totalExerciseNo) return;
+    this.stop();
     PrevClickDuration = 1;
     clickDuration++;
-    // this.stop();
+
     if (forwardExTl) {
       if (forwardExTl.timeScale() > 0) {
         forwardExTl.timeScale(clickDuration);
@@ -96,9 +99,10 @@ class Timer {
   }
   previous() {
     if (this.currentExerciseNo < 1) return;
+    this.stop();
+
     clickDuration = 1;
     PrevClickDuration++;
-    // this.stop();
     if (forwardExTl) {
       if (forwardExTl.timeScale() < 0) {
         forwardExTl.timeScale(-PrevClickDuration);
@@ -113,8 +117,6 @@ class Timer {
       this.currentExerciseNo--;
       this.exerciseUpdater("prev");
     }
-
-    // this.stop();
   }
 
   exerciseUpdater(type) {
@@ -128,6 +130,7 @@ class Timer {
     if (this.exerciseCompleteChecker()) {
       exercise.innerText = "All exercise complete";
       checkIcon.style.display = "flex";
+      this.setControlBtnDisplay("allExerciseEnded");
       gsap.fromTo(
         ".control-buttons > button.primary",
         {
@@ -187,11 +190,25 @@ class Timer {
       case "timerStart":
         timerStart();
         break;
+      case "timerStopped":
+        timerStop();
+        break;
+      case "allExerciseEnded":
+        exercisesEnded();
+        break;
     }
 
     function timerStart() {
       setDisplay([pause, stop], false, "flex");
       setDisplay([start, restart, next, previous], true, "flex");
+    }
+    function timerStop() {
+      setDisplay([pause, stop, restart], true, "flex");
+      setDisplay([start, next, previous], false, "flex");
+    }
+    function exercisesEnded() {
+      setDisplay([pause, stop, start, next], true, "flex");
+      setDisplay([restart, previous], false, "flex");
     }
   }
   exerciseCompleteChecker() {

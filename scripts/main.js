@@ -103,6 +103,7 @@ function init() {
   timer = new Timer(duration, timerSpeed, EyeExercises);
   setRandomBodyBackgroundColor();
   timer.exerciseUpdater();
+  timer.setControlBtnDisplay("timerStopped");
   TimerAudio.init();
 }
 
