@@ -173,10 +173,10 @@ function toggleModal() {
 function timerAnimation() {
   const tl = new gsap.timeline({ immediateRender: true });
 
-  tl.from(".timer-container", {
-    opacity: 0,
-    y: 50,
-    height: 0,
+  tl.to(".timer-container", {
+    opacity: 1,
+    y: 0,
+    height: "15vh",
     ease: Power2.easeInOut,
   });
 

@@ -7,7 +7,9 @@ class Timer {
   }
   start() {
     if (this.timerInterval !== null) return;
-    DOMSelectors.timerContainer.style.opacity = 1;
+    gsap.to(DOMSelectors.timerContainer, {
+      opacity: 1,
+    });
     creatAnimation(
       "timerViewerAnimation",
       timerAnimation,
@@ -30,7 +32,9 @@ class Timer {
   }
   pause() {
     this.clearTimerInterval();
-    DOMSelectors.timerContainer.style.opacity = 0.5;
+    gsap.to(DOMSelectors.timerContainer, {
+      opacity: 0.5,
+    });
   }
   updateTimer() {
     const { timer } = DOMSelectors;
