@@ -68,9 +68,13 @@ let clicked = false;
 DOMSelectors.exerciseTutorial.addEventListener("click", (event) => {
   if (windowInDesktopMode) {
     if (clicked) {
-      creatAnimation("exerciseTutorialViewer", toggleTutorialViewer).reverse();
+      // creatAnimation("exerciseTutorialViewer", toggleTutorialViewer).reverse();
+
+      creatAnimation("modal", toggleModal, DOMSelectors.modal);
     } else {
-      creatAnimation("exerciseTutorialViewer", toggleTutorialViewer);
+      // creatAnimation("exerciseTutorialViewer", toggleTutorialViewer);
+
+      creatAnimation("modal", toggleModal, DOMSelectors.modal);
     }
     clicked = !clicked;
   } else {
