@@ -56,6 +56,10 @@ class Timer {
   }
 }
 let timeL;
+let forwardExTl = null;
+let clickDuration = 1,
+  PrevClickDuration = 1;
+
 class Exercise {
   constructor(exerciseArr) {
     this.exercises = exerciseArr;
@@ -65,15 +69,46 @@ class Exercise {
 
   next() {
     if (this.currentExerciseNo > this.totalExerciseNo) return;
-    this.currentExerciseNo++;
+    PrevClickDuration = 1;
+    clickDuration++;
     // this.stop();
-    this.exerciseUpdater("next");
+    if (forwardExTl) {
+      if (forwardExTl.timeScale() > 0) {
+        forwardExTl.timeScale(clickDuration);
+      }
+
+      forwardExTl.then(() => {
+        this.currentExerciseNo++;
+        clickDuration--;
+
+        this.exerciseUpdater("next");
+      });
+    } else {
+      this.currentExerciseNo++;
+      this.exerciseUpdater("next");
+    }
   }
   previous() {
     if (this.currentExerciseNo < 1) return;
-    this.currentExerciseNo--;
+    clickDuration = 1;
+    PrevClickDuration++;
     // this.stop();
-    this.exerciseUpdater("prev");
+    if (forwardExTl) {
+      if (forwardExTl.timeScale() < 0) {
+        forwardExTl.timeScale(-PrevClickDuration);
+      }
+
+      forwardExTl.then(() => {
+        this.currentExerciseNo--;
+        PrevClickDuration--;
+        this.exerciseUpdater("prev");
+      });
+    } else {
+      this.currentExerciseNo--;
+      this.exerciseUpdater("prev");
+    }
+
+    // this.stop();
   }
 
   exerciseUpdater(type) {
@@ -81,6 +116,7 @@ class Exercise {
       DOMSelectors;
     if (this.exerciseCompleteChecker()) {
       exercise.innerText = "All exercise complete";
+
       // gsap.from(exercise, {
       //   opacity: 0,
       //   ease: Power2.easeInOut,
@@ -132,32 +168,38 @@ class Exercise {
     exerciseLabel.innerText = this.currentExerciseNo + 1;
     modalContent.innerText = EyeExercises[this.currentExerciseNo].tutorial;
     try {
-      if (timeL) {
-        console.log(timeL);
-        if (timeL.isActive()) {
-          return;
-        }
-        exerciseChangeAnim(type, () => {
-          console.log(this.currentExerciseNo);
-          if (this.currentExerciseNo > this.totalExerciseNo) return;
-          exercise.innerText = EyeExercises[this.currentExerciseNo].title;
-        });
-      } else {
-        timeL = exerciseChangeAnim(type, () => {
-          if (this.currentExerciseNo > this.totalExerciseNo) return;
-          exercise.innerText = EyeExercises[this.currentExerciseNo].title;
-        });
-      }
+      // if (timeL) {
+      //   console.log(timeL);
+      //   if (timeL.isActive()) {
+      //     return;
+      //   }
+      //   exerciseChangeAnim(type, () => {
+      //     console.log(this.currentExerciseNo);
+      //     if (this.currentExerciseNo > this.totalExerciseNo) return;
+      //     exercise.innerText = EyeExercises[this.currentExerciseNo].title;
+      //   });
+      // } else {
+      //   timeL = exerciseChangeAnim(type, () => {
+      //     if (this.currentExerciseNo > this.totalExerciseNo) return;
+      //     exercise.innerText = EyeExercises[this.currentExerciseNo].title;
+      //   });
+      // }
 
-      if (EyeExercises[this.currentExerciseNo]) {
-        // changeExerciseTutorialAnimation(() => {
-        // if (!(this.currentExerciseNo < this.totalExerciseNo - 1)) {
-        // return;
-        // }
-        exerciseTutorial.querySelector("p").innerText =
-          EyeExercises[this.currentExerciseNo].tutorial;
-        // });
-      }
+      // if (EyeExercises[this.currentExerciseNo]) {
+      // changeExerciseTutorialAnimation(() => {
+      // if (!(this.currentExerciseNo < this.totalExerciseNo - 1)) {
+      // return;
+      // }
+      // exerciseTutorial.querySelector("p").innerText =
+      // EyeExercises[this.currentExerciseNo].tutorial;
+      // });
+      // }
+
+      exerciseChangeAnim(type, () => {
+        if (this.currentExerciseNo > this.totalExerciseNo) return;
+        exercise.innerText = EyeExercises[this.currentExerciseNo].title;
+        changeHeightAnimation();
+      });
     } catch (err) {
       console.error(err);
       exercise.innerText = EyeExercises[this.currentExerciseNo].title;
