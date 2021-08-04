@@ -45,7 +45,7 @@ button.secondary {
   background: #262626;
 }
 
-@media screen and (min-width: 400px) {
+@media screen and (min-width: 600px) {
   button.secondary {
     max-width: 120px;
   }
@@ -62,7 +62,7 @@ button.next {
           justify-content: flex-start;
 }
 
-@media screen and (min-width: 400px) {
+@media screen and (min-width: 600px) {
   button.next {
     right: 0%;
   }
@@ -75,7 +75,7 @@ button.previous {
           justify-content: flex-end;
 }
 
-@media screen and (min-width: 400px) {
+@media screen and (min-width: 600px) {
   button.previous {
     left: 0%;
   }
@@ -292,7 +292,7 @@ main {
           justify-content: center;
 }
 
-@media screen and (min-width: 400px) {
+@media screen and (min-width: 600px) {
   main {
     -webkit-box-pack: center;
         -ms-flex-pack: center;
@@ -319,7 +319,7 @@ main {
 }
 
 .exercise-container {
-  margin-left: 24px;
+  margin-left: 48px;
   font-size: 36px;
   position: relative;
   width: 100vw;
@@ -334,7 +334,7 @@ main {
   max-width: 500px;
 }
 
-@media screen and (min-width: 400px) {
+@media screen and (min-width: 600px) {
   .exercise-container {
     margin-left: 0;
   }
@@ -366,7 +366,7 @@ main {
   overflow: hidden;
 }
 
-@media screen and (min-width: 400px) {
+@media screen and (min-width: 600px) {
   .exercise-container .exercise-index {
     height: 48px;
     width: 48px;
@@ -389,7 +389,7 @@ main {
   display: flex;
 }
 
-@media screen and (min-width: 400px) {
+@media screen and (min-width: 600px) {
   .exercise-container .exercise-warper {
     padding: 24px;
     -webkit-box-pack: center;
@@ -411,7 +411,7 @@ main {
   height: fit-content;
 }
 
-@media screen and (min-width: 400px) {
+@media screen and (min-width: 600px) {
   .exercise-container #exercise {
     padding: 24px 0;
     text-align: center;
@@ -490,11 +490,11 @@ main {
           justify-content: center;
   padding: 24px 0;
   gap: 20px;
-  max-width: 400px;
 }
 
-@media screen and (min-width: 400px) {
+@media screen and (min-width: 600px) {
   .control-buttons {
+    max-width: 400px;
     left: 50%;
     -webkit-transform: translateX(-50%);
             transform: translateX(-50%);
@@ -531,7 +531,7 @@ main {
           align-items: center;
 }
 
-@media screen and (min-width: 400px) {
+@media screen and (min-width: 600px) {
   .modal {
     -webkit-box-pack: end;
         -ms-flex-pack: end;
@@ -546,7 +546,7 @@ main {
   width: 100vw;
 }
 
-@media screen and (min-width: 400px) {
+@media screen and (min-width: 600px) {
   .modal .modal-content {
     width: 800px;
     margin-right: -24px;
@@ -576,7 +576,7 @@ main {
   height: 24px;
 }
 
-@media screen and (min-width: 400px) {
+@media screen and (min-width: 600px) {
   .modal-header button {
     height: 48px;
     right: -24px;

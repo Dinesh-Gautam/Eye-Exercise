@@ -109,7 +109,7 @@ main {
   transform: translateY(50px);
 }
 .exercise-container {
-  margin-left: $marginDefault;
+  margin-left: $marginDefault * 2;
   font-size: $fontSize-medium;
   position: relative;
   width: 100vw;
@@ -213,8 +213,9 @@ main {
   justify-content: center;
   padding: $paddingDefault 0;
   gap: $control-btn-gap;
-  max-width: 400px;
+
   @include desktop {
+    max-width: 400px;
     left: 50%;
     transform: translateX(-50%);
     padding: $paddingDefault * 2 0;
