@@ -142,6 +142,7 @@ class Timer {
         reverse: true,
       });
       creatAnimation("allExerciseEndAnimation", allExerciseEndAnimation);
+
       return;
     }
 
@@ -176,7 +177,6 @@ class Timer {
         EyeExercises[this.currentExerciseNo].tutorial;
     }
   }
-
   exerciseCompleteChecker() {
     return this.currentExerciseNo > this.totalExerciseNo;
   }
