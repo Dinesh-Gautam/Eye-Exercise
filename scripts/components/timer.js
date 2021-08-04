@@ -35,6 +35,8 @@ class Timer {
         beepSound.play();
       }
     }, this.intervalDuration);
+
+    this.setControlBtnDisplay("timerStart");
   }
 
   clearTimerInterval() {
@@ -175,6 +177,21 @@ class Timer {
       exercise.innerText = EyeExercises[this.currentExerciseNo].title;
       exerciseTutorial.querySelector("p").innerText =
         EyeExercises[this.currentExerciseNo].tutorial;
+    }
+  }
+  setControlBtnDisplay(type) {
+    const { timerControlButtons } = DOMSelectors;
+
+    const [previous, start, pause, stop, next, restart] = timerControlButtons;
+    switch (type) {
+      case "timerStart":
+        timerStart();
+        break;
+    }
+
+    function timerStart() {
+      setDisplay([pause, stop], false, "flex");
+      setDisplay([start, restart, next, previous], true, "flex");
     }
   }
   exerciseCompleteChecker() {
