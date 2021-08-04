@@ -45,8 +45,37 @@ DOMSelectors.audioVolumeControlInput.forEach((input) => {
   });
 });
 
+let windowInDesktopMode = checkResponsive(
+  Math.min(windowWidth(), windowHeight())
+);
+
+function checkResponsive(value) {
+  return value > 600;
+}
+function windowWidth() {
+  return window.innerWidth;
+}
+function windowHeight() {
+  return window.innerWidth;
+}
+
+window.addEventListener("resize", () => {
+  windowInDesktopMode = checkResponsive(windowWidth());
+});
+
+let clicked = false;
+
 DOMSelectors.exerciseTutorial.addEventListener("click", (event) => {
-  creatAnimation("modal", toggleModal, DOMSelectors.modal);
+  if (windowInDesktopMode) {
+    if (clicked) {
+      creatAnimation("exerciseTutorialViewer", toggleTutorialViewer).reverse();
+    } else {
+      creatAnimation("exerciseTutorialViewer", toggleTutorialViewer);
+    }
+    clicked = !clicked;
+  } else {
+    creatAnimation("modal", toggleModal, DOMSelectors.modal);
+  }
 });
 
 DOMSelectors.modal

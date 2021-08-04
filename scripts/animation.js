@@ -414,32 +414,6 @@ function allExerciseEndAnimation() {
       ease: Power2.easeOut,
     }
   );
-  // tl.fromTo(
-  //   ".check-image",
-  //   {
-  //     opacity: 0,
-  //     x: "100%",
-  //     ease: Power2.easeOut,
-  //   },
-  //   { opacity: 1, x: "0%", ease: Power2.easeOut }
-  // );
-  // tl.to(
-  //   ".exercise-warper",
-  //   {
-  //     alignItems: "center",
-  //     height: () => {
-  //       let value =
-  //         document.querySelector("#exercise").scrollHeight +
-  //         parseInt(
-  //           getComputedStyle(document.querySelector(".exercise-warper"))
-  //             .paddingTop
-  //         ) *
-  //           2;
-  //       return value * 2;
-  //     },
-  //   },
-  //   "<"
-  // );
   return tl;
 }
 
@@ -483,6 +457,24 @@ function changeExerciseTutorialAnimation(cb) {
   }).to(".exercise-tutorial p", {
     opacity: 1,
     ease: Power2.easeInOut,
+  });
+
+  return tl;
+}
+
+function toggleTutorialViewer() {
+  const tl = new gsap.timeline();
+
+  tl.to(".exercise-tutorial p", {
+    whiteSpace: "normal",
+    width: "100%",
+    overflow: "visible",
+  });
+  // .to(".exercise-tutorial p", {
+  //   height: "100%",
+  // })
+  tl.to(".exercise-tutorial", {
+    height: "100%",
   });
 
   return tl;
