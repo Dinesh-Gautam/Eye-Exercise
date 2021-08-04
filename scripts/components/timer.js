@@ -162,6 +162,7 @@ class Exercise {
       // }).then(() => {
       //   checkIcon.style.display = "none";
       // });
+      animationTl["allExerciseEndAnimation"].kill();
       animationEndRev().then(() => {
         checkIcon.style.display = "none";
       });

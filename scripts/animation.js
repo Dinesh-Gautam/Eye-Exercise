@@ -362,6 +362,9 @@ function exerciseChangeAnim(type, cb) {
 
 function allExerciseEndAnimation() {
   const tl = new gsap.timeline();
+  tl.to("#exercise", {
+    opacity: 0,
+  });
   tl.to(".exercise-warper", {
     alignItems: "center",
     height: () => {
