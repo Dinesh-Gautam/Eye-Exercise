@@ -170,6 +170,7 @@ main {
   .check-image {
     display: none;
     margin-right: $paddingDefault * 4;
+    width: $fontSize-large * 2;
   }
   .exercise-tutorial {
     padding: $paddingDefault;

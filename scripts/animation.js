@@ -384,14 +384,14 @@ function allExerciseEndAnimation() {
     ".check-image",
     {
       opacity: 0,
-      scale: 10,
-      x: "-500%",
+      scale: 6,
+      x: "-150%",
       ease: Power2.easeOut,
     },
     {
       opacity: 1,
-      scale: 3,
-      x: "-500%",
+      scale: 2,
+      x: "-150%",
       ease: Power2.easeOut,
     }
   );
