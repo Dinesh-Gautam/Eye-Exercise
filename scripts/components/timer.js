@@ -175,8 +175,12 @@ class Timer {
         exercise.innerText = EyeExercises[this.currentExerciseNo].title;
         changeHeightAnimation();
       });
+      changeExerciseTutorialAnimation(() => {
+        if (this.currentExerciseNo > this.totalExerciseNo) return;
+        exerciseTutorial.querySelector("p").innerText =
+          EyeExercises[this.currentExerciseNo].tutorial;
+      });
     } catch (err) {
-      console.error(err);
       exercise.innerText = EyeExercises[this.currentExerciseNo].title;
       exerciseTutorial.querySelector("p").innerText =
         EyeExercises[this.currentExerciseNo].tutorial;
