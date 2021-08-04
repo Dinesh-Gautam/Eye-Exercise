@@ -362,33 +362,86 @@ function exerciseChangeAnim(type, cb) {
 
 function allExerciseEndAnimation() {
   const tl = new gsap.timeline();
+  tl.to(".exercise-warper", {
+    alignItems: "center",
+    height: () => {
+      let value =
+        document.querySelector("#exercise").scrollHeight +
+        parseInt(
+          getComputedStyle(document.querySelector(".exercise-warper"))
+            .paddingTop
+        ) *
+          2;
+      return value * 2;
+    },
+  });
 
   tl.fromTo(
     ".check-image",
     {
-      display: "none",
       opacity: 0,
-      x: "100%",
-      ease: Power2.easeOut,
+      scale: 10,
+      x: "-500%",
     },
-    { display: "flex", opacity: 1, x: "0%", ease: Power2.easeOut }
-  ).to(
-    ".exercise-warper",
     {
-      alignItems: "center",
-      height: () => {
-        let value =
-          document.querySelector("#exercise").scrollHeight +
-          parseInt(
-            getComputedStyle(document.querySelector(".exercise-warper"))
-              .paddingTop
-          ) *
-            2;
-        return value * 2;
-      },
-    },
-    "<"
+      opacity: 1,
+      scale: 3,
+      x: "-500%",
+    }
   );
+  tl.to(".check-image", {
+    scale: 1,
+    x: "0%",
+    delay: 1,
+  });
+  tl.fromTo(
+    "#exercise",
+    {
+      opacity: 0,
+      x: "-20%",
+    },
+    {
+      opacity: 1,
+      x: "0%",
+    }
+  );
+  // tl.fromTo(
+  //   ".check-image",
+  //   {
+  //     opacity: 0,
+  //     x: "100%",
+  //     ease: Power2.easeOut,
+  //   },
+  //   { opacity: 1, x: "0%", ease: Power2.easeOut }
+  // );
+  // tl.to(
+  //   ".exercise-warper",
+  //   {
+  //     alignItems: "center",
+  //     height: () => {
+  //       let value =
+  //         document.querySelector("#exercise").scrollHeight +
+  //         parseInt(
+  //           getComputedStyle(document.querySelector(".exercise-warper"))
+  //             .paddingTop
+  //         ) *
+  //           2;
+  //       return value * 2;
+  //     },
+  //   },
+  //   "<"
+  // );
+  return tl;
+}
+
+function animationEndRev() {
+  const tl = new gsap.timeline();
+
+  tl.to(".check-image", {
+    opacity: 0,
+    scale: 10,
+  });
+
   return tl;
 }
 

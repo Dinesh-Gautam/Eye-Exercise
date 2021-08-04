@@ -112,32 +112,38 @@ class Exercise {
   }
 
   exerciseUpdater(type) {
-    const { exerciseLabel, exercise, exerciseTutorial, modalContent } =
-      DOMSelectors;
+    const {
+      exerciseLabel,
+      exercise,
+      exerciseTutorial,
+      modalContent,
+      checkIcon,
+    } = DOMSelectors;
     if (this.exerciseCompleteChecker()) {
       exercise.innerText = "All exercise complete";
+      checkIcon.style.display = "flex";
 
       // gsap.from(exercise, {
       //   opacity: 0,
       //   ease: Power2.easeInOut,
       //   duration: 0.7,
       // });
-      // gsap.fromTo(
-      //   ".control-buttons > button.primary",
-      //   {
-      //     opacity: 0,
-      //     scale: 0,
-      //     ease: Power2.easeOut,
-      //   },
-      //   { opacity: 1, scale: 1, ease: Power2.easeOut }
-      // );
-      // creatAnimation("indexViewer", exerciseIndexAnimation, exerciseLabel, {
-      //   reverse: true,
-      // });
-      // creatAnimation("tutorialViewer", minTutorialAnimation, exerciseTutorial, {
-      //   reverse: true,
-      // });
-      // creatAnimation("allExerciseEndAnimation", allExerciseEndAnimation);
+      gsap.fromTo(
+        ".control-buttons > button.primary",
+        {
+          opacity: 0,
+          scale: 0,
+          ease: Power2.easeOut,
+        },
+        { opacity: 1, scale: 1, ease: Power2.easeOut }
+      );
+      creatAnimation("indexViewer", exerciseIndexAnimation, exerciseLabel, {
+        reverse: true,
+      });
+      creatAnimation("tutorialViewer", minTutorialAnimation, exerciseTutorial, {
+        reverse: true,
+      });
+      creatAnimation("allExerciseEndAnimation", allExerciseEndAnimation);
       return;
     }
 
@@ -149,21 +155,16 @@ class Exercise {
       exerciseLabel.style.display === "none" ||
       exerciseTutorial.style.display === "none"
     ) {
-      // creatAnimation("indexViewer", exerciseIndexAnimation, exerciseLabel);
-      // creatAnimation("tutorialViewer", minTutorialAnimation, exerciseTutorial);
+      creatAnimation("indexViewer", exerciseIndexAnimation, exerciseLabel);
+      creatAnimation("tutorialViewer", minTutorialAnimation, exerciseTutorial);
       // creatAnimation("allExerciseEndAnimation", allExerciseEndAnimation, null, {
       //   reverse: true,
+      // }).then(() => {
+      //   checkIcon.style.display = "none";
       // });
-      // creatAnimation("changeHeightTl", changeHeightAnimation);
-      // gsap.fromTo(
-      //   ".control-buttons > button.primary",
-      //   {
-      //     opacity: 0,
-      //     scale: 0,
-      //     ease: Power2.easeOut,
-      //   },
-      //   { opacity: 1, scale: 1, ease: Power2.easeOut }
-      // );
+      animationEndRev().then(() => {
+        checkIcon.style.display = "none";
+      });
     }
     exerciseLabel.innerText = this.currentExerciseNo + 1;
     modalContent.innerText = EyeExercises[this.currentExerciseNo].tutorial;

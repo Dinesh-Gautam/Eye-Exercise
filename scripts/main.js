@@ -33,6 +33,7 @@ const DOMSelectors = {
   exerciseTutorial: document.querySelector(".exercise-tutorial"),
   modal: document.querySelector(".modal"),
   modalContent: document.querySelector(".modal .modal-content p"),
+  checkIcon: document.querySelector(".check-image"),
 };
 
 const EyeExercises = [

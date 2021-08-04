@@ -49,7 +49,7 @@ function creatAnimation(animName, animFun, ele, { reverse = false } = {}) {
   if (!animationTl[animName]) {
     animationTl[animName] = animFun();
   } else {
-    animationTl[animName].play();
+    animationTl[animName].play(0);
   }
   return animationTl[animName];
 }
