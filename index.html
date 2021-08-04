@@ -16,7 +16,7 @@
         content="If you want to improve your eye sight then this is the right website for you. It consists of total 10 exercise, you have to do each exercise for 1 minute, total 10 minutes">
 
     <link rel="stylesheet" href="./styles/styles.css">
-
+    <link rel="manifest" href="manifest.json">
     <script defer src="./scripts/thirdParty/gsap.min.js"></script>
     <script defer src="./scripts/functions.js"></script>
     <script defer src="./scripts/components/audioControsl.js"></script>
@@ -169,6 +169,12 @@
             </div>
         </div>
     </div>
+
+    <script>
+        if("serviceWorker" in navigator){
+            navigator.serviceWorker.register('/service-worker.js')
+        }
+    </script>
 </body>
 
 </html>
