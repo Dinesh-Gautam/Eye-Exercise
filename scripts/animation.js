@@ -377,6 +377,7 @@ function allExerciseEndAnimation() {
           2;
       return value * 2;
     },
+    ease: Power2.easeOut,
   });
 
   tl.fromTo(
@@ -385,27 +386,32 @@ function allExerciseEndAnimation() {
       opacity: 0,
       scale: 10,
       x: "-500%",
+      ease: Power2.easeOut,
     },
     {
       opacity: 1,
       scale: 3,
       x: "-500%",
+      ease: Power2.easeOut,
     }
   );
   tl.to(".check-image", {
     scale: 1,
     x: "0%",
     delay: 1,
+    ease: Power2.easeOut,
   });
   tl.fromTo(
     "#exercise",
     {
       opacity: 0,
       x: "-20%",
+      ease: Power2.easeOut,
     },
     {
       opacity: 1,
       x: "0%",
+      ease: Power2.easeOut,
     }
   );
   // tl.fromTo(

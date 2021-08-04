@@ -100,10 +100,9 @@ const timerConfig = {
 
 function init() {
   const { duration, timerSpeed, NoOfExercises } = timerConfig;
-  timer = new Timer(duration, timerSpeed);
-  exercise = new Exercise(EyeExercises);
+  timer = new Timer(duration, timerSpeed, EyeExercises);
   setRandomBodyBackgroundColor();
-  exercise.exerciseUpdater();
+  timer.exerciseUpdater();
   TimerAudio.init();
 }
 

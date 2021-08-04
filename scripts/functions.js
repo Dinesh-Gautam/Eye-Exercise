@@ -24,7 +24,12 @@ function setDisplay(element, view, display) {
 }
 
 const animationTl = {};
-function creatAnimation(animName, animFun, ele, { reverse = false } = {}) {
+function creatAnimation(
+  animName,
+  animFun,
+  ele,
+  { reverse = false, playState } = {}
+) {
   if (reverse) {
     if (animationTl[animName]) {
       animationTl[animName].reverse().then(() => {
@@ -49,7 +54,9 @@ function creatAnimation(animName, animFun, ele, { reverse = false } = {}) {
   if (!animationTl[animName]) {
     animationTl[animName] = animFun();
   } else {
-    animationTl[animName].play(0);
+    playState === "unset"
+      ? animationTl[animName].play()
+      : animationTl[animName].play(0);
   }
   return animationTl[animName];
 }

@@ -1,9 +1,17 @@
+let timeL;
+let forwardExTl = null;
+let clickDuration = 1,
+  PrevClickDuration = 1;
+
 class Timer {
-  constructor(totalDuration, intervalDuration) {
+  constructor(totalDuration, intervalDuration, exerciseArr) {
     this.totalDuration = totalDuration;
     this.timerValue = totalDuration;
     this.intervalDuration = intervalDuration;
     this.timerInterval = null;
+    this.exercises = exerciseArr;
+    this.totalExerciseNo = exerciseArr.length - 1;
+    this.currentExerciseNo = 0;
   }
   start() {
     if (this.timerInterval !== null) return;
@@ -13,7 +21,10 @@ class Timer {
     creatAnimation(
       "timerViewerAnimation",
       timerAnimation,
-      DOMSelectors.timerContainer
+      DOMSelectors.timerContainer,
+      {
+        playState: "unset",
+      }
     );
     this.timerInterval = setInterval(() => {
       const currentDuration = this.timerValue;
@@ -40,6 +51,11 @@ class Timer {
     const { timer } = DOMSelectors;
     timer.innerText = this.timerValue === 60 ? "1:00" : this.timerValue;
   }
+  restart() {
+    this.currentExerciseNo = 0;
+    this.stop();
+    this.exerciseUpdater();
+  }
   stop() {
     creatAnimation(
       "timerViewerAnimation",
@@ -53,18 +69,6 @@ class Timer {
   }
   resetTimerValue() {
     this.timerValue = this.totalDuration;
-  }
-}
-let timeL;
-let forwardExTl = null;
-let clickDuration = 1,
-  PrevClickDuration = 1;
-
-class Exercise {
-  constructor(exerciseArr) {
-    this.exercises = exerciseArr;
-    this.totalExerciseNo = exerciseArr.length - 1;
-    this.currentExerciseNo = 0;
   }
 
   next() {
@@ -122,12 +126,6 @@ class Exercise {
     if (this.exerciseCompleteChecker()) {
       exercise.innerText = "All exercise complete";
       checkIcon.style.display = "flex";
-
-      // gsap.from(exercise, {
-      //   opacity: 0,
-      //   ease: Power2.easeInOut,
-      //   duration: 0.7,
-      // });
       gsap.fromTo(
         ".control-buttons > button.primary",
         {
@@ -157,11 +155,7 @@ class Exercise {
     ) {
       creatAnimation("indexViewer", exerciseIndexAnimation, exerciseLabel);
       creatAnimation("tutorialViewer", minTutorialAnimation, exerciseTutorial);
-      // creatAnimation("allExerciseEndAnimation", allExerciseEndAnimation, null, {
-      //   reverse: true,
-      // }).then(() => {
-      //   checkIcon.style.display = "none";
-      // });
+
       animationTl["allExerciseEndAnimation"].kill();
       animationEndRev().then(() => {
         checkIcon.style.display = "none";
@@ -170,33 +164,6 @@ class Exercise {
     exerciseLabel.innerText = this.currentExerciseNo + 1;
     modalContent.innerText = EyeExercises[this.currentExerciseNo].tutorial;
     try {
-      // if (timeL) {
-      //   console.log(timeL);
-      //   if (timeL.isActive()) {
-      //     return;
-      //   }
-      //   exerciseChangeAnim(type, () => {
-      //     console.log(this.currentExerciseNo);
-      //     if (this.currentExerciseNo > this.totalExerciseNo) return;
-      //     exercise.innerText = EyeExercises[this.currentExerciseNo].title;
-      //   });
-      // } else {
-      //   timeL = exerciseChangeAnim(type, () => {
-      //     if (this.currentExerciseNo > this.totalExerciseNo) return;
-      //     exercise.innerText = EyeExercises[this.currentExerciseNo].title;
-      //   });
-      // }
-
-      // if (EyeExercises[this.currentExerciseNo]) {
-      // changeExerciseTutorialAnimation(() => {
-      // if (!(this.currentExerciseNo < this.totalExerciseNo - 1)) {
-      // return;
-      // }
-      // exerciseTutorial.querySelector("p").innerText =
-      // EyeExercises[this.currentExerciseNo].tutorial;
-      // });
-      // }
-
       exerciseChangeAnim(type, () => {
         if (this.currentExerciseNo > this.totalExerciseNo) return;
         exercise.innerText = EyeExercises[this.currentExerciseNo].title;

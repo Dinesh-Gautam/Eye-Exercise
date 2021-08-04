@@ -14,11 +14,11 @@ DOMSelectors.timerControlButtons.forEach((button) => {
         { opacity: 1, scale: 1, ease: Power2.easeOut }
       );
     }
-    className.contains("previous") && exercise.previous();
+    className.contains("previous") && timer.previous();
     className.contains("start") && timer.start();
     className.contains("pause") && timer.pause();
     className.contains("stop") && timer.stop();
-    className.contains("next") && exercise.next();
+    className.contains("next") && timer.next();
     className.contains("restart") && timer.restart();
   });
 });
