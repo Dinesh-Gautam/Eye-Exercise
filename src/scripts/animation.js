@@ -275,7 +275,7 @@ function allExerciseEndAnimation() {
   tl.to(".check-image", {
     scale: 1,
     x: "0%",
-    delay: 1,
+    delay: 0.25,
     ease: Power2.easeOut,
   });
   tl.fromTo(
@@ -299,7 +299,7 @@ function animationEndRev() {
 
   tl.to(".check-image", {
     opacity: 0,
-    scale: 10,
+    scale: 2,
   });
 
   return tl;
