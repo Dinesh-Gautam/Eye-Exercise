@@ -84,6 +84,29 @@ DOMSelectors.exerciseTutorial.addEventListener("click", (event) => {
 
 DOMSelectors.modal
   .querySelector(".modal-close-btn")
-  .addEventListener("click", (event) => {
+  .addEventListener("click", () => {
     creatAnimation("modal", toggleModal, DOMSelectors.modal, { reverse: true });
   });
+
+document.onkeyup = function (e) {
+  switch (e.code) {
+    case "ArrowRight":
+      timer.next();
+      break;
+    case "ArrowLeft":
+      timer.previous();
+      break;
+    case "KeyM":
+      AudioControl("mute");
+      break;
+    case "Space":
+      timer.timerInterval === null ? timer.start() : timer.pause();
+      break;
+    case "KeyK":
+      timer.stop();
+      break;
+    case "KeyR":
+      timer.restart();
+      break;
+  }
+};
