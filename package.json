@@ -2,9 +2,10 @@
   "name": "eye-exercise",
   "version": "1.0.0",
   "description": "",
-  "main": "/src/index.html",
+  "private": true,
   "scripts": {
-    "serve": "http-server -p 1336 src -c-1"
+    "serve": "http-server -p 1336 src -c-1",
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
@@ -16,5 +17,9 @@
   "bugs": {
     "url": "https://github.com/Dinesh-Gautam/Eye-Exercise/issues"
   },
-  "homepage": "https://github.com/Dinesh-Gautam/Eye-Exercise#readme"
+  "homepage": "https://github.com/Dinesh-Gautam/Eye-Exercise#readme",
+  "devDependencies": {
+    "webpack": "^5.48.0",
+    "webpack-cli": "^4.7.2"
+  }
 }
