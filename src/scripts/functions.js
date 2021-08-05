@@ -8,6 +8,7 @@ function setRandomBodyBackgroundColor() {
   const AlphaColor = `hsla(${randomIndex}, 10%, 10%, 0.9)`;
   DOMSelectors.body.style.backgroundColor = color;
   DOMSelectors.modal.style.backgroundColor = AlphaColor;
+  document.querySelector("meta[name=theme-color]").content = color;
 }
 function setDisplay(element, view, display) {
   if (typeof element === "object" && !(element instanceof Element)) {
