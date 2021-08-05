@@ -1,7 +1,7 @@
 {
   "name": "Eye Workout",
   "short_name": "EW",
-  "start_url": "/?home=true",
+  "start_url": "/",
   "theme_color": "#fff",
   "background_color": "#111111",
   "display": "fullscreen",

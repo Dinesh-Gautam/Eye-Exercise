@@ -1,0 +1,20 @@
+{
+  "name": "eye-exercise",
+  "version": "1.0.0",
+  "description": "",
+  "main": "/src/index.html",
+  "scripts": {
+    "serve": "http-server -p 1336 src -c-1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dinesh-Gautam/Eye-Exercise.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Dinesh-Gautam/Eye-Exercise/issues"
+  },
+  "homepage": "https://github.com/Dinesh-Gautam/Eye-Exercise#readme"
+}

@@ -15,15 +15,15 @@
     <meta property="og:description"
         content="If you want to improve your eye sight then this is the right website for you. It consists of total 10 exercise, you have to do each exercise for 1 minute, total 10 minutes">
 
-    <link rel="stylesheet" href="./styles/styles.css">
+    <link rel="stylesheet" href="styles/styles.css">
     <link rel="manifest" href="manifest.json">
-    <script defer src="./scripts/thirdParty/gsap.min.js"></script>
-    <script defer src="./scripts/functions.js"></script>
-    <script defer src="./scripts/components/audioControsl.js"></script>
-    <script defer src="./scripts/components/timer.js"></script>
-    <script defer src="./scripts/main.js"></script>
-    <script defer src="./scripts/components/eventListeners.js"></script>
-    <script defer src="./scripts/animation.js"></script>
+    <script defer src="scripts/thirdParty/gsap.min.js"></script>
+    <script defer src="scripts/functions.js"></script>
+    <script defer src="scripts/components/audioControsl.js"></script>
+    <script defer src="scripts/components/timer.js"></script>
+    <script defer src="scripts/main.js"></script>
+    <script defer src="scripts/components/eventListeners.js"></script>
+    <script defer src="scripts/animation.js"></script>
 
     <title>Eye Exercise</title>
 </head>
@@ -72,8 +72,7 @@
                 <span id="exercise">
                     Exercise Name
                 </span>
-                <svg class="check-image" width="33" viewBox="0 0 33 25" fill="none"
-                    xmlns="http://www.w3.org/2000/svg">
+                <svg class="check-image" width="33" viewBox="0 0 33 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M10.4872 19.7241L2.66401 11.95L0 14.5787L10.4872 25L33 2.62864L30.3547 0L10.4872 19.7241Z"
                         fill="#00FF85" fill-opacity="0.5" />
                 </svg>
@@ -81,7 +80,7 @@
             </div>
             <div class="exercise-tutorial default-card">
                 <p>
-                -
+                    -
                 </p>
                 <div class="dropDown-icon">
                     <svg style="transform: rotate(-90deg);" xmlns="http://www.w3.org/2000/svg" height="24px"
@@ -163,7 +162,7 @@
             <div class="modal-content default-card">
 
                 <p>
-                  -
+                    -
                 </p>
 
             </div>
@@ -171,9 +170,12 @@
     </div>
 
     <script>
-        if("serviceWorker" in navigator){
-            navigator.serviceWorker.register('/service-worker.js')
+        if ("serviceWorker" in navigator) {
+            window.addEventListener('load', function () {
+                navigator.serviceWorker.register('/sw.js');
+            });
         }
+
     </script>
 </body>
 
