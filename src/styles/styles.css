@@ -157,6 +157,15 @@ input[type="range"]::-webkit-slider-runnable-track {
   pointer-events: none;
 }
 
+input,
+textarea,
+button,
+select,
+a,
+div {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
 html {
   overflow: hidden;
 }
