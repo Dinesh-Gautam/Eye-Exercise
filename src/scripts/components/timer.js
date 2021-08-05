@@ -44,7 +44,8 @@ class Timer {
       DOMSelectors.timerContainer,
       { reverse: true }
     );
-
+    animationTl["allExerciseEndAnimation"] &&
+      animationTl["allExerciseEndAnimation"].progress(1);
     this.clearTimerInterval();
     this.resetTimerValue();
     this.updateTimer();
@@ -77,6 +78,7 @@ class Timer {
 
   next() {
     if (this.currentExerciseNo > this.totalExerciseNo) return;
+
     this.stop();
     PrevClickDuration = 1;
     clickDuration++;
@@ -146,6 +148,7 @@ class Timer {
       creatAnimation("tutorialViewer", minTutorialAnimation, exerciseTutorial, {
         reverse: true,
       });
+      forwardExTl.kill();
       creatAnimation("allExerciseEndAnimation", allExerciseEndAnimation);
 
       return;
@@ -154,18 +157,17 @@ class Timer {
     if (!(this.currentExerciseNo <= this.totalExerciseNo)) {
       return;
     }
-
-    if (
-      exerciseLabel.style.display === "none" ||
-      exerciseTutorial.style.display === "none"
-    ) {
+    animationTl["tutorialViewer"] && animationTl["tutorialViewer"].progress(1);
+    if (exerciseLabel.style.display === "none") {
       creatAnimation("indexViewer", exerciseIndexAnimation, exerciseLabel);
-      creatAnimation("tutorialViewer", minTutorialAnimation, exerciseTutorial);
 
-      animationTl["allExerciseEndAnimation"].kill();
+      animationTl["allExerciseEndAnimation"].progress(1);
       animationEndRev().then(() => {
         checkIcon.style.display = "none";
       });
+    }
+    if (exerciseTutorial.style.display === "none") {
+      creatAnimation("tutorialViewer", minTutorialAnimation, exerciseTutorial);
     }
     exerciseLabel.innerText = this.currentExerciseNo + 1;
     modalContent.innerText = EyeExercises[this.currentExerciseNo].tutorial;
