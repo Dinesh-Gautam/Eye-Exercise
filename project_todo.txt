@@ -3,7 +3,7 @@ show no of day I am working out.
 
 add text to speech and when it is not mute automatically change exercises and tell the user which exercise they are on and when the time gets over. When it is mute allow user to manually change exercise and play beep sound when time gets over.
 
-add animations(optionals but it will be awesome if I add them).
+add animations(optionals but it will be awesome if I add them). (done)
 
 tell yours different facts when all the exercise gets over.
 
@@ -21,13 +21,15 @@ add more buttons on top right :
 make it responsive
 
 (optionals)
-add stats option in which user can check for how many days they are working out.
+add stats option in which user can check for how many days they are working out, no of days they are maintaing the streek of working out.
 
 
 // pending work
 
-tutorial
+change volume value from three decimal point to two decimal point.(bug)
 
-bottom control buttons
+hover effect
 
-make it desktop responsive
+micro interactions
+
+change title layout and add shortcut keys lable to it
