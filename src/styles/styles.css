@@ -190,6 +190,16 @@ div {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
+::-moz-selection {
+  color: black;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+::selection {
+  color: black;
+  background: rgba(255, 255, 255, 0.5);
+}
+
 html {
   overflow: hidden;
 }
