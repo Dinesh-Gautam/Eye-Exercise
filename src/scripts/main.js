@@ -234,7 +234,7 @@ const TimerAudio = {
     localStorage.setItem(this.localStorageKeys.mute, this.value.muted);
   },
   setVolume() {
-    beepSound.volume = Number((Number(this.value.volume) / 1000).toFixed(3));
+    beepSound.volume = Number((Number(this.value.volume) / 100).toFixed(2));
   },
 
   init() {
