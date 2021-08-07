@@ -43,6 +43,12 @@ button.secondary {
   border-radius: 8px !important;
   width: 100%;
   background: #262626;
+  -webkit-transition: background 200ms ease-out;
+  transition: background 200ms ease-out;
+}
+
+button.secondary:hover {
+  background: rgba(255, 255, 255, 0.25);
 }
 
 @media screen and (min-width: 600px) {
@@ -53,6 +59,24 @@ button.secondary {
 
 button.primary {
   background: rgba(255, 255, 255, 0.15);
+  -webkit-transition: background 200ms ease-out;
+  transition: background 200ms ease-out;
+}
+
+button.primary svg {
+  -webkit-transition: all 200ms ease-out;
+  transition: all 200ms ease-out;
+}
+
+button.primary:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+button.primary:hover svg {
+  -webkit-filter: drop-shadow(0px 0px 1px rgba(255, 255, 255, 0.8));
+          filter: drop-shadow(0px 0px 1px rgba(255, 255, 255, 0.8));
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
 }
 
 button.next {

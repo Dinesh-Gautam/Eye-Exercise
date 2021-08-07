@@ -182,7 +182,7 @@ const TimerAudio = {
     mute
       ? (muteSvg.style.display = "none")
       : (unmuteSvg.style.display = "none");
-    muteButton.title = mute ? "Unmute" : "Mute";
+    muteButton.title = mute ? "Unmute (M)" : "Mute (M)";
 
     this.value.muted = beepSound.muted;
 
