@@ -33,3 +33,10 @@ hover effect
 micro interactions
 
 change title layout and add shortcut keys lable to it
+
+//
+add styles to scrollbar
+
+remove shortcuts event litener when all the exercise are complete.
+
+change animation of exercise contianer entering in desktop mode.
