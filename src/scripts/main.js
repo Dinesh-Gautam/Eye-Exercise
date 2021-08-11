@@ -73,20 +73,6 @@ const ColorRange = {
   max: 220,
 };
 
-const BackgroundColors = {
-  color: Array.from(
-    { length: 10 },
-    () =>
-      `rgb(${RangeOfRandomNumbers(
-        ColorRange.min,
-        ColorRange.max
-      )},${RangeOfRandomNumbers(
-        ColorRange.min,
-        ColorRange.max
-      )},${RangeOfRandomNumbers(ColorRange.min, ColorRange.max)})`
-  ),
-};
-
 const DOMSelectors = {
   body: document.querySelector("body"),
   timer: document.getElementById("timer"),
@@ -586,24 +572,33 @@ DOMSelectors.modal
   });
 
 document.onkeyup = function (e) {
+  const { audioControlButtons, timerControlButtons } = DOMSelectors;
+  const [muteBtn] = audioControlButtons;
+  const [prev, start, pause, stop, next, restart] = timerControlButtons;
+
+  function verifyDisplay(ele) {
+    return !(ele.style.display === "none");
+  }
   switch (e.code) {
     case "ArrowRight":
-      timer.next();
+      verifyDisplay(next) && timer.next();
       break;
     case "ArrowLeft":
-      timer.previous();
+      verifyDisplay(prev) && timer.previous();
       break;
     case "KeyM":
-      AudioControl("mute");
+      verifyDisplay(muteBtn) && AudioControl("mute");
       break;
     case "Space":
-      timer.timerInterval === null ? timer.start() : timer.pause();
+      timer.timerInterval === null
+        ? verifyDisplay(start) && timer.start()
+        : verifyDisplay(pause) && timer.pause();
       break;
     case "KeyK":
-      timer.stop();
+      verifyDisplay(stop) && timer.stop();
       break;
     case "KeyR":
-      timer.restart();
+      verifyDisplay(restart) && timer.restart();
       break;
   }
 };
