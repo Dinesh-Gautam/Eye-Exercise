@@ -24,3 +24,16 @@ add stats option in which user can check for how many days they are working out,
 // pending work
 
 change volume value from three decimal point to two decimal point.(bug)
+
+hover effect
+
+micro interactions
+
+change title layout and add shortcut keys lable to it
+
+//
+add styles to scrollbar
+
+remove shortcuts event litener when all the exercise are complete.
+
+change animation of exercise contianer entering in desktop mode.
