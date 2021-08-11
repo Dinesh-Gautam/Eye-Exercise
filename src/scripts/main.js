@@ -731,6 +731,7 @@ function initialAnimation() {
       },
       "<"
     );
+  tl.progress(1).progress(0);
 }
 
 function toggleModal() {
@@ -771,7 +772,7 @@ function toggleModal() {
       },
       "-=0.1"
     );
-
+  tl.progress(1).progress(0);
   return tl;
 }
 
