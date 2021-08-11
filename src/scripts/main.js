@@ -402,10 +402,7 @@ class Timer {
     if (!(this.currentExerciseNo <= this.totalExerciseNo)) {
       return;
     }
-    // animationTl["tutorialViewer"] && animationTl["tutorialViewer"].progress(1);
-    // animationTl["indexViewer"] && animationTl["indexViewer"].progress(1);
-    // animationTl["allExerciseEndAnimation"] &&
-    //   animationTl["allExerciseEndAnimation"].progress(1);
+
     if (exerciseLabel.style.display === "none") {
       creatAnimation("indexViewer", exerciseIndexAnimation, exerciseLabel);
 
