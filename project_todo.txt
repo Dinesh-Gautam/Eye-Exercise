@@ -19,12 +19,3 @@ add more buttons on top right :
 
 (optionals)
 add stats option in which user can check for how many days they are working out, no of days they are maintaing the streek of working out.
-
-
-// pending work
-
-add styles to scrollbar
-
-remove shortcuts event litener when all the exercise are complete.
-
-improve animation lagging
