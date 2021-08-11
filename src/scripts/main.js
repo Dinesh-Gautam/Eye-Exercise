@@ -610,6 +610,7 @@ function exerciseIndexAnimation() {
     opacity: 0,
     ease: Power2.easeOut,
   });
+  tl.progress(1).progress(0);
   return tl;
 }
 
@@ -643,7 +644,7 @@ function minTutorialAnimation() {
       },
       "<"
     );
-
+  tl.progress(1).progress(0);
   return tl;
 }
 
@@ -785,7 +786,7 @@ function timerAnimation() {
     height: "15vh",
     ease: Power2.easeInOut,
   });
-
+  tl.progress(1).progress(0);
   return tl;
 }
 
@@ -860,7 +861,7 @@ function allExerciseEndAnimation() {
           2;
       return value * 2;
     },
-    ease: Power2.easeOut,
+    ease: Power1.easeOut,
   });
 
   tl.fromTo(
@@ -897,6 +898,7 @@ function allExerciseEndAnimation() {
       ease: Power2.easeOut,
     }
   );
+  tl.progress(1).progress(0);
   return tl;
 }
 
@@ -907,7 +909,7 @@ function animationEndRev() {
     opacity: 0,
     scale: 2,
   });
-
+  tl.progress(1).progress(0);
   return tl;
 }
 
@@ -926,6 +928,7 @@ function changeHeightAnimation() {
       return value;
     },
   });
+  tl.progress(1).progress(0);
   return tl;
 }
 
