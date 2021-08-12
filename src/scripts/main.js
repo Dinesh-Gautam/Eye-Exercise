@@ -1,5 +1,5 @@
 import alarmBeep from "../assets/audio/alarm_beep_3.mp3";
-
+import "../styles/styles.css";
 function RangeOfRandomNumbers(min, max) {
   return ~~(Math.random() * (max - min)) + min;
 }
