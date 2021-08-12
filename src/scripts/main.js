@@ -64,15 +64,6 @@ function creatAnimation(
   return animationTl[animName];
 }
 
-function isAnimationActive() {
-  return Object.keys(animationTl).some((e) => animationTl[e].isActive());
-}
-
-const ColorRange = {
-  min: 140,
-  max: 220,
-};
-
 const DOMSelectors = {
   body: document.querySelector("body"),
   timer: document.getElementById("timer"),
@@ -157,7 +148,6 @@ const TimerAudio = {
   muteAndUnmute(mute, isInput) {
     const { audioControlButtons } = DOMSelectors;
     const muteButton = audioControlButtons[0];
-    const muteImage = audioControlButtons[0].querySelector(".mute-image");
 
     const muteSvg = document.querySelector(".mute-image");
     const unmuteSvg = document.querySelector(".unmute-image");
@@ -220,7 +210,7 @@ const TimerAudio = {
     localStorage.setItem(this.localStorageKeys.mute, this.value.muted);
   },
   setVolume() {
-    beepSound.volume = Number((Number(this.value.volume) / 100).toFixed(2));
+    beepSound.volume = Number((Number(this.value.volume) / 1000).toFixed(3));
   },
 
   init() {
